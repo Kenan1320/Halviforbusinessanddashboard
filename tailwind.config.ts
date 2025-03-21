@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/react";
 
@@ -156,6 +155,14 @@ export default {
             opacity: "1",
           },
         },
+        "phone-slide": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "grid": {
+          "0%": { backgroundPosition: "0 0" },
+          "100%": { backgroundPosition: "calc(var(--cell-size) * 2) calc(var(--cell-size) * 2)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -166,6 +173,8 @@ export default {
         "slide-in-right": "slide-in-right 0.5s ease-out",
         "slide-out-right": "slide-out-right 0.5s ease-out",
         "scale-in": "scale-in 0.5s ease-out",
+        "phone-slide": "phone-slide 5s ease-in-out infinite",
+        "grid": "grid 20s linear infinite",
       },
     },
   },

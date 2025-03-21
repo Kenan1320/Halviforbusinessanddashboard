@@ -29,7 +29,7 @@ export function FeatureCard({
         className
       )}
     >
-      <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-full bg-halvi-100 dark:bg-halvi-900 text-halvi-600 dark:text-halvi-300 transition-transform duration-300 group-hover:scale-110">
+      <div className="mb-4 inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 dark:bg-black/20 border border-halvi-100/20 dark:border-halvi-800/20 text-halvi-600 dark:text-halvi-300 transition-transform duration-300 group-hover:scale-110 group-hover:bg-halvi-100/20 dark:group-hover:bg-halvi-900/20 backdrop-blur-sm">
         {icon}
       </div>
       <h3 className="text-xl font-semibold mb-2">{title}</h3>

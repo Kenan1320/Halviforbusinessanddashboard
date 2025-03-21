@@ -1,5 +1,6 @@
 
 import React from "react";
+import { Toaster } from "sonner";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
@@ -14,6 +15,7 @@ import Navbar from "@/components/Navbar";
 export default function Index() {
   return (
     <div className="overflow-hidden">
+      <Toaster position="top-right" />
       <Navbar />
       <Hero />
       <Features />
