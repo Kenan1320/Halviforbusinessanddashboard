@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun } from "lucide-react";
-import { Switch } from "@/components/ui/switch";
 
 export function ThemeToggle() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -34,15 +33,19 @@ export function ThemeToggle() {
   };
 
   return (
-    <div className="flex items-center gap-2">
-      <Sun className="h-4 w-4 text-gray-500 dark:text-gray-400" />
-      <Switch 
-        checked={isDarkMode} 
-        onCheckedChange={toggleTheme} 
-        className="data-[state=checked]:bg-halvi-600" 
-      />
-      <Moon className="h-4 w-4 text-gray-500 dark:text-gray-400" />
-    </div>
+    <Button 
+      variant="outline" 
+      size="icon" 
+      onClick={toggleTheme}
+      className="rounded-full"
+    >
+      {isDarkMode ? (
+        <Moon className="h-4 w-4" />
+      ) : (
+        <Sun className="h-4 w-4" />
+      )}
+      <span className="sr-only">Toggle theme</span>
+    </Button>
   );
 }
 

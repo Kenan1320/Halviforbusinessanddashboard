@@ -71,15 +71,15 @@ export function AutoSwipeDemo() {
 
   const variants = {
     enter: (direction: number) => ({
-      y: direction > 0 ? 500 : -500,
+      x: direction > 0 ? 300 : -300,
       opacity: 0,
     }),
     center: {
-      y: 0,
+      x: 0,
       opacity: 1,
     },
     exit: (direction: number) => ({
-      y: direction < 0 ? 500 : -500,
+      x: direction < 0 ? 300 : -300,
       opacity: 0,
     }),
   };
@@ -117,11 +117,9 @@ export function AutoSwipeDemo() {
               </div>
               <div className="flex-1 flex flex-col items-center justify-center p-6 text-center">
                 {demoScreens[currentIndex].logo && (
-                  <img
-                    src="/logo.png"
-                    alt="Halvi Logo"
-                    className="w-24 h-24 mb-6"
-                  />
+                  <div className="w-24 h-24 mb-6 bg-white/20 rounded-full flex items-center justify-center">
+                    <span className="text-white font-bold text-2xl">Halvi</span>
+                  </div>
                 )}
                 <h3 className="text-xl font-bold mb-2">{demoScreens[currentIndex].title}</h3>
                 <p className="text-white/80">{demoScreens[currentIndex].description}</p>

@@ -24,14 +24,13 @@ export function AnnouncementBanner() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.5 }}
-          className="relative w-full bg-gradient-to-r from-halvi-600/90 via-halvi-500/90 to-halvi-400/90 backdrop-blur-sm text-white py-4 px-4 shadow-lg"
+          className="relative w-full bg-gradient-to-r from-halvi-600/90 via-halvi-500/90 to-halvi-400/90 backdrop-blur-sm text-white py-3 px-4 shadow-lg"
         >
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between">
             <div className="flex items-center space-x-3">
-              <span className="inline-block w-3 h-3 bg-orange-400 rounded-full animate-pulse"></span>
-              <p className="text-sm sm:text-base font-medium">
-                Business owners, affiliates, and drivers—leverage Halvi's growing network to expand your reach. 
-                <span className="ml-1 font-semibold">We have something coming up for Halvi professionals!</span>
+              <span className="inline-block w-2 h-2 bg-orange-400 rounded-full animate-pulse"></span>
+              <p className="text-sm font-medium">
+                Check out our new features and services!
               </p>
             </div>
             
@@ -43,7 +42,7 @@ export function AnnouncementBanner() {
             >
               <Link to="/professional">
                 Learn More
-                <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-1 h-3 w-3 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </div>

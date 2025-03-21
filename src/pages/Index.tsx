@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import AnnouncementBanner from "@/components/AnnouncementBanner";
 import AutoSwipeDemo from "@/components/AutoSwipeDemo";
+import BusinessAnnouncementCard from "@/components/BusinessAnnouncementCard";
 
 export default function Index() {
   return (
@@ -23,7 +24,7 @@ export default function Index() {
       
       <Hero />
       
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-24">
         <div className="max-w-6xl mx-auto">
           <AutoSwipeDemo />
         </div>
@@ -36,6 +37,11 @@ export default function Index() {
       <Testimonials />
       <FAQ />
       <Newsletter />
+      
+      <div className="container mx-auto px-4 pb-16">
+        <BusinessAnnouncementCard />
+      </div>
+      
       <Footer />
     </div>
   );
