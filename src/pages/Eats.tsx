@@ -3,30 +3,41 @@ import React from "react";
 import { Toaster } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AnnouncementBanner from "@/components/AnnouncementBanner";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import AuroraBackground from "@/components/AuroraBackground";
-import { ArrowRight, Utensils, Search, MapPin, Clock, Star } from "lucide-react";
+import { ArrowRight, Utensils, TrendingUp, Clock, Star } from "lucide-react";
 import AutoSwipeDemo from "@/components/AutoSwipeDemo";
 import BusinessAnnouncementCard from "@/components/BusinessAnnouncementCard";
+import { motion } from "framer-motion";
 
 export default function Eats() {
-  const categories = [
-    "All",
-    "Fast Food",
-    "Middle Eastern",
-    "Asian",
-    "American",
-    "Italian",
-    "African",
-    "Desserts"
+  const benefits = [
+    {
+      title: "More Orders",
+      description: "Increase your daily orders and revenue through our platform",
+      icon: <TrendingUp className="h-6 w-6" />
+    },
+    {
+      title: "New Customers",
+      description: "Reach customers specifically looking for halal dining options",
+      icon: <Star className="h-6 w-6" />
+    },
+    {
+      title: "Efficient Deliveries",
+      description: "Our delivery network ensures your food reaches customers promptly",
+      icon: <Clock className="h-6 w-6" />
+    },
+    {
+      title: "Restaurant Visibility",
+      description: "Get featured in our app and gain visibility in your area",
+      icon: <Utensils className="h-6 w-6" />
+    }
   ];
 
   return (
     <div className="min-h-screen">
       <Toaster position="top-right" />
-      <AnnouncementBanner />
       <Navbar />
       
       <AuroraBackground>
@@ -35,31 +46,9 @@ export default function Eats() {
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">Halvi Eats</h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Order delicious halal food from verified restaurants nearby. Enjoy a wide variety of cuisines,
-                delivered right to your doorstep.
+                Partner with Halvi to offer food delivery from your halal restaurant.
+                Reach more customers and grow your business with our platform.
               </p>
-            </div>
-            
-            <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800/50 rounded-xl shadow-lg p-4 mb-12">
-              <div className="flex flex-col md:flex-row items-center gap-3">
-                <div className="flex-1 relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-                  <input 
-                    type="text" 
-                    placeholder="Search for food or restaurants"
-                    className="w-full pl-10 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-halvi-500"
-                  />
-                </div>
-                <div className="flex-1 relative">
-                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-                  <input 
-                    type="text" 
-                    placeholder="Delivery address"
-                    className="w-full pl-10 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-halvi-500"
-                  />
-                </div>
-                <Button className="w-full md:w-auto">Find Food</Button>
-              </div>
             </div>
           </div>
         </section>
@@ -67,50 +56,39 @@ export default function Eats() {
       
       <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto max-w-6xl">
-          <div className="flex overflow-x-auto pb-4 mb-8 gap-2 hide-scrollbar">
-            {categories.map((category, index) => (
-              <Button 
-                key={index} 
-                variant={index === 0 ? "default" : "outline"} 
-                size="sm"
-                className="rounded-full whitespace-nowrap"
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Restaurant Benefits</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Why halal restaurants choose to partner with Halvi Eats
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {benefits.map((benefit, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm"
               >
-                {category}
-              </Button>
-            ))}
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-                <div className="h-48 bg-gray-200 dark:bg-gray-700"></div>
-                <div className="p-5">
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-semibold text-lg">Restaurant Name</h3>
-                    <div className="flex items-center">
-                      <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
-                      <span className="text-sm ml-1">4.7</span>
-                    </div>
+                <div className="flex items-start">
+                  <div className="mr-4 p-2 bg-halvi-50 dark:bg-halvi-900/30 rounded-lg text-halvi-600 dark:text-halvi-300">
+                    {benefit.icon}
                   </div>
-                  <p className="text-gray-500 dark:text-gray-400 text-sm mb-3">
-                    <span className="mr-3">Category</span>
-                    <span className="flex items-center">
-                      <Clock className="w-3 h-3 mr-1" /> 
-                      <span>20-30 min</span>
-                    </span>
-                  </p>
-                  <p className="text-sm mb-4">Popular dishes and specialties of this restaurant with brief description.</p>
-                  <Button asChild variant="outline" size="sm" className="w-full">
-                    <Link to="/restaurant-menu">View Menu</Link>
-                  </Button>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
           
-          <div className="mt-10 text-center">
-            <Button asChild variant="outline">
-              <Link to="/restaurants">View More <ArrowRight className="ml-2 w-4 h-4" /></Link>
+          <div className="text-center">
+            <Button asChild size="lg" className="rounded-full px-8">
+              <Link to="/business/apply">Partner With Us <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
           </div>
         </div>
@@ -121,6 +99,89 @@ export default function Eats() {
           <AutoSwipeDemo />
         </div>
       </div>
+      
+      <section className="py-16 px-4 bg-white dark:bg-gray-950">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">How Halvi Eats Works</h2>
+              <div className="space-y-6">
+                {[
+                  {
+                    title: "Easy Registration",
+                    description: "Complete our online application process in minutes."
+                  },
+                  {
+                    title: "Menu Integration",
+                    description: "We help you set up your menu on our platform, optimized for online ordering."
+                  },
+                  {
+                    title: "Tablet Installation",
+                    description: "Receive a tablet to manage orders directly in your restaurant."
+                  },
+                  {
+                    title: "Delivery Network",
+                    description: "Access our network of delivery drivers to fulfill customer orders."
+                  },
+                  {
+                    title: "Weekly Payments",
+                    description: "Receive weekly payments for all completed orders."
+                  }
+                ].map((item, index) => (
+                  <motion.div 
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="border-l-4 border-halvi-500 pl-4"
+                  >
+                    <h3 className="font-semibold text-lg">{item.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
+                  </motion.div>
+                ))}
+              </div>
+              
+              <Button asChild className="mt-8 rounded-full px-8">
+                <Link to="/business/restaurant">Apply Now</Link>
+              </Button>
+            </div>
+            
+            <div className="bg-gray-100 dark:bg-gray-800 rounded-2xl p-8">
+              <h3 className="text-2xl font-bold mb-4">Commission Rates</h3>
+              <p className="text-gray-600 dark:text-gray-300 mb-6">
+                Our competitive commission structure helps you maximize profits while expanding your customer base.
+              </p>
+              
+              <div className="space-y-4">
+                <div className="bg-white dark:bg-gray-700 p-4 rounded-lg">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">Standard Commission</span>
+                    <span className="text-xl font-bold text-halvi-600 dark:text-halvi-400">15%</span>
+                  </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Base rate for all restaurant partners</p>
+                </div>
+                
+                <div className="bg-white dark:bg-gray-700 p-4 rounded-lg">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">Volume Discount</span>
+                    <span className="text-xl font-bold text-halvi-600 dark:text-halvi-400">12%</span>
+                  </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">For restaurants with 100+ orders per month</p>
+                </div>
+                
+                <div className="bg-white dark:bg-gray-700 p-4 rounded-lg">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">Promotional Rate</span>
+                    <span className="text-xl font-bold text-halvi-600 dark:text-halvi-400">10%</span>
+                  </div>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">First 3 months for new restaurant partners</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       
       <div className="container mx-auto px-4 pb-16">
         <BusinessAnnouncementCard />

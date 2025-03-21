@@ -11,7 +11,6 @@ import FAQ from "@/components/FAQ";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import AnnouncementBanner from "@/components/AnnouncementBanner";
 import AutoSwipeDemo from "@/components/AutoSwipeDemo";
 import BusinessAnnouncementCard from "@/components/BusinessAnnouncementCard";
 
@@ -19,7 +18,6 @@ export default function Index() {
   return (
     <div className="overflow-hidden">
       <Toaster position="top-right" />
-      <AnnouncementBanner />
       <Navbar />
       
       <Hero />

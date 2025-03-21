@@ -3,30 +3,41 @@ import React from "react";
 import { Toaster } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AnnouncementBanner from "@/components/AnnouncementBanner";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import AuroraBackground from "@/components/AuroraBackground";
-import { ArrowRight, ShoppingBag, Search, Filter, Star } from "lucide-react";
+import { ArrowRight, ShoppingBag, Package, TrendingUp, Users } from "lucide-react";
 import AutoSwipeDemo from "@/components/AutoSwipeDemo";
 import BusinessAnnouncementCard from "@/components/BusinessAnnouncementCard";
+import { motion } from "framer-motion";
 
 export default function Mall() {
-  const categories = [
-    "All Products",
-    "Clothing",
-    "Perfume",
-    "Home Decor",
-    "Books",
-    "Electronics",
-    "Gifts",
-    "Beauty"
+  const sellerBenefits = [
+    {
+      title: "Easy Storefront Setup",
+      description: "Create your online store quickly with our user-friendly tools",
+      icon: <ShoppingBag className="h-6 w-6" />
+    },
+    {
+      title: "Secure Payments",
+      description: "Process payments securely with multiple payment options",
+      icon: <Package className="h-6 w-6" />
+    },
+    {
+      title: "Growth Opportunities",
+      description: "Reach new customers and expand your business reach",
+      icon: <TrendingUp className="h-6 w-6" />
+    },
+    {
+      title: "Community Connection",
+      description: "Connect with a community specifically looking for halal products",
+      icon: <Users className="h-6 w-6" />
+    }
   ];
 
   return (
     <div className="min-h-screen">
       <Toaster position="top-right" />
-      <AnnouncementBanner />
       <Navbar />
       
       <AuroraBackground>
@@ -35,23 +46,9 @@ export default function Mall() {
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">Halvi Mall</h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Shop from a wide selection of verified halal products. From food to fashion,
-                Halvi Mall connects you with the best halal sellers across the country.
+                Start selling your halal products online and reach customers across America.
+                Join Halvi Mall to expand your business and connect with halal-conscious shoppers.
               </p>
-            </div>
-            
-            <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800/50 rounded-xl shadow-lg p-4 mb-12">
-              <div className="flex flex-col md:flex-row items-center gap-3">
-                <div className="flex-1 relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-                  <input 
-                    type="text" 
-                    placeholder="Search products"
-                    className="w-full pl-10 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-halvi-500"
-                  />
-                </div>
-                <Button className="w-full md:w-auto">Search</Button>
-              </div>
             </div>
           </div>
         </section>
@@ -59,46 +56,39 @@ export default function Mall() {
       
       <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-wrap gap-2 mb-8 justify-center">
-            {categories.map((category, index) => (
-              <Button 
-                key={index} 
-                variant={index === 0 ? "default" : "outline"} 
-                size="sm"
-                className="rounded-full"
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Seller Benefits</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Why sellers choose Halvi Mall to grow their business
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            {sellerBenefits.map((benefit, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm"
               >
-                {category}
-              </Button>
-            ))}
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
-                <div className="h-40 bg-gray-200 dark:bg-gray-700"></div>
-                <div className="p-4">
-                  <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">Shop Name</p>
-                  <h3 className="font-semibold text-sm mb-1">Product Name</h3>
-                  <div className="flex justify-between items-center mb-3">
-                    <p className="font-bold text-sm">$24.99</p>
-                    <div className="flex items-center">
-                      <Star className="h-3 w-3 text-yellow-500 fill-yellow-500" />
-                      <span className="text-xs ml-0.5">4.8</span>
-                    </div>
+                <div className="flex items-start">
+                  <div className="mr-4 p-2 bg-halvi-50 dark:bg-halvi-900/30 rounded-lg text-halvi-600 dark:text-halvi-300">
+                    {benefit.icon}
                   </div>
-                  <Button asChild size="sm" className="w-full">
-                    <Link to="/product-details">
-                      <ShoppingBag className="mr-1 h-3 w-3" /> Add to Cart
-                    </Link>
-                  </Button>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
           
-          <div className="mt-10 text-center">
-            <Button asChild variant="outline">
-              <Link to="/products">View More <ArrowRight className="ml-2 w-4 h-4" /></Link>
+          <div className="text-center">
+            <Button asChild size="lg" className="rounded-full px-8">
+              <Link to="/business/apply">Become a Seller <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
           </div>
         </div>
@@ -109,6 +99,61 @@ export default function Mall() {
           <AutoSwipeDemo />
         </div>
       </div>
+      
+      <section className="py-16 px-4 bg-white dark:bg-gray-950">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">How It Works</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Starting your online store on Halvi Mall is simple
+            </p>
+          </div>
+          
+          <div className="max-w-3xl mx-auto">
+            <div className="space-y-8">
+              {[
+                {
+                  number: "01",
+                  title: "Apply to Sell",
+                  description: "Complete our online application and submit your business details.",
+                },
+                {
+                  number: "02",
+                  title: "Verification Process",
+                  description: "We verify your halal certification and business credentials.",
+                },
+                {
+                  number: "03",
+                  title: "Set Up Your Store",
+                  description: "Create your online storefront and upload your products.",
+                },
+                {
+                  number: "04",
+                  title: "Start Selling",
+                  description: "Once approved, your products become available to Halvi Mall customers.",
+                },
+              ].map((step, index) => (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="flex"
+                >
+                  <div className="mr-6 flex-shrink-0">
+                    <span className="text-3xl font-bold text-halvi-500 dark:text-halvi-400">{step.number}</span>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{step.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
       
       <div className="container mx-auto px-4 pb-16">
         <BusinessAnnouncementCard />

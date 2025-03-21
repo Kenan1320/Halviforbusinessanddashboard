@@ -3,41 +3,42 @@ import React from "react";
 import { Toaster } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AnnouncementBanner from "@/components/AnnouncementBanner";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import AuroraBackground from "@/components/AuroraBackground";
-import { ArrowRight, Car, MapPin, Calendar, Clock } from "lucide-react";
+import { ArrowRight, Car, DollarSign, Clock, Shield, Headphones } from "lucide-react";
 import AutoSwipeDemo from "@/components/AutoSwipeDemo";
 import BusinessAnnouncementCard from "@/components/BusinessAnnouncementCard";
+import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 
 export default function Rides() {
-  const rideOptions = [
+  const driverBenefits = [
     {
-      name: "Economy",
-      icon: <Car className="w-5 h-5" />,
-      price: "$15-20",
-      time: "5 min away"
+      title: "Flexible Hours",
+      description: "Work when you want — be your own boss",
+      icon: <Clock className="h-6 w-6" />
     },
     {
-      name: "Comfort",
-      icon: <Car className="w-5 h-5" />,
-      price: "$22-28",
-      time: "3 min away"
+      title: "Competitive Earnings",
+      description: "Earn competitive rates with bonuses during peak hours",
+      icon: <DollarSign className="h-6 w-6" />
     },
     {
-      name: "Premium",
-      icon: <Car className="w-5 h-5" />,
-      price: "$35-42",
-      time: "7 min away"
+      title: "Safety First",
+      description: "Our platform prioritizes driver safety at all times",
+      icon: <Shield className="h-6 w-6" />
+    },
+    {
+      title: "24/7 Support",
+      description: "Access to support team whenever you need assistance",
+      icon: <Headphones className="h-6 w-6" />
     }
   ];
 
   return (
     <div className="min-h-screen">
       <Toaster position="top-right" />
-      <AnnouncementBanner />
       <Navbar />
       
       <AuroraBackground>
@@ -46,8 +47,8 @@ export default function Rides() {
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">Halvi Rides</h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                Book safe and reliable rides with Halvi's trusted drivers. Choose from a variety of
-                vehicle options to suit your needs and budget.
+                Join our team of drivers and earn money on your own schedule.
+                Be part of our mission to provide safe and reliable transportation.
               </p>
             </div>
           </div>
@@ -56,88 +57,69 @@ export default function Rides() {
       
       <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="md:col-span-2">
-              <div className="bg-gray-200 dark:bg-gray-700 rounded-xl h-[400px] mb-6 relative">
-                <div className="absolute bottom-6 right-6">
-                  <Button className="bg-white text-gray-900 hover:bg-gray-100">
-                    <MapPin className="mr-2 h-4 w-4" /> Set on Map
-                  </Button>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Drive With Halvi</h2>
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+                As a Halvi driver, you'll enjoy flexible hours, competitive earnings, and the satisfaction of helping connect communities with halal-friendly transportation options.
+              </p>
+              
+              <div className="space-y-4 mb-8">
+                {driverBenefits.map((benefit, index) => (
+                  <motion.div 
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-start"
+                  >
+                    <div className="mr-4 p-2 bg-halvi-50 dark:bg-halvi-900/30 rounded-lg text-halvi-600 dark:text-halvi-300">
+                      {benefit.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">{benefit.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
+              
+              <Button asChild size="lg" className="rounded-full px-8">
+                <Link to="/business/driver">Apply to Drive <ArrowRight className="ml-2 h-4 w-4" /></Link>
+              </Button>
             </div>
             
-            <div className="md:col-span-1">
-              <Card className="bg-white dark:bg-gray-800 shadow-md">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-lg mb-4">Book a Ride</h3>
-                  
-                  <div className="space-y-4 mb-6">
-                    <div className="relative">
-                      <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-                      <input 
-                        type="text" 
-                        placeholder="Pickup location"
-                        className="w-full pl-10 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-halvi-500"
-                      />
-                    </div>
-                    
-                    <div className="relative">
-                      <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-                      <input 
-                        type="text" 
-                        placeholder="Destination"
-                        className="w-full pl-10 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-halvi-500"
-                      />
-                    </div>
-                    
-                    <div className="flex gap-2">
-                      <div className="relative flex-1">
-                        <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-                        <input 
-                          type="text" 
-                          placeholder="Date"
-                          className="w-full pl-10 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-halvi-500"
-                        />
+            <Card className="bg-white dark:bg-gray-800 shadow-md">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold mb-6">Driver Requirements</h3>
+                <ul className="space-y-4">
+                  {[
+                    "21 years or older",
+                    "Valid driver's license",
+                    "At least 1 year of driving experience",
+                    "Clean driving record",
+                    "Smartphone with iOS 13+ or Android 8+",
+                    "Vehicle that's 15 years old or newer",
+                    "Valid vehicle registration and insurance"
+                  ].map((requirement, index) => (
+                    <motion.li 
+                      key={index}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="flex items-center"
+                    >
+                      <div className="mr-3 flex-shrink-0 text-halvi-500 dark:text-halvi-400">
+                        <ArrowRight className="h-4 w-4" />
                       </div>
-                      
-                      <div className="relative flex-1">
-                        <Clock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-                        <input 
-                          type="text" 
-                          placeholder="Time"
-                          className="w-full pl-10 p-3 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-halvi-500"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-3 mb-6">
-                    <h4 className="font-medium text-sm">Choose a ride:</h4>
-                    
-                    {rideOptions.map((option, index) => (
-                      <div 
-                        key={index} 
-                        className={`p-3 border ${index === 0 ? 'border-halvi-500 bg-halvi-50 dark:bg-halvi-900/20' : 'border-gray-200 dark:border-gray-700'} rounded-lg flex justify-between items-center cursor-pointer hover:border-halvi-500 transition-colors`}
-                      >
-                        <div className="flex items-center">
-                          <div className="w-8 h-8 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mr-3">
-                            {option.icon}
-                          </div>
-                          <span>{option.name}</span>
-                        </div>
-                        <div className="text-right">
-                          <p className="font-semibold">{option.price}</p>
-                          <p className="text-xs text-gray-500">{option.time}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <Button className="w-full">Book Now</Button>
-                </CardContent>
-              </Card>
-            </div>
+                      <span className="text-gray-700 dark:text-gray-300">{requirement}</span>
+                    </motion.li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -147,6 +129,50 @@ export default function Rides() {
           <AutoSwipeDemo />
         </div>
       </div>
+      
+      <section className="py-16 px-4 bg-white dark:bg-gray-950">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">How It Works</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Getting started as a Halvi driver is simple
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                step: "01",
+                title: "Apply Online",
+                description: "Complete our online application with your information and documents."
+              },
+              {
+                step: "02",
+                title: "Background Check",
+                description: "We'll verify your driving record and conduct a background check."
+              },
+              {
+                step: "03",
+                title: "Get Approved",
+                description: "Once approved, download the Halvi Driver app and start accepting rides."
+              }
+            ].map((item, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-gray-50 dark:bg-gray-800 p-6 rounded-xl"
+              >
+                <div className="text-4xl font-bold text-halvi-500 dark:text-halvi-400 mb-4">{item.step}</div>
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
       
       <div className="container mx-auto px-4 pb-16">
         <BusinessAnnouncementCard />

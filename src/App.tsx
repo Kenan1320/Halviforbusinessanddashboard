@@ -16,6 +16,9 @@ import Professional from "./pages/Professional";
 import BusinessApplication from "./pages/BusinessApplication";
 import DriverApplication from "./pages/DriverApplication";
 import ProfessionalApplication from "./pages/ProfessionalApplication";
+import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
+import Affiliate from "./pages/Affiliate";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +41,9 @@ const App = () => (
             <Route path="/professional/apply" element={<ProfessionalApplication />} />
             <Route path="/business/apply" element={<BusinessApplication />} />
             <Route path="/business/driver" element={<DriverApplication />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/affiliate" element={<Affiliate />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

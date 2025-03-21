@@ -15,8 +15,10 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-center max-w-3xl mx-auto"
         >
+          <h2 className="text-2xl font-medium mb-2 text-gray-700 dark:text-gray-300">Welcome to Halvi</h2>
+          
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight text-center">
-            The <span className="text-gradient">Hal</span> Village
+            The <span className="text-gradient">Hal Vi</span>llage
           </h1>
           
           <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 max-w-2xl mx-auto">

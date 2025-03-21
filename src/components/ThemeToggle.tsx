@@ -1,50 +1,21 @@
 
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
-import { Moon, Sun } from "lucide-react";
+import { Sun, Moon } from "lucide-react";
 
 export function ThemeToggle() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    // Check if the user has a preference stored
-    const savedTheme = window.localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    
-    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
-      setIsDarkMode(true);
-      document.documentElement.classList.add("dark");
-    } else {
-      setIsDarkMode(false);
-      document.documentElement.classList.remove("dark");
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove("dark");
-      window.localStorage.setItem("theme", "light");
-      setIsDarkMode(false);
-    } else {
-      document.documentElement.classList.add("dark");
-      window.localStorage.setItem("theme", "dark");
-      setIsDarkMode(true);
-    }
-  };
-
+  const { theme, setTheme } = useTheme();
+  
   return (
-    <Button 
-      variant="outline" 
-      size="icon" 
-      onClick={toggleTheme}
-      className="rounded-full"
+    <Button
+      variant="ghost"
+      size="icon"
+      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      aria-label="Toggle theme"
     >
-      {isDarkMode ? (
-        <Moon className="h-4 w-4" />
-      ) : (
-        <Sun className="h-4 w-4" />
-      )}
-      <span className="sr-only">Toggle theme</span>
+      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
     </Button>
   );
 }

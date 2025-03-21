@@ -27,12 +27,9 @@ export function AnnouncementBanner() {
           className="relative w-full bg-gradient-to-r from-halvi-600/90 via-halvi-500/90 to-halvi-400/90 backdrop-blur-sm text-white py-3 px-4 shadow-lg"
         >
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <span className="inline-block w-2 h-2 bg-orange-400 rounded-full animate-pulse"></span>
-              <p className="text-sm font-medium">
-                Check out our new features and services!
-              </p>
-            </div>
+            <p className="text-sm font-medium">
+              Check out our new features and services!
+            </p>
             
             <Button 
               asChild 
