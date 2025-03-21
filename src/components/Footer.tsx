@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="inline-block mb-4">
               <span className="text-2xl font-bold text-halvi-600 dark:text-halvi-400">
@@ -16,7 +16,8 @@ export function Footer() {
             </Link>
             <p className="text-gray-600 dark:text-gray-400 max-w-md mb-4">
               The Halal Village – Your one-stop platform for all Halal products and services.
-              We connect you with verified halal businesses, products, food, and transportation.
+              We connect you with verified halal businesses, products, food, transportation, 
+              and professional services.
             </p>
             <div className="flex space-x-4">
               <a
@@ -80,6 +81,34 @@ export function Footer() {
               <li>
                 <Link to="/rides" className="text-gray-600 dark:text-gray-400 hover:text-halvi-600 dark:hover:text-halvi-400 transition-colors">
                   Halvi Rides
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
+              For Professionals
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/professional" className="text-gray-600 dark:text-gray-400 hover:text-halvi-600 dark:hover:text-halvi-400 transition-colors">
+                  Halvi Professionals
+                </Link>
+              </li>
+              <li>
+                <Link to="/professional/therapists" className="text-gray-600 dark:text-gray-400 hover:text-halvi-600 dark:hover:text-halvi-400 transition-colors">
+                  Therapists
+                </Link>
+              </li>
+              <li>
+                <Link to="/professional/consultants" className="text-gray-600 dark:text-gray-400 hover:text-halvi-600 dark:hover:text-halvi-400 transition-colors">
+                  Consultants
+                </Link>
+              </li>
+              <li>
+                <Link to="/professional/apply" className="text-gray-600 dark:text-gray-400 hover:text-halvi-600 dark:hover:text-halvi-400 transition-colors">
+                  Join as a Professional
                 </Link>
               </li>
             </ul>

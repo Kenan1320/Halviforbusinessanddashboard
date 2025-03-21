@@ -12,8 +12,10 @@ import Mall from "./pages/Mall";
 import Eats from "./pages/Eats";
 import Rides from "./pages/Rides";
 import Business from "./pages/Business";
+import Professional from "./pages/Professional";
 import BusinessApplication from "./pages/BusinessApplication";
 import DriverApplication from "./pages/DriverApplication";
+import ProfessionalApplication from "./pages/ProfessionalApplication";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +34,8 @@ const App = () => (
             <Route path="/eats" element={<Eats />} />
             <Route path="/rides" element={<Rides />} />
             <Route path="/business" element={<Business />} />
+            <Route path="/professional" element={<Professional />} />
+            <Route path="/professional/apply" element={<ProfessionalApplication />} />
             <Route path="/business/apply" element={<BusinessApplication />} />
             <Route path="/business/driver" element={<DriverApplication />} />
             <Route path="*" element={<NotFound />} />

@@ -7,6 +7,9 @@ interface DemoScreen {
   id: number;
   image: string;
   title: string;
+  color: string;
+  logo?: boolean;
+  description?: string;
 }
 
 const demoScreens: DemoScreen[] = [
@@ -14,21 +17,33 @@ const demoScreens: DemoScreen[] = [
     id: 1,
     image: "/placeholder.svg",
     title: "Halvi Local",
+    color: "bg-blue-600",
+    logo: true,
+    description: "Discover halal businesses near you"
   },
   {
     id: 2,
     image: "/placeholder.svg",
     title: "Halvi Mall",
+    color: "bg-purple-600",
+    logo: true,
+    description: "Shop halal products online"
   },
   {
     id: 3,
     image: "/placeholder.svg",
     title: "Halvi Eats",
+    color: "bg-rose-600",
+    logo: true,
+    description: "Order halal food delivery"
   },
   {
     id: 4,
     image: "/placeholder.svg",
     title: "Halvi Rides",
+    color: "bg-emerald-600",
+    logo: true,
+    description: "Book halal-friendly rides"
   },
 ];
 
@@ -70,7 +85,7 @@ export function AutoSwipeDemo() {
   };
 
   return (
-    <div className="relative py-20">
+    <div className="relative">
       <div className="text-center mb-10">
         <h3 className="text-2xl font-semibold mb-3">Experience Halvi</h3>
         <p className="text-muted-foreground max-w-md mx-auto">
@@ -94,18 +109,83 @@ export function AutoSwipeDemo() {
             }}
             className="absolute inset-0 flex flex-col"
           >
-            <div className="flex-1 bg-halvi-50 dark:bg-halvi-950 flex flex-col">
-              <div className="h-12 bg-halvi-600 dark:bg-halvi-800 flex items-center justify-center">
-                <span className="text-white font-medium">
+            <div className={`flex-1 flex flex-col ${demoScreens[currentIndex].color} text-white`}>
+              <div className="h-14 flex items-center justify-center border-b border-white/10">
+                <span className="text-white font-medium text-lg">
                   {demoScreens[currentIndex].title}
                 </span>
               </div>
-              <div className="flex-1 flex items-center justify-center p-4">
-                <img
-                  src={demoScreens[currentIndex].image}
-                  alt={demoScreens[currentIndex].title}
-                  className="max-w-full max-h-full object-contain"
-                />
+              <div className="flex-1 flex flex-col items-center justify-center p-6 text-center">
+                {demoScreens[currentIndex].logo && (
+                  <img
+                    src="/logo.png"
+                    alt="Halvi Logo"
+                    className="w-24 h-24 mb-6"
+                  />
+                )}
+                <h3 className="text-xl font-bold mb-2">{demoScreens[currentIndex].title}</h3>
+                <p className="text-white/80">{demoScreens[currentIndex].description}</p>
+                
+                <div className="mt-10 w-full">
+                  {currentIndex === 0 && (
+                    <>
+                      <div className="bg-white/10 rounded-lg p-3 mb-3 flex items-center">
+                        <div className="w-10 h-10 rounded-full bg-white/20 mr-3"></div>
+                        <div>
+                          <div className="h-3 w-24 bg-white/20 rounded-full mb-2"></div>
+                          <div className="h-2 w-16 bg-white/10 rounded-full"></div>
+                        </div>
+                      </div>
+                      <div className="bg-white/10 rounded-lg p-3 mb-3 flex items-center">
+                        <div className="w-10 h-10 rounded-full bg-white/20 mr-3"></div>
+                        <div>
+                          <div className="h-3 w-20 bg-white/20 rounded-full mb-2"></div>
+                          <div className="h-2 w-14 bg-white/10 rounded-full"></div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  
+                  {currentIndex === 1 && (
+                    <>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div className="bg-white/10 rounded-lg p-2 flex flex-col items-center">
+                          <div className="w-full h-20 bg-white/20 rounded-md mb-2"></div>
+                          <div className="h-2 w-12 bg-white/20 rounded-full mb-1"></div>
+                          <div className="h-2 w-8 bg-white/10 rounded-full"></div>
+                        </div>
+                        <div className="bg-white/10 rounded-lg p-2 flex flex-col items-center">
+                          <div className="w-full h-20 bg-white/20 rounded-md mb-2"></div>
+                          <div className="h-2 w-12 bg-white/20 rounded-full mb-1"></div>
+                          <div className="h-2 w-8 bg-white/10 rounded-full"></div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  
+                  {currentIndex === 2 && (
+                    <>
+                      <div className="bg-white/10 rounded-lg p-3 mb-3 flex items-center">
+                        <div className="w-16 h-16 rounded-md bg-white/20 mr-3"></div>
+                        <div>
+                          <div className="h-3 w-24 bg-white/20 rounded-full mb-2"></div>
+                          <div className="h-2 w-20 bg-white/10 rounded-full mb-2"></div>
+                          <div className="h-4 w-12 bg-white/30 rounded-md"></div>
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  
+                  {currentIndex === 3 && (
+                    <>
+                      <div className="bg-white/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-white/40"></div>
+                      </div>
+                      <div className="h-3 w-32 bg-white/20 rounded-full mx-auto mb-3"></div>
+                      <div className="h-2 w-40 bg-white/10 rounded-full mx-auto"></div>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           </motion.div>
