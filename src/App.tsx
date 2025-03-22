@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NextUIProvider } from "@nextui-org/react";
+import { ThemeProvider } from "next-themes";
 
 import Index from "./pages/Index";
 import Local from "./pages/Local";
@@ -32,37 +33,39 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <NextUIProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/local" element={<Local />} />
-            <Route path="/mall" element={<Mall />} />
-            <Route path="/eats" element={<Eats />} />
-            <Route path="/rides" element={<Rides />} />
-            <Route path="/business" element={<Business />} />
-            <Route path="/professional" element={<Professional />} />
-            <Route path="/professional/apply" element={<ProfessionalApplication />} />
-            <Route path="/business/apply" element={<BusinessApplication />} />
-            <Route path="/business/driver" element={<DriverApplication />} />
-            <Route path="/signup" element={<Onboarding />} />
-            <Route path="/signin" element={<Onboarding />} />
-            <Route path="/onboarding" element={<Onboarding />} />
-            <Route path="/schedule-meeting" element={<ScheduleMeetingPage />} />
-            <Route path="/affiliate" element={<Affiliate />} />
-            <Route path="/grow-more" element={<GrowMore />} />
-            <Route path="/therapist" element={<Therapist />} />
-            <Route path="/counselor" element={<Counselor />} />
-            <Route path="/lawyer" element={<Lawyer />} />
-            <Route path="/trending-dallas" element={<TrendingDallas />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </NextUIProvider>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+      <NextUIProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/local" element={<Local />} />
+              <Route path="/mall" element={<Mall />} />
+              <Route path="/eats" element={<Eats />} />
+              <Route path="/rides" element={<Rides />} />
+              <Route path="/business" element={<Business />} />
+              <Route path="/professional" element={<Professional />} />
+              <Route path="/professional/apply" element={<ProfessionalApplication />} />
+              <Route path="/business/apply" element={<BusinessApplication />} />
+              <Route path="/driver" element={<DriverApplication />} />
+              <Route path="/signup" element={<Onboarding />} />
+              <Route path="/signin" element={<Onboarding />} />
+              <Route path="/onboarding" element={<Onboarding />} />
+              <Route path="/schedule-meeting" element={<ScheduleMeetingPage />} />
+              <Route path="/affiliate" element={<Affiliate />} />
+              <Route path="/grow-more" element={<GrowMore />} />
+              <Route path="/therapist" element={<Therapist />} />
+              <Route path="/counselor" element={<Counselor />} />
+              <Route path="/lawyer" element={<Lawyer />} />
+              <Route path="/trending-dallas" element={<TrendingDallas />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </NextUIProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 

@@ -47,7 +47,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
             <span className="text-xl sm:text-2xl font-bold text-halvi-600 dark:text-halvi-400">
-              Halvi <span className="hidden sm:inline-block font-medium text-lg">for Businesses</span>
+              Halvi <span className="inline-block font-medium text-lg">for Businesses</span>
             </span>
           </Link>
 

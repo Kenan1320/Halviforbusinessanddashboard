@@ -4,6 +4,7 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Sun, Moon } from "lucide-react";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -16,7 +17,12 @@ export function ThemeToggle() {
   
   // Toggle theme function
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    toast.success(`${newTheme.charAt(0).toUpperCase() + newTheme.slice(1)} mode activated`, {
+      duration: 1500,
+      position: "bottom-right"
+    });
   };
   
   if (!mounted) {

@@ -97,13 +97,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/professional/therapists" className="text-gray-600 dark:text-gray-400 hover:text-halvi-600 dark:hover:text-halvi-400 transition-colors">
+                <Link to="/therapist" className="text-gray-600 dark:text-gray-400 hover:text-halvi-600 dark:hover:text-halvi-400 transition-colors">
                   Therapists
                 </Link>
               </li>
               <li>
-                <Link to="/professional/consultants" className="text-gray-600 dark:text-gray-400 hover:text-halvi-600 dark:hover:text-halvi-400 transition-colors">
-                  Consultants
+                <Link to="/counselor" className="text-gray-600 dark:text-gray-400 hover:text-halvi-600 dark:hover:text-halvi-400 transition-colors">
+                  Family Counselors
                 </Link>
               </li>
               <li>

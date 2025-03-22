@@ -15,6 +15,7 @@ import AutoSwipeDemo from "@/components/AutoSwipeDemo";
 import BusinessAnnouncementCard from "@/components/BusinessAnnouncementCard";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import HalviLive from "@/components/HalviLive";
+import LogoCarousel from "@/components/LogoCarousel";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -47,7 +48,7 @@ export default function Index() {
             </p>
           </motion.div>
           
-          {/* Moved TestimonialsMarquee above AutoSwipeDemo */}
+          {/* Testimonials Marquee */}
           <TestimonialsMarquee />
           
           <div className="mt-16">
@@ -85,6 +86,9 @@ export default function Index() {
           <HalviLive />
         </div>
       </div>
+      
+      {/* Logo Carousel */}
+      <LogoCarousel />
       
       <Footer />
     </div>
