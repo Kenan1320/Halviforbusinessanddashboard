@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
@@ -10,7 +9,7 @@ import {
   Search, 
   TrendingUp, 
   DollarSign, 
-  Tools, 
+  Wrench, 
   Users, 
   Check, 
   ArrowRight 
@@ -328,7 +327,7 @@ const GrowMore = () => {
           >
             <div className="flex items-start">
               <div className="w-16 h-16 rounded-full bg-halvi-50 dark:bg-halvi-950/50 flex items-center justify-center text-halvi-600 dark:text-halvi-400 shrink-0">
-                <Tools size={28} />
+                <Wrench size={28} />
               </div>
             </div>
             <div>
