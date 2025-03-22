@@ -13,6 +13,9 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import AutoSwipeDemo from "@/components/AutoSwipeDemo";
 import BusinessAnnouncementCard from "@/components/BusinessAnnouncementCard";
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Index() {
   return (
@@ -22,8 +25,26 @@ export default function Index() {
       
       <Hero />
       
-      <div className="container mx-auto px-4 py-24 mb-24">
+      <div className="container mx-auto px-4 py-24 mb-24 mt-36">
         <div className="max-w-6xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-16 text-center"
+          >
+            <span className="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium mb-3 cursor-pointer hover:shadow-lg transition-all">
+              <Link to="/trending-dallas" className="flex items-center gap-2">
+                Trending in Dallas <ArrowRight size={16} />
+              </Link>
+            </span>
+            <h2 className="text-3xl font-bold mb-4">Experience the Halvi App</h2>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              See how Halvi connects customers with businesses, services, and professionals in your community.
+            </p>
+          </motion.div>
+          
           <AutoSwipeDemo />
           <div className="flex justify-center mt-8">
             <a 

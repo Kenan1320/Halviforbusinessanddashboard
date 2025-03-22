@@ -17,10 +17,13 @@ export function Hero() {
         >
           <h2 className="text-2xl font-medium mb-2 text-gray-700 dark:text-gray-300">
             Grow{" "}
-            <Link to="/grow-more" className="inline-block">
+            <Link to="/grow-more" className="inline-block relative">
               <motion.span
                 className="text-gradient font-bold"
-                animate={{ scale: [1, 1.1, 1] }}
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  textShadow: ["0 0 0px rgba(74, 97, 251, 0)", "0 0 10px rgba(74, 97, 251, 0.5)", "0 0 0px rgba(74, 97, 251, 0)"]
+                }}
                 transition={{ 
                   repeat: Infinity, 
                   repeatType: "reverse", 
@@ -29,6 +32,17 @@ export function Hero() {
               >
                 More
               </motion.span>
+              <motion.div 
+                className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-halvi-400 to-halvi-600"
+                initial={{ width: 0 }}
+                animate={{ width: "100%" }}
+                transition={{ 
+                  repeat: Infinity, 
+                  repeatType: "reverse", 
+                  duration: 1.5,
+                  delay: 0.5
+                }}
+              />
             </Link>
             {" "}with Halvi
           </h2>

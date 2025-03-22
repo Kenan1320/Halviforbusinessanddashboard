@@ -22,6 +22,9 @@ import Affiliate from "./pages/Affiliate";
 import NotFound from "./pages/NotFound";
 import GrowMore from "./pages/GrowMore";
 import Therapist from "./pages/Therapist";
+import Counselor from "./pages/Counselor";
+import Lawyer from "./pages/Lawyer";
+import TrendingDallas from "./pages/TrendingDallas";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +51,9 @@ const App = () => (
             <Route path="/affiliate" element={<Affiliate />} />
             <Route path="/grow-more" element={<GrowMore />} />
             <Route path="/therapist" element={<Therapist />} />
+            <Route path="/counselor" element={<Counselor />} />
+            <Route path="/lawyer" element={<Lawyer />} />
+            <Route path="/trending-dallas" element={<TrendingDallas />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
