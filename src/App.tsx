@@ -20,6 +20,8 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Affiliate from "./pages/Affiliate";
 import NotFound from "./pages/NotFound";
+import GrowMore from "./pages/GrowMore";
+import Therapist from "./pages/Therapist";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +46,8 @@ const App = () => (
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/affiliate" element={<Affiliate />} />
+            <Route path="/grow-more" element={<GrowMore />} />
+            <Route path="/therapist" element={<Therapist />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

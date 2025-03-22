@@ -15,7 +15,23 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-center max-w-3xl mx-auto"
         >
-          <h2 className="text-2xl font-medium mb-2 text-gray-700 dark:text-gray-300">Welcome to Halvi</h2>
+          <h2 className="text-2xl font-medium mb-2 text-gray-700 dark:text-gray-300">
+            Grow{" "}
+            <Link to="/grow-more" className="inline-block">
+              <motion.span
+                className="text-gradient font-bold"
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ 
+                  repeat: Infinity, 
+                  repeatType: "reverse", 
+                  duration: 1.5 
+                }}
+              >
+                More
+              </motion.span>
+            </Link>
+            {" "}with Halvi
+          </h2>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 tracking-tight text-center">
             The <span className="text-gradient">Hal Vi</span>llage
