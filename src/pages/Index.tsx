@@ -14,6 +14,7 @@ import Navbar from "@/components/Navbar";
 import AutoSwipeDemo from "@/components/AutoSwipeDemo";
 import BusinessAnnouncementCard from "@/components/BusinessAnnouncementCard";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
+import HalviLive from "@/components/HalviLive";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -80,6 +81,9 @@ export default function Index() {
       
       <div className="container mx-auto px-4 pb-16">
         <BusinessAnnouncementCard />
+        <div className="mt-16 max-w-3xl mx-auto">
+          <HalviLive />
+        </div>
       </div>
       
       <Footer />

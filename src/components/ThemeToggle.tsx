@@ -14,6 +14,7 @@ export function ThemeToggle() {
     setMounted(true);
   }, []);
   
+  // Toggle theme function
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
@@ -28,33 +29,35 @@ export function ThemeToggle() {
       size="sm"
       onClick={toggleTheme}
       aria-label="Toggle theme"
-      className="w-8 h-8 rounded-full p-0 flex items-center justify-center bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800"
+      className="w-8 h-8 rounded-full p-0 flex items-center justify-center bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800 overflow-hidden"
     >
-      <motion.div
-        animate={{ 
-          rotate: theme === "dark" ? 0 : 180,
-        }}
-        transition={{ 
-          duration: 0.5
-        }}
+      <motion.div 
+        initial={false}
+        animate={{ rotate: theme === "dark" ? 180 : 0 }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
         className="relative w-4 h-4"
       >
-        <motion.div
-          initial={false}
-          animate={{ opacity: theme === "dark" ? 1 : 0 }}
-          transition={{ duration: 0.15 }}
-          className="absolute inset-0 flex items-center justify-center"
-        >
-          <Sun className="h-[1rem] w-[1rem] text-amber-400" />
-        </motion.div>
-        <motion.div
-          initial={false}
-          animate={{ opacity: theme === "dark" ? 0 : 1 }}
-          transition={{ duration: 0.15 }}
-          className="absolute inset-0 flex items-center justify-center"
-        >
-          <Moon className="h-[1rem] w-[1rem] text-slate-700" />
-        </motion.div>
+        {theme === "dark" ? (
+          <motion.div
+            initial={{ y: -15, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 15, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="absolute inset-0"
+          >
+            <Moon className="h-4 w-4 text-gray-100" />
+          </motion.div>
+        ) : (
+          <motion.div
+            initial={{ y: 15, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -15, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="absolute inset-0"
+          >
+            <Sun className="h-4 w-4 text-amber-400" />
+          </motion.div>
+        )}
       </motion.div>
     </Button>
   );

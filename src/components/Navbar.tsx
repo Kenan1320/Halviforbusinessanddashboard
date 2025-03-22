@@ -39,15 +39,15 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "py-2 bg-white/80 dark:bg-black/80 backdrop-blur-lg shadow-sm"
+          ? "py-2 bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-sm"
           : "py-4 bg-transparent"
       )}
     >
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center">
-            <span className="text-2xl font-bold text-halvi-600 dark:text-halvi-400">
-              Halvi
+            <span className="text-xl sm:text-2xl font-bold text-halvi-600 dark:text-halvi-400">
+              Halvi <span className="hidden sm:inline-block font-medium text-lg">for Businesses</span>
             </span>
           </Link>
 
@@ -88,9 +88,9 @@ export function Navbar() {
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
-                <X className="h-5 w-5" />
+                <X className="h-5 w-5 text-gray-600 dark:text-gray-300" />
               ) : (
-                <Menu className="h-5 w-5" />
+                <Menu className="h-5 w-5 text-gray-600 dark:text-gray-300" />
               )}
             </button>
           </div>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import AuroraBackground from "./AuroraBackground";
+import { Calendar } from "lucide-react";
 
 export function Hero() {
   return (
@@ -77,6 +78,15 @@ export function Hero() {
             </Button>
             <Button asChild size="lg" variant="outline" className="rounded-full px-8">
               <Link to="/business">For Businesses</Link>
+            </Button>
+          </div>
+          
+          <div className="mt-4">
+            <Button asChild size="lg" variant="ghost" className="rounded-full px-8 flex items-center gap-2">
+              <Link to="/schedule-meeting">
+                <Calendar className="h-4 w-4" />
+                Schedule your Onboarding Meeting
+              </Link>
             </Button>
           </div>
         </motion.div>
