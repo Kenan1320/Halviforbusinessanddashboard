@@ -15,7 +15,7 @@ import AutoSwipeDemo from "@/components/AutoSwipeDemo";
 import BusinessAnnouncementCard from "@/components/BusinessAnnouncementCard";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import HalviLive from "@/components/HalviLive";
-import LogoCarousel from "@/components/LogoCarousel";
+import BusinessLogoCarousel from "@/components/BusinessLogoCarousel";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -51,9 +51,13 @@ export default function Index() {
           {/* Testimonials Marquee */}
           <TestimonialsMarquee />
           
-          <div className="mt-16">
+          <div className="mt-24">
             <AutoSwipeDemo />
-            <div className="flex justify-center mt-8 mb-16">
+            
+            {/* Adding extra spacing after phone demo */}
+            <div className="h-32 md:h-40"></div>
+            
+            <div className="flex justify-center mb-16">
               <a 
                 href="https://placeholder.com" 
                 target="_blank" 
@@ -87,8 +91,8 @@ export default function Index() {
         </div>
       </div>
       
-      {/* Logo Carousel */}
-      <LogoCarousel />
+      {/* Business Logo Carousel */}
+      <BusinessLogoCarousel />
       
       <Footer />
     </div>

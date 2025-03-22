@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Store, ShoppingBag, Utensils, Car, ArrowRight, ChevronRight } from "lucide-react";
+import { Store, ShoppingBag, Utensils, Car, ArrowRight, ChevronRight, Calendar, MessageCircle } from "lucide-react";
 import AuroraBackground from "@/components/AuroraBackground";
 import GlassCard from "@/components/GlassCard";
 import CommissionInfo from "@/components/CommissionInfo";
@@ -24,6 +24,7 @@ export default function Business() {
         "Respond to customer reviews and messages"
       ],
       href: "/business/local",
+      buttonText: "Apply as Local Business",
       delay: 0.1,
     },
     {
@@ -37,6 +38,7 @@ export default function Business() {
         "Marketing support to boost your sales"
       ],
       href: "/business/seller",
+      buttonText: "Apply as Seller",
       delay: 0.2,
     },
     {
@@ -50,6 +52,7 @@ export default function Business() {
         "Access to delivery drivers network"
       ],
       href: "/business/restaurant",
+      buttonText: "Apply as Restaurant",
       delay: 0.3,
     },
     {
@@ -63,6 +66,7 @@ export default function Business() {
         "Dedicated support team for drivers"
       ],
       href: "/business/driver",
+      buttonText: "Apply as Driver",
       delay: 0.4,
     },
   ];
@@ -137,11 +141,19 @@ export default function Business() {
                     </ul>
                   </div>
                   
-                  <Button asChild className="mt-auto">
-                    <Link to={option.href}>
-                      Apply Now <ArrowRight className="ml-2 w-4 h-4" />
-                    </Link>
-                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-3 mt-auto">
+                    <Button asChild variant="outline">
+                      <Link to="/schedule-meeting" className="flex items-center">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        Schedule Demo
+                      </Link>
+                    </Button>
+                    <Button asChild>
+                      <Link to={option.href} className="flex items-center">
+                        {option.buttonText} <ArrowRight className="ml-2 w-4 h-4" />
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </GlassCard>
             ))}
@@ -230,7 +242,10 @@ export default function Business() {
                   <Link to="/business/apply">Apply Now</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <Link to="/contact">Contact Our Team</Link>
+                  <Link to="/schedule-meeting" className="flex items-center">
+                    <MessageCircle className="mr-2 h-5 w-5" />
+                    Schedule a Consultation
+                  </Link>
                 </Button>
               </div>
             </div>

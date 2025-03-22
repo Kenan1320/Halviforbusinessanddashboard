@@ -124,9 +124,9 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
     <div className={cn(
       "flex flex-col rounded-lg border-t",
       "bg-gradient-to-b from-gray-100/50 to-gray-50/10 dark:from-gray-800/50 dark:to-gray-900/10",
-      "p-4 text-start sm:p-6",
+      "p-5 text-start sm:p-6",
       "hover:from-gray-100/60 hover:to-gray-50/20 dark:hover:from-gray-800/60 dark:hover:to-gray-900/20",
-      "max-w-[320px] sm:max-w-[320px] mx-2 h-[240px]",
+      "max-w-[380px] sm:max-w-[400px] mx-3 h-[240px]",
       "transition-colors duration-300"
     )}>
       <div className="flex items-center gap-3">
@@ -166,7 +166,7 @@ export default function TestimonialsMarquee() {
           {/* First row - left to right */}
           <div className="flex w-full overflow-hidden">
             <motion.div 
-              className="flex gap-4 animate-none"
+              className="flex gap-5 animate-none"
               animate={{ x: ["0%", "-50%"] }}
               transition={{ 
                 repeat: Infinity, 
@@ -185,9 +185,9 @@ export default function TestimonialsMarquee() {
           </div>
           
           {/* Second row - right to left */}
-          <div className="flex w-full overflow-hidden mt-6">
+          <div className="flex w-full overflow-hidden mt-8">
             <motion.div 
-              className="flex gap-4 animate-none"
+              className="flex gap-5 animate-none"
               animate={{ x: ["-50%", "0%"] }}
               transition={{ 
                 repeat: Infinity, 
