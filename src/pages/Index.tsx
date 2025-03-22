@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import AutoSwipeDemo from "@/components/AutoSwipeDemo";
 import BusinessAnnouncementCard from "@/components/BusinessAnnouncementCard";
+import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -25,7 +26,7 @@ export default function Index() {
       
       <Hero />
       
-      <div className="container mx-auto px-4 py-24 mb-24 mt-36">
+      <div className="container mx-auto px-4 py-12 mb-12">
         <div className="max-w-6xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -46,7 +47,7 @@ export default function Index() {
           </motion.div>
           
           <AutoSwipeDemo />
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-8 mb-16">
             <a 
               href="https://placeholder.com" 
               target="_blank" 
@@ -64,6 +65,7 @@ export default function Index() {
         </div>
       </div>
       
+      <TestimonialsMarquee />
       <Features />
       <HowItWorks />
       <CommissionInfo />

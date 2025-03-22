@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/react";
 
@@ -163,6 +164,14 @@ export default {
           "0%": { backgroundPosition: "0 0" },
           "100%": { backgroundPosition: "calc(var(--cell-size) * 2) calc(var(--cell-size) * 2)" },
         },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-50%))" }
+        },
+        marqueeReverse: {
+          from: { transform: "translateX(calc(-50%))" },
+          to: { transform: "translateX(0)" }
+        }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -175,6 +184,8 @@ export default {
         "scale-in": "scale-in 0.5s ease-out",
         "phone-slide": "phone-slide 5s ease-in-out infinite",
         "grid": "grid 20s linear infinite",
+        "marquee": "marquee 40s linear infinite",
+        "marquee-reverse": "marqueeReverse 40s linear infinite",
       },
     },
   },

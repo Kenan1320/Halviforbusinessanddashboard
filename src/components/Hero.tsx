@@ -17,9 +17,9 @@ export function Hero() {
         >
           <h2 className="text-2xl font-medium mb-2 text-gray-700 dark:text-gray-300">
             Grow{" "}
-            <Link to="/grow-more" className="inline-block relative">
+            <Link to="/grow-more" className="inline-block relative group">
               <motion.span
-                className="text-gradient font-bold"
+                className="text-gradient font-bold relative z-10"
                 animate={{ 
                   scale: [1, 1.1, 1],
                   textShadow: ["0 0 0px rgba(74, 97, 251, 0)", "0 0 10px rgba(74, 97, 251, 0.5)", "0 0 0px rgba(74, 97, 251, 0)"]
@@ -32,6 +32,7 @@ export function Hero() {
               >
                 More
               </motion.span>
+              {/* Animated underline */}
               <motion.div 
                 className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-halvi-400 to-halvi-600"
                 initial={{ width: 0 }}
@@ -41,6 +42,15 @@ export function Hero() {
                   repeatType: "reverse", 
                   duration: 1.5,
                   delay: 0.5
+                }}
+              />
+              {/* Hover effect - pulsing glow */}
+              <motion.div 
+                className="absolute -inset-1 rounded-lg bg-halvi-500/20 opacity-0 group-hover:opacity-100 z-0"
+                animate={{ scale: [0.95, 1.05, 0.95] }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 2
                 }}
               />
             </Link>
