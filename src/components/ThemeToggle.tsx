@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Sun, Moon } from "lucide-react";
@@ -7,44 +7,53 @@ import { motion } from "framer-motion";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  
+  // Ensure theme toggle only appears after hydration to avoid UI flicker
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+  
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+  
+  if (!mounted) {
+    return null;
+  }
   
   return (
     <Button
       variant="ghost"
       size="sm"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={toggleTheme}
       aria-label="Toggle theme"
-      className="w-9 h-9 rounded-full p-0 flex items-center justify-center bg-transparent"
+      className="w-8 h-8 rounded-full p-0 flex items-center justify-center bg-transparent hover:bg-gray-100 dark:hover:bg-gray-800"
     >
       <motion.div
         animate={{ 
           rotate: theme === "dark" ? 0 : 180,
-          scale: [1, 1.15, 1]
         }}
         transition={{ 
-          duration: 0.5, 
-          scale: { 
-            repeat: 0,
-            duration: 0.3
-          }
+          duration: 0.5
         }}
-        className="relative w-5 h-5"
+        className="relative w-4 h-4"
       >
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: theme === "dark" ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.15 }}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <Sun className="h-[1.2rem] w-[1.2rem] text-amber-500/90" />
+          <Sun className="h-[1rem] w-[1rem] text-amber-400" />
         </motion.div>
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: theme === "dark" ? 0 : 1 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.15 }}
           className="absolute inset-0 flex items-center justify-center"
         >
-          <Moon className="h-[1.2rem] w-[1.2rem] text-halvi-600/90" />
+          <Moon className="h-[1rem] w-[1rem] text-slate-700" />
         </motion.div>
       </motion.div>
     </Button>

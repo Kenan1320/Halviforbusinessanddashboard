@@ -25,6 +25,8 @@ import Therapist from "./pages/Therapist";
 import Counselor from "./pages/Counselor";
 import Lawyer from "./pages/Lawyer";
 import TrendingDallas from "./pages/TrendingDallas";
+import Onboarding from "./pages/Onboarding";
+import ScheduleMeetingPage from "./pages/ScheduleMeetingPage";
 
 const queryClient = new QueryClient();
 
@@ -46,8 +48,10 @@ const App = () => (
             <Route path="/professional/apply" element={<ProfessionalApplication />} />
             <Route path="/business/apply" element={<BusinessApplication />} />
             <Route path="/business/driver" element={<DriverApplication />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<Onboarding />} />
+            <Route path="/signin" element={<Onboarding />} />
+            <Route path="/onboarding" element={<Onboarding />} />
+            <Route path="/schedule-meeting" element={<ScheduleMeetingPage />} />
             <Route path="/affiliate" element={<Affiliate />} />
             <Route path="/grow-more" element={<GrowMore />} />
             <Route path="/therapist" element={<Therapist />} />

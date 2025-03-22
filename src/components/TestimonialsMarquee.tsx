@@ -131,7 +131,7 @@ function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0] 
     )}>
       <div className="flex items-center gap-3">
         <Avatar className="h-10 w-10 border border-halvi-200 dark:border-halvi-800">
-          <AvatarImage src={testimonial.avatar} alt={testimonial.author.name} />
+          <AvatarImage src={testimonial.author.avatar} alt={testimonial.author.name} />
         </Avatar>
         <div className="flex flex-col items-start">
           <h3 className="text-md font-semibold leading-none text-gray-900 dark:text-gray-100">
