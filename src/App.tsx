@@ -28,12 +28,16 @@ import Lawyer from "./pages/Lawyer";
 import TrendingDallas from "./pages/TrendingDallas";
 import Onboarding from "./pages/Onboarding";
 import ScheduleMeetingPage from "./pages/ScheduleMeetingPage";
+import LocalBusinessInfo from "./pages/LocalBusinessInfo";
+import RestaurantPartnerInfo from "./pages/RestaurantPartnerInfo";
+import DriverInfo from "./pages/DriverInfo";
+import AffiliateInfo from "./pages/AffiliateInfo";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
       <NextUIProvider>
         <TooltipProvider>
           <Toaster />
@@ -60,6 +64,10 @@ const App = () => (
               <Route path="/counselor" element={<Counselor />} />
               <Route path="/lawyer" element={<Lawyer />} />
               <Route path="/trending-dallas" element={<TrendingDallas />} />
+              <Route path="/business/local" element={<LocalBusinessInfo />} />
+              <Route path="/business/restaurant" element={<RestaurantPartnerInfo />} />
+              <Route path="/business/driver" element={<DriverInfo />} />
+              <Route path="/business/seller" element={<AffiliateInfo />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Store, ShoppingBag, Utensils, Car } from "lucide-react";
+import { Store, Users, Utensils, Car } from "lucide-react";
 import GlassCard from "./GlassCard";
 
 export function BusinessCTA() {
@@ -16,9 +16,9 @@ export function BusinessCTA() {
       delay: 0.1,
     },
     {
-      icon: <ShoppingBag className="w-5 h-5" />,
-      title: "Become a Seller",
-      description: "Sell your halal products on Halvi Mall.",
+      icon: <Users className="w-5 h-5" />,
+      title: "Become an Affiliate",
+      description: "Join our affiliate program and earn rewards.",
       href: "/business/seller",
       delay: 0.2,
     },

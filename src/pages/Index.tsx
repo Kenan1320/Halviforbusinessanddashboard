@@ -55,7 +55,7 @@ export default function Index() {
             <AutoSwipeDemo />
             
             {/* Adding extra spacing after phone demo */}
-            <div className="h-32 md:h-40"></div>
+            <div className="h-52 md:h-64"></div>
             
             <div className="flex justify-center mb-16">
               <a 
