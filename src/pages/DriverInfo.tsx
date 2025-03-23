@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Calendar, Car, Clock, DollarSign, MapPin, Shield, CalendarClock, ThumbsUp } from "lucide-react";
+import { Calendar, Car, Clock, DollarSign, MapPin, Shield, CalendarClock, ThumbsUp, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import AuroraBackground from "@/components/AuroraBackground";
 
