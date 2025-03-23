@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Store, ShoppingBag, Utensils, Car, Briefcase } from "lucide-react";
+import { Store, ShoppingBag, Utensils, Car, Briefcase, Check } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
