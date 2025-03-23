@@ -33,6 +33,14 @@ import RestaurantPartnerInfo from "./pages/RestaurantPartnerInfo";
 import DriverInfo from "./pages/DriverInfo";
 import AffiliateInfo from "./pages/AffiliateInfo";
 
+// Dashboard Pages
+import Dashboard from "./pages/Dashboard";
+import LocalDashboard from "./pages/dashboards/LocalDashboard";
+import MallDashboard from "./pages/dashboards/MallDashboard";
+import EatsDashboard from "./pages/dashboards/EatsDashboard";
+import DriversDashboard from "./pages/dashboards/DriversDashboard";
+import ProfessionalsDashboard from "./pages/dashboards/ProfessionalsDashboard";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -68,6 +76,15 @@ const App = () => (
               <Route path="/business/restaurant" element={<RestaurantPartnerInfo />} />
               <Route path="/business/driver" element={<DriverInfo />} />
               <Route path="/business/seller" element={<AffiliateInfo />} />
+              
+              {/* Dashboard Routes */}
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard/local" element={<LocalDashboard />} />
+              <Route path="/dashboard/mall" element={<MallDashboard />} />
+              <Route path="/dashboard/eats" element={<EatsDashboard />} />
+              <Route path="/dashboard/drivers" element={<DriversDashboard />} />
+              <Route path="/dashboard/professionals" element={<ProfessionalsDashboard />} />
+              
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

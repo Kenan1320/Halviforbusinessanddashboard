@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, LayoutDashboard } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 const links = [
@@ -14,6 +14,7 @@ const links = [
   { href: "/eats", label: "Halvi Eats" },
   { href: "/rides", label: "Halvi Rides" },
   { href: "/business", label: "For Business" },
+  { href: "/dashboard", label: "Business Dashboard", icon: <LayoutDashboard className="h-4 w-4 mr-2" /> },
 ];
 
 export function Navbar() {
@@ -58,12 +59,13 @@ export function Navbar() {
                 key={link.href}
                 to={link.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-halvi-600 dark:hover:text-halvi-400",
+                  "text-sm font-medium transition-colors hover:text-halvi-600 dark:hover:text-halvi-400 flex items-center",
                   location.pathname === link.href
                     ? "text-halvi-600 dark:text-halvi-400"
                     : "text-gray-600 dark:text-gray-300"
                 )}
               >
+                {link.icon && link.icon}
                 {link.label}
               </Link>
             ))}
@@ -112,12 +114,13 @@ export function Navbar() {
                 key={link.href}
                 to={link.href}
                 className={cn(
-                  "text-sm font-medium transition-colors py-2",
+                  "text-sm font-medium transition-colors py-2 flex items-center",
                   location.pathname === link.href
                     ? "text-halvi-600 dark:text-halvi-400"
                     : "text-gray-600 dark:text-gray-300"
                 )}
               >
+                {link.icon && link.icon}
                 {link.label}
               </Link>
             ))}
