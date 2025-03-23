@@ -41,6 +41,10 @@ import EatsDashboard from "./pages/dashboards/EatsDashboard";
 import DriversDashboard from "./pages/dashboards/DriversDashboard";
 import ProfessionalsDashboard from "./pages/dashboards/ProfessionalsDashboard";
 
+// Mall Dashboard Pages
+import ViewAllProducts from "./pages/dashboards/mall/ViewAllProducts";
+import AddNewProduct from "./pages/dashboards/mall/AddNewProduct";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -79,11 +83,121 @@ const App = () => (
               
               {/* Dashboard Routes */}
               <Route path="/dashboard" element={<Dashboard />} />
+              
+              {/* Local Dashboard Routes */}
               <Route path="/dashboard/local" element={<LocalDashboard />} />
+              <Route path="/dashboard/local/orders" element={<NotFound />} />
+              <Route path="/dashboard/local/orders/new" element={<NotFound />} />
+              <Route path="/dashboard/local/orders/processing" element={<NotFound />} />
+              <Route path="/dashboard/local/orders/completed" element={<NotFound />} />
+              <Route path="/dashboard/local/orders/cancelled" element={<NotFound />} />
+              <Route path="/dashboard/local/inventory" element={<NotFound />} />
+              <Route path="/dashboard/local/inventory/all" element={<NotFound />} />
+              <Route path="/dashboard/local/inventory/new" element={<NotFound />} />
+              <Route path="/dashboard/local/inventory/categories" element={<NotFound />} />
+              <Route path="/dashboard/local/inventory/low-stock" element={<NotFound />} />
+              <Route path="/dashboard/local/customers" element={<NotFound />} />
+              <Route path="/dashboard/local/customers/all" element={<NotFound />} />
+              <Route path="/dashboard/local/customers/frequent" element={<NotFound />} />
+              <Route path="/dashboard/local/customers/support" element={<NotFound />} />
+              <Route path="/dashboard/local/analytics" element={<NotFound />} />
+              <Route path="/dashboard/local/analytics/sales" element={<NotFound />} />
+              <Route path="/dashboard/local/analytics/traffic" element={<NotFound />} />
+              <Route path="/dashboard/local/analytics/behavior" element={<NotFound />} />
+              
+              {/* Mall Dashboard Routes */}
               <Route path="/dashboard/mall" element={<MallDashboard />} />
+              <Route path="/dashboard/mall/products" element={<ViewAllProducts />} />
+              <Route path="/dashboard/mall/products/all" element={<ViewAllProducts />} />
+              <Route path="/dashboard/mall/products/new" element={<AddNewProduct />} />
+              <Route path="/dashboard/mall/products/categories" element={<NotFound />} />
+              <Route path="/dashboard/mall/products/inventory" element={<NotFound />} />
+              <Route path="/dashboard/mall/orders" element={<NotFound />} />
+              <Route path="/dashboard/mall/orders/all" element={<NotFound />} />
+              <Route path="/dashboard/mall/orders/processing" element={<NotFound />} />
+              <Route path="/dashboard/mall/orders/shipping" element={<NotFound />} />
+              <Route path="/dashboard/mall/orders/delivered" element={<NotFound />} />
+              <Route path="/dashboard/mall/orders/returns" element={<NotFound />} />
+              <Route path="/dashboard/mall/storefront" element={<NotFound />} />
+              <Route path="/dashboard/mall/storefront/theme" element={<NotFound />} />
+              <Route path="/dashboard/mall/storefront/banners" element={<NotFound />} />
+              <Route path="/dashboard/mall/storefront/featured" element={<NotFound />} />
+              <Route path="/dashboard/mall/marketing" element={<NotFound />} />
+              <Route path="/dashboard/mall/marketing/promotions" element={<NotFound />} />
+              <Route path="/dashboard/mall/marketing/discounts" element={<NotFound />} />
+              <Route path="/dashboard/mall/marketing/email" element={<NotFound />} />
+              <Route path="/dashboard/mall/marketing/social" element={<NotFound />} />
+              <Route path="/dashboard/mall/analytics" element={<NotFound />} />
+              <Route path="/dashboard/mall/analytics/sales" element={<NotFound />} />
+              <Route path="/dashboard/mall/analytics/traffic" element={<NotFound />} />
+              <Route path="/dashboard/mall/analytics/customers" element={<NotFound />} />
+              
+              {/* Eats Dashboard Routes */}
               <Route path="/dashboard/eats" element={<EatsDashboard />} />
+              <Route path="/dashboard/eats/orders" element={<NotFound />} />
+              <Route path="/dashboard/eats/orders/incoming" element={<NotFound />} />
+              <Route path="/dashboard/eats/orders/preparing" element={<NotFound />} />
+              <Route path="/dashboard/eats/orders/ready" element={<NotFound />} />
+              <Route path="/dashboard/eats/orders/history" element={<NotFound />} />
+              <Route path="/dashboard/eats/menu" element={<NotFound />} />
+              <Route path="/dashboard/eats/menu/all" element={<NotFound />} />
+              <Route path="/dashboard/eats/menu/new" element={<NotFound />} />
+              <Route path="/dashboard/eats/menu/categories" element={<NotFound />} />
+              <Route path="/dashboard/eats/menu/specials" element={<NotFound />} />
+              <Route path="/dashboard/eats/delivery" element={<NotFound />} />
+              <Route path="/dashboard/eats/delivery/active" element={<NotFound />} />
+              <Route path="/dashboard/eats/delivery/drivers" element={<NotFound />} />
+              <Route path="/dashboard/eats/delivery/zones" element={<NotFound />} />
+              <Route path="/dashboard/eats/analytics" element={<NotFound />} />
+              <Route path="/dashboard/eats/analytics/sales" element={<NotFound />} />
+              <Route path="/dashboard/eats/analytics/popular" element={<NotFound />} />
+              <Route path="/dashboard/eats/analytics/demographics" element={<NotFound />} />
+              <Route path="/dashboard/eats/inventory" element={<NotFound />} />
+              <Route path="/dashboard/eats/inventory/ingredients" element={<NotFound />} />
+              <Route path="/dashboard/eats/inventory/suppliers" element={<NotFound />} />
+              <Route path="/dashboard/eats/inventory/stock" element={<NotFound />} />
+              
+              {/* Drivers Dashboard Routes */}
               <Route path="/dashboard/drivers" element={<DriversDashboard />} />
+              <Route path="/dashboard/drivers/earnings" element={<NotFound />} />
+              <Route path="/dashboard/drivers/earnings/current" element={<NotFound />} />
+              <Route path="/dashboard/drivers/earnings/history" element={<NotFound />} />
+              <Route path="/dashboard/drivers/earnings/bonuses" element={<NotFound />} />
+              <Route path="/dashboard/drivers/routes" element={<NotFound />} />
+              <Route path="/dashboard/drivers/routes/active" element={<NotFound />} />
+              <Route path="/dashboard/drivers/routes/history" element={<NotFound />} />
+              <Route path="/dashboard/drivers/routes/preferred" element={<NotFound />} />
+              <Route path="/dashboard/drivers/performance" element={<NotFound />} />
+              <Route path="/dashboard/drivers/performance/ratings" element={<NotFound />} />
+              <Route path="/dashboard/drivers/performance/stats" element={<NotFound />} />
+              <Route path="/dashboard/drivers/performance/achievements" element={<NotFound />} />
+              <Route path="/dashboard/drivers/account" element={<NotFound />} />
+              <Route path="/dashboard/drivers/account/profile" element={<NotFound />} />
+              <Route path="/dashboard/drivers/account/vehicle" element={<NotFound />} />
+              <Route path="/dashboard/drivers/account/documents" element={<NotFound />} />
+              
+              {/* Professionals Dashboard Routes */}
               <Route path="/dashboard/professionals" element={<ProfessionalsDashboard />} />
+              <Route path="/dashboard/professionals/appointments" element={<NotFound />} />
+              <Route path="/dashboard/professionals/appointments/upcoming" element={<NotFound />} />
+              <Route path="/dashboard/professionals/appointments/past" element={<NotFound />} />
+              <Route path="/dashboard/professionals/appointments/availability" element={<NotFound />} />
+              <Route path="/dashboard/professionals/clients" element={<NotFound />} />
+              <Route path="/dashboard/professionals/clients/all" element={<NotFound />} />
+              <Route path="/dashboard/professionals/clients/new" element={<NotFound />} />
+              <Route path="/dashboard/professionals/clients/notes" element={<NotFound />} />
+              <Route path="/dashboard/professionals/video" element={<NotFound />} />
+              <Route path="/dashboard/professionals/video/start" element={<NotFound />} />
+              <Route path="/dashboard/professionals/video/upcoming" element={<NotFound />} />
+              <Route path="/dashboard/professionals/video/history" element={<NotFound />} />
+              <Route path="/dashboard/professionals/resources" element={<NotFound />} />
+              <Route path="/dashboard/professionals/resources/documents" element={<NotFound />} />
+              <Route path="/dashboard/professionals/resources/templates" element={<NotFound />} />
+              <Route path="/dashboard/professionals/resources/educational" element={<NotFound />} />
+              <Route path="/dashboard/professionals/performance" element={<NotFound />} />
+              <Route path="/dashboard/professionals/performance/analytics" element={<NotFound />} />
+              <Route path="/dashboard/professionals/performance/ratings" element={<NotFound />} />
+              <Route path="/dashboard/professionals/performance/financial" element={<NotFound />} />
               
               <Route path="*" element={<NotFound />} />
             </Routes>

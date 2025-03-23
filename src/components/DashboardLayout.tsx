@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { 
@@ -344,6 +344,32 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, title, type
   const location = useLocation();
   const typeMenuItems = getTypeMenuItems(type);
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({});
+  
+  // Auto-expand the section based on current path
+  useEffect(() => {
+    const currentPath = location.pathname;
+    
+    // Automatically expand menu items based on current URL
+    const newExpandedState: Record<string, boolean> = {};
+    
+    typeMenuItems.forEach(item => {
+      if (item.subItems) {
+        // If current path is in any of the subitems or exactly matches the main item
+        const shouldExpand = item.href === currentPath || 
+                            item.subItems.some(subItem => subItem.href === currentPath) ||
+                            currentPath.startsWith(item.href + '/');
+        
+        if (shouldExpand) {
+          newExpandedState[item.label] = true;
+        }
+      }
+    });
+    
+    setExpandedItems(prev => ({
+      ...prev,
+      ...newExpandedState
+    }));
+  }, [location.pathname, typeMenuItems]);
   
   const toggleExpand = (item: string) => {
     setExpandedItems(prev => ({

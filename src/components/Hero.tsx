@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import AuroraBackground from "./AuroraBackground";
 import { Calendar } from "lucide-react";
+import BusinessModeSelector from "./BusinessModeSelector";
 
 export function Hero() {
   return (
@@ -16,6 +17,9 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="text-center max-w-3xl mx-auto"
         >
+          {/* Business Mode Selector */}
+          <BusinessModeSelector />
+          
           <h2 className="text-2xl font-medium mb-2 text-gray-700 dark:text-gray-300">
             Grow{" "}
             <Link to="/grow-more" className="inline-block relative group">
