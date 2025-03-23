@@ -10,17 +10,17 @@ import BusinessModeSelector from "./BusinessModeSelector";
 export function Hero() {
   return (
     <AuroraBackground showRadialGradient>
-      <div className="flex flex-col items-center justify-between min-h-screen py-20 px-4 sm:px-6 lg:px-8">
+      <div className="flex flex-col items-center justify-between min-h-screen py-20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-center w-full max-w-7xl mx-auto"
+          className="text-center w-full mx-auto"
         >
-          {/* Business Mode Selector - full width */}
+          {/* Business Mode Selector - full screen width */}
           <BusinessModeSelector />
           
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-medium mb-2 text-gray-700 dark:text-gray-300">
               Grow{" "}
               <Link to="/grow-more" className="inline-block relative group">

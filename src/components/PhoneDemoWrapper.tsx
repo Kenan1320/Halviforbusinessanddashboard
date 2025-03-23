@@ -12,8 +12,8 @@ export default function PhoneDemoWrapper({ children }: PhoneDemoWrapperProps) {
       {/* The phone demo */}
       <AutoSwipeDemo />
       
-      {/* Increased space buffer to prevent content overlap */}
-      <div className="h-52 md:h-64"></div>
+      {/* Increased space buffer to prevent content overlap - doubled from before */}
+      <div className="h-96 md:h-128"></div>
       
       {/* Optional additional content */}
       {children}
