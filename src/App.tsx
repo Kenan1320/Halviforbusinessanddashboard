@@ -47,9 +47,14 @@ import AddNewProduct from "./pages/dashboards/mall/AddNewProduct";
 import ViewAllOrders from "./pages/dashboards/mall/ViewAllOrders";
 import ViewCategories from "./pages/dashboards/mall/ViewCategories";
 import ViewInventory from "./pages/dashboards/mall/ViewInventory";
+import LowStockItems from "./pages/dashboards/mall/LowStockItems";
+import SalesAnalytics from "./pages/dashboards/mall/SalesAnalytics";
+import Promotions from "./pages/dashboards/mall/Promotions";
 
 // Local Dashboard Pages
 import ViewLocalProducts from "./pages/dashboards/local/ViewAllProducts";
+import ViewOrders from "./pages/dashboards/local/ViewOrders";
+import Analytics from "./pages/dashboards/local/Analytics";
 import ComingSoonPage from "./components/ComingSoonPage";
 
 // Eats Dashboard Pages
@@ -99,7 +104,7 @@ const App = () => (
               
               {/* Local Dashboard Routes */}
               <Route path="/dashboard/local" element={<LocalDashboard />} />
-              <Route path="/dashboard/local/orders" element={<ComingSoonPage title="Local" type="local" pageName="Orders" />} />
+              <Route path="/dashboard/local/orders" element={<ViewOrders />} />
               <Route path="/dashboard/local/orders/new" element={<ComingSoonPage title="Local" type="local" pageName="New Orders" />} />
               <Route path="/dashboard/local/orders/processing" element={<ComingSoonPage title="Local" type="local" pageName="Processing Orders" />} />
               <Route path="/dashboard/local/orders/completed" element={<ComingSoonPage title="Local" type="local" pageName="Completed Orders" />} />
@@ -113,7 +118,7 @@ const App = () => (
               <Route path="/dashboard/local/customers/all" element={<ComingSoonPage title="Local" type="local" pageName="All Customers" />} />
               <Route path="/dashboard/local/customers/frequent" element={<ComingSoonPage title="Local" type="local" pageName="Frequent Buyers" />} />
               <Route path="/dashboard/local/customers/support" element={<ComingSoonPage title="Local" type="local" pageName="Customer Support" />} />
-              <Route path="/dashboard/local/analytics" element={<ComingSoonPage title="Local" type="local" pageName="Analytics" />} />
+              <Route path="/dashboard/local/analytics" element={<Analytics />} />
               <Route path="/dashboard/local/analytics/sales" element={<ComingSoonPage title="Local" type="local" pageName="Sales Reports" />} />
               <Route path="/dashboard/local/analytics/traffic" element={<ComingSoonPage title="Local" type="local" pageName="Traffic" />} />
               <Route path="/dashboard/local/analytics/behavior" element={<ComingSoonPage title="Local" type="local" pageName="Customer Behavior" />} />
@@ -125,6 +130,7 @@ const App = () => (
               <Route path="/dashboard/mall/products/new" element={<AddNewProduct />} />
               <Route path="/dashboard/mall/products/categories" element={<ViewCategories />} />
               <Route path="/dashboard/mall/products/inventory" element={<ViewInventory />} />
+              <Route path="/dashboard/mall/products/low-stock" element={<LowStockItems />} />
               <Route path="/dashboard/mall/orders" element={<ViewAllOrders />} />
               <Route path="/dashboard/mall/orders/all" element={<ViewAllOrders />} />
               <Route path="/dashboard/mall/orders/processing" element={<ComingSoonPage title="Mall" type="mall" pageName="Processing Orders" />} />
@@ -135,13 +141,13 @@ const App = () => (
               <Route path="/dashboard/mall/storefront/theme" element={<ComingSoonPage title="Mall" type="mall" pageName="Theme & Layout" />} />
               <Route path="/dashboard/mall/storefront/banners" element={<ComingSoonPage title="Mall" type="mall" pageName="Banners" />} />
               <Route path="/dashboard/mall/storefront/featured" element={<ComingSoonPage title="Mall" type="mall" pageName="Featured Products" />} />
-              <Route path="/dashboard/mall/marketing" element={<ComingSoonPage title="Mall" type="mall" pageName="Marketing" />} />
-              <Route path="/dashboard/mall/marketing/promotions" element={<ComingSoonPage title="Mall" type="mall" pageName="Promotions" />} />
+              <Route path="/dashboard/mall/marketing" element={<Promotions />} />
+              <Route path="/dashboard/mall/marketing/promotions" element={<Promotions />} />
               <Route path="/dashboard/mall/marketing/discounts" element={<ComingSoonPage title="Mall" type="mall" pageName="Discount Codes" />} />
               <Route path="/dashboard/mall/marketing/email" element={<ComingSoonPage title="Mall" type="mall" pageName="Email Campaigns" />} />
               <Route path="/dashboard/mall/marketing/social" element={<ComingSoonPage title="Mall" type="mall" pageName="Social Media" />} />
-              <Route path="/dashboard/mall/analytics" element={<ComingSoonPage title="Mall" type="mall" pageName="Analytics" />} />
-              <Route path="/dashboard/mall/analytics/sales" element={<ComingSoonPage title="Mall" type="mall" pageName="Sales Reports" />} />
+              <Route path="/dashboard/mall/analytics" element={<SalesAnalytics />} />
+              <Route path="/dashboard/mall/analytics/sales" element={<SalesAnalytics />} />
               <Route path="/dashboard/mall/analytics/traffic" element={<ComingSoonPage title="Mall" type="mall" pageName="Traffic Sources" />} />
               <Route path="/dashboard/mall/analytics/customers" element={<ComingSoonPage title="Mall" type="mall" pageName="Customer Insights" />} />
               
