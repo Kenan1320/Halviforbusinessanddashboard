@@ -44,6 +44,19 @@ import ProfessionalsDashboard from "./pages/dashboards/ProfessionalsDashboard";
 // Mall Dashboard Pages
 import ViewAllProducts from "./pages/dashboards/mall/ViewAllProducts";
 import AddNewProduct from "./pages/dashboards/mall/AddNewProduct";
+import ViewAllOrders from "./pages/dashboards/mall/ViewAllOrders";
+import ViewCategories from "./pages/dashboards/mall/ViewCategories";
+import ViewInventory from "./pages/dashboards/mall/ViewInventory";
+
+// Local Dashboard Pages
+import ViewLocalProducts from "./pages/dashboards/local/ViewAllProducts";
+import ComingSoonPage from "./components/ComingSoonPage";
+
+// Eats Dashboard Pages
+import ViewEatsOrders from "./pages/dashboards/eats/ViewOrders";
+
+// Professionals Dashboard Pages
+import ViewProfessionalAppointments from "./pages/dashboards/professionals/ViewAppointments";
 
 const queryClient = new QueryClient();
 
@@ -86,118 +99,118 @@ const App = () => (
               
               {/* Local Dashboard Routes */}
               <Route path="/dashboard/local" element={<LocalDashboard />} />
-              <Route path="/dashboard/local/orders" element={<NotFound />} />
-              <Route path="/dashboard/local/orders/new" element={<NotFound />} />
-              <Route path="/dashboard/local/orders/processing" element={<NotFound />} />
-              <Route path="/dashboard/local/orders/completed" element={<NotFound />} />
-              <Route path="/dashboard/local/orders/cancelled" element={<NotFound />} />
-              <Route path="/dashboard/local/inventory" element={<NotFound />} />
-              <Route path="/dashboard/local/inventory/all" element={<NotFound />} />
-              <Route path="/dashboard/local/inventory/new" element={<NotFound />} />
-              <Route path="/dashboard/local/inventory/categories" element={<NotFound />} />
-              <Route path="/dashboard/local/inventory/low-stock" element={<NotFound />} />
-              <Route path="/dashboard/local/customers" element={<NotFound />} />
-              <Route path="/dashboard/local/customers/all" element={<NotFound />} />
-              <Route path="/dashboard/local/customers/frequent" element={<NotFound />} />
-              <Route path="/dashboard/local/customers/support" element={<NotFound />} />
-              <Route path="/dashboard/local/analytics" element={<NotFound />} />
-              <Route path="/dashboard/local/analytics/sales" element={<NotFound />} />
-              <Route path="/dashboard/local/analytics/traffic" element={<NotFound />} />
-              <Route path="/dashboard/local/analytics/behavior" element={<NotFound />} />
+              <Route path="/dashboard/local/orders" element={<ComingSoonPage title="Local" type="local" pageName="Orders" />} />
+              <Route path="/dashboard/local/orders/new" element={<ComingSoonPage title="Local" type="local" pageName="New Orders" />} />
+              <Route path="/dashboard/local/orders/processing" element={<ComingSoonPage title="Local" type="local" pageName="Processing Orders" />} />
+              <Route path="/dashboard/local/orders/completed" element={<ComingSoonPage title="Local" type="local" pageName="Completed Orders" />} />
+              <Route path="/dashboard/local/orders/cancelled" element={<ComingSoonPage title="Local" type="local" pageName="Cancelled Orders" />} />
+              <Route path="/dashboard/local/inventory" element={<ComingSoonPage title="Local" type="local" pageName="Inventory" />} />
+              <Route path="/dashboard/local/inventory/all" element={<ViewLocalProducts />} />
+              <Route path="/dashboard/local/inventory/new" element={<ComingSoonPage title="Local" type="local" pageName="Add New Product" />} />
+              <Route path="/dashboard/local/inventory/categories" element={<ComingSoonPage title="Local" type="local" pageName="Product Categories" />} />
+              <Route path="/dashboard/local/inventory/low-stock" element={<ComingSoonPage title="Local" type="local" pageName="Low Stock Items" />} />
+              <Route path="/dashboard/local/customers" element={<ComingSoonPage title="Local" type="local" pageName="Customers" />} />
+              <Route path="/dashboard/local/customers/all" element={<ComingSoonPage title="Local" type="local" pageName="All Customers" />} />
+              <Route path="/dashboard/local/customers/frequent" element={<ComingSoonPage title="Local" type="local" pageName="Frequent Buyers" />} />
+              <Route path="/dashboard/local/customers/support" element={<ComingSoonPage title="Local" type="local" pageName="Customer Support" />} />
+              <Route path="/dashboard/local/analytics" element={<ComingSoonPage title="Local" type="local" pageName="Analytics" />} />
+              <Route path="/dashboard/local/analytics/sales" element={<ComingSoonPage title="Local" type="local" pageName="Sales Reports" />} />
+              <Route path="/dashboard/local/analytics/traffic" element={<ComingSoonPage title="Local" type="local" pageName="Traffic" />} />
+              <Route path="/dashboard/local/analytics/behavior" element={<ComingSoonPage title="Local" type="local" pageName="Customer Behavior" />} />
               
               {/* Mall Dashboard Routes */}
               <Route path="/dashboard/mall" element={<MallDashboard />} />
               <Route path="/dashboard/mall/products" element={<ViewAllProducts />} />
               <Route path="/dashboard/mall/products/all" element={<ViewAllProducts />} />
               <Route path="/dashboard/mall/products/new" element={<AddNewProduct />} />
-              <Route path="/dashboard/mall/products/categories" element={<NotFound />} />
-              <Route path="/dashboard/mall/products/inventory" element={<NotFound />} />
-              <Route path="/dashboard/mall/orders" element={<NotFound />} />
-              <Route path="/dashboard/mall/orders/all" element={<NotFound />} />
-              <Route path="/dashboard/mall/orders/processing" element={<NotFound />} />
-              <Route path="/dashboard/mall/orders/shipping" element={<NotFound />} />
-              <Route path="/dashboard/mall/orders/delivered" element={<NotFound />} />
-              <Route path="/dashboard/mall/orders/returns" element={<NotFound />} />
-              <Route path="/dashboard/mall/storefront" element={<NotFound />} />
-              <Route path="/dashboard/mall/storefront/theme" element={<NotFound />} />
-              <Route path="/dashboard/mall/storefront/banners" element={<NotFound />} />
-              <Route path="/dashboard/mall/storefront/featured" element={<NotFound />} />
-              <Route path="/dashboard/mall/marketing" element={<NotFound />} />
-              <Route path="/dashboard/mall/marketing/promotions" element={<NotFound />} />
-              <Route path="/dashboard/mall/marketing/discounts" element={<NotFound />} />
-              <Route path="/dashboard/mall/marketing/email" element={<NotFound />} />
-              <Route path="/dashboard/mall/marketing/social" element={<NotFound />} />
-              <Route path="/dashboard/mall/analytics" element={<NotFound />} />
-              <Route path="/dashboard/mall/analytics/sales" element={<NotFound />} />
-              <Route path="/dashboard/mall/analytics/traffic" element={<NotFound />} />
-              <Route path="/dashboard/mall/analytics/customers" element={<NotFound />} />
+              <Route path="/dashboard/mall/products/categories" element={<ViewCategories />} />
+              <Route path="/dashboard/mall/products/inventory" element={<ViewInventory />} />
+              <Route path="/dashboard/mall/orders" element={<ViewAllOrders />} />
+              <Route path="/dashboard/mall/orders/all" element={<ViewAllOrders />} />
+              <Route path="/dashboard/mall/orders/processing" element={<ComingSoonPage title="Mall" type="mall" pageName="Processing Orders" />} />
+              <Route path="/dashboard/mall/orders/shipping" element={<ComingSoonPage title="Mall" type="mall" pageName="Shipping Orders" />} />
+              <Route path="/dashboard/mall/orders/delivered" element={<ComingSoonPage title="Mall" type="mall" pageName="Delivered Orders" />} />
+              <Route path="/dashboard/mall/orders/returns" element={<ComingSoonPage title="Mall" type="mall" pageName="Returns" />} />
+              <Route path="/dashboard/mall/storefront" element={<ComingSoonPage title="Mall" type="mall" pageName="Storefront" />} />
+              <Route path="/dashboard/mall/storefront/theme" element={<ComingSoonPage title="Mall" type="mall" pageName="Theme & Layout" />} />
+              <Route path="/dashboard/mall/storefront/banners" element={<ComingSoonPage title="Mall" type="mall" pageName="Banners" />} />
+              <Route path="/dashboard/mall/storefront/featured" element={<ComingSoonPage title="Mall" type="mall" pageName="Featured Products" />} />
+              <Route path="/dashboard/mall/marketing" element={<ComingSoonPage title="Mall" type="mall" pageName="Marketing" />} />
+              <Route path="/dashboard/mall/marketing/promotions" element={<ComingSoonPage title="Mall" type="mall" pageName="Promotions" />} />
+              <Route path="/dashboard/mall/marketing/discounts" element={<ComingSoonPage title="Mall" type="mall" pageName="Discount Codes" />} />
+              <Route path="/dashboard/mall/marketing/email" element={<ComingSoonPage title="Mall" type="mall" pageName="Email Campaigns" />} />
+              <Route path="/dashboard/mall/marketing/social" element={<ComingSoonPage title="Mall" type="mall" pageName="Social Media" />} />
+              <Route path="/dashboard/mall/analytics" element={<ComingSoonPage title="Mall" type="mall" pageName="Analytics" />} />
+              <Route path="/dashboard/mall/analytics/sales" element={<ComingSoonPage title="Mall" type="mall" pageName="Sales Reports" />} />
+              <Route path="/dashboard/mall/analytics/traffic" element={<ComingSoonPage title="Mall" type="mall" pageName="Traffic Sources" />} />
+              <Route path="/dashboard/mall/analytics/customers" element={<ComingSoonPage title="Mall" type="mall" pageName="Customer Insights" />} />
               
               {/* Eats Dashboard Routes */}
               <Route path="/dashboard/eats" element={<EatsDashboard />} />
-              <Route path="/dashboard/eats/orders" element={<NotFound />} />
-              <Route path="/dashboard/eats/orders/incoming" element={<NotFound />} />
-              <Route path="/dashboard/eats/orders/preparing" element={<NotFound />} />
-              <Route path="/dashboard/eats/orders/ready" element={<NotFound />} />
-              <Route path="/dashboard/eats/orders/history" element={<NotFound />} />
-              <Route path="/dashboard/eats/menu" element={<NotFound />} />
-              <Route path="/dashboard/eats/menu/all" element={<NotFound />} />
-              <Route path="/dashboard/eats/menu/new" element={<NotFound />} />
-              <Route path="/dashboard/eats/menu/categories" element={<NotFound />} />
-              <Route path="/dashboard/eats/menu/specials" element={<NotFound />} />
-              <Route path="/dashboard/eats/delivery" element={<NotFound />} />
-              <Route path="/dashboard/eats/delivery/active" element={<NotFound />} />
-              <Route path="/dashboard/eats/delivery/drivers" element={<NotFound />} />
-              <Route path="/dashboard/eats/delivery/zones" element={<NotFound />} />
-              <Route path="/dashboard/eats/analytics" element={<NotFound />} />
-              <Route path="/dashboard/eats/analytics/sales" element={<NotFound />} />
-              <Route path="/dashboard/eats/analytics/popular" element={<NotFound />} />
-              <Route path="/dashboard/eats/analytics/demographics" element={<NotFound />} />
-              <Route path="/dashboard/eats/inventory" element={<NotFound />} />
-              <Route path="/dashboard/eats/inventory/ingredients" element={<NotFound />} />
-              <Route path="/dashboard/eats/inventory/suppliers" element={<NotFound />} />
-              <Route path="/dashboard/eats/inventory/stock" element={<NotFound />} />
+              <Route path="/dashboard/eats/orders" element={<ComingSoonPage title="Eats" type="eats" pageName="Orders" />} />
+              <Route path="/dashboard/eats/orders/incoming" element={<ViewEatsOrders />} />
+              <Route path="/dashboard/eats/orders/preparing" element={<ComingSoonPage title="Eats" type="eats" pageName="Preparing Orders" />} />
+              <Route path="/dashboard/eats/orders/ready" element={<ComingSoonPage title="Eats" type="eats" pageName="Ready for Pickup" />} />
+              <Route path="/dashboard/eats/orders/history" element={<ComingSoonPage title="Eats" type="eats" pageName="Order History" />} />
+              <Route path="/dashboard/eats/menu" element={<ComingSoonPage title="Eats" type="eats" pageName="Menu" />} />
+              <Route path="/dashboard/eats/menu/all" element={<ComingSoonPage title="Eats" type="eats" pageName="All Menu Items" />} />
+              <Route path="/dashboard/eats/menu/new" element={<ComingSoonPage title="Eats" type="eats" pageName="Add New Item" />} />
+              <Route path="/dashboard/eats/menu/categories" element={<ComingSoonPage title="Eats" type="eats" pageName="Menu Categories" />} />
+              <Route path="/dashboard/eats/menu/specials" element={<ComingSoonPage title="Eats" type="eats" pageName="Special Offers" />} />
+              <Route path="/dashboard/eats/delivery" element={<ComingSoonPage title="Eats" type="eats" pageName="Delivery" />} />
+              <Route path="/dashboard/eats/delivery/active" element={<ComingSoonPage title="Eats" type="eats" pageName="Active Deliveries" />} />
+              <Route path="/dashboard/eats/delivery/drivers" element={<ComingSoonPage title="Eats" type="eats" pageName="Drivers" />} />
+              <Route path="/dashboard/eats/delivery/zones" element={<ComingSoonPage title="Eats" type="eats" pageName="Delivery Zones" />} />
+              <Route path="/dashboard/eats/analytics" element={<ComingSoonPage title="Eats" type="eats" pageName="Analytics" />} />
+              <Route path="/dashboard/eats/analytics/sales" element={<ComingSoonPage title="Eats" type="eats" pageName="Sales Performance" />} />
+              <Route path="/dashboard/eats/analytics/popular" element={<ComingSoonPage title="Eats" type="eats" pageName="Popular Items" />} />
+              <Route path="/dashboard/eats/analytics/demographics" element={<ComingSoonPage title="Eats" type="eats" pageName="Customer Demographics" />} />
+              <Route path="/dashboard/eats/inventory" element={<ComingSoonPage title="Eats" type="eats" pageName="Inventory" />} />
+              <Route path="/dashboard/eats/inventory/ingredients" element={<ComingSoonPage title="Eats" type="eats" pageName="Ingredients" />} />
+              <Route path="/dashboard/eats/inventory/suppliers" element={<ComingSoonPage title="Eats" type="eats" pageName="Suppliers" />} />
+              <Route path="/dashboard/eats/inventory/stock" element={<ComingSoonPage title="Eats" type="eats" pageName="Stock Levels" />} />
               
               {/* Drivers Dashboard Routes */}
               <Route path="/dashboard/drivers" element={<DriversDashboard />} />
-              <Route path="/dashboard/drivers/earnings" element={<NotFound />} />
-              <Route path="/dashboard/drivers/earnings/current" element={<NotFound />} />
-              <Route path="/dashboard/drivers/earnings/history" element={<NotFound />} />
-              <Route path="/dashboard/drivers/earnings/bonuses" element={<NotFound />} />
-              <Route path="/dashboard/drivers/routes" element={<NotFound />} />
-              <Route path="/dashboard/drivers/routes/active" element={<NotFound />} />
-              <Route path="/dashboard/drivers/routes/history" element={<NotFound />} />
-              <Route path="/dashboard/drivers/routes/preferred" element={<NotFound />} />
-              <Route path="/dashboard/drivers/performance" element={<NotFound />} />
-              <Route path="/dashboard/drivers/performance/ratings" element={<NotFound />} />
-              <Route path="/dashboard/drivers/performance/stats" element={<NotFound />} />
-              <Route path="/dashboard/drivers/performance/achievements" element={<NotFound />} />
-              <Route path="/dashboard/drivers/account" element={<NotFound />} />
-              <Route path="/dashboard/drivers/account/profile" element={<NotFound />} />
-              <Route path="/dashboard/drivers/account/vehicle" element={<NotFound />} />
-              <Route path="/dashboard/drivers/account/documents" element={<NotFound />} />
+              <Route path="/dashboard/drivers/earnings" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Earnings" />} />
+              <Route path="/dashboard/drivers/earnings/current" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Current Earnings" />} />
+              <Route path="/dashboard/drivers/earnings/history" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Payment History" />} />
+              <Route path="/dashboard/drivers/earnings/bonuses" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Bonuses" />} />
+              <Route path="/dashboard/drivers/routes" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Routes" />} />
+              <Route path="/dashboard/drivers/routes/active" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Active Routes" />} />
+              <Route path="/dashboard/drivers/routes/history" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Route History" />} />
+              <Route path="/dashboard/drivers/routes/preferred" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Preferred Areas" />} />
+              <Route path="/dashboard/drivers/performance" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Performance" />} />
+              <Route path="/dashboard/drivers/performance/ratings" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Ratings" />} />
+              <Route path="/dashboard/drivers/performance/stats" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Statistics" />} />
+              <Route path="/dashboard/drivers/performance/achievements" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Achievements" />} />
+              <Route path="/dashboard/drivers/account" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Account" />} />
+              <Route path="/dashboard/drivers/account/profile" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Profile" />} />
+              <Route path="/dashboard/drivers/account/vehicle" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Vehicle Details" />} />
+              <Route path="/dashboard/drivers/account/documents" element={<ComingSoonPage title="Drivers" type="drivers" pageName="Documents" />} />
               
               {/* Professionals Dashboard Routes */}
               <Route path="/dashboard/professionals" element={<ProfessionalsDashboard />} />
-              <Route path="/dashboard/professionals/appointments" element={<NotFound />} />
-              <Route path="/dashboard/professionals/appointments/upcoming" element={<NotFound />} />
-              <Route path="/dashboard/professionals/appointments/past" element={<NotFound />} />
-              <Route path="/dashboard/professionals/appointments/availability" element={<NotFound />} />
-              <Route path="/dashboard/professionals/clients" element={<NotFound />} />
-              <Route path="/dashboard/professionals/clients/all" element={<NotFound />} />
-              <Route path="/dashboard/professionals/clients/new" element={<NotFound />} />
-              <Route path="/dashboard/professionals/clients/notes" element={<NotFound />} />
-              <Route path="/dashboard/professionals/video" element={<NotFound />} />
-              <Route path="/dashboard/professionals/video/start" element={<NotFound />} />
-              <Route path="/dashboard/professionals/video/upcoming" element={<NotFound />} />
-              <Route path="/dashboard/professionals/video/history" element={<NotFound />} />
-              <Route path="/dashboard/professionals/resources" element={<NotFound />} />
-              <Route path="/dashboard/professionals/resources/documents" element={<NotFound />} />
-              <Route path="/dashboard/professionals/resources/templates" element={<NotFound />} />
-              <Route path="/dashboard/professionals/resources/educational" element={<NotFound />} />
-              <Route path="/dashboard/professionals/performance" element={<NotFound />} />
-              <Route path="/dashboard/professionals/performance/analytics" element={<NotFound />} />
-              <Route path="/dashboard/professionals/performance/ratings" element={<NotFound />} />
-              <Route path="/dashboard/professionals/performance/financial" element={<NotFound />} />
+              <Route path="/dashboard/professionals/appointments" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Appointments" />} />
+              <Route path="/dashboard/professionals/appointments/upcoming" element={<ViewProfessionalAppointments />} />
+              <Route path="/dashboard/professionals/appointments/past" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Past Appointments" />} />
+              <Route path="/dashboard/professionals/appointments/availability" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Manage Availability" />} />
+              <Route path="/dashboard/professionals/clients" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Clients" />} />
+              <Route path="/dashboard/professionals/clients/all" element={<ComingSoonPage title="Professionals" type="professionals" pageName="All Clients" />} />
+              <Route path="/dashboard/professionals/clients/new" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Add New Client" />} />
+              <Route path="/dashboard/professionals/clients/notes" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Client Notes" />} />
+              <Route path="/dashboard/professionals/video" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Video Sessions" />} />
+              <Route path="/dashboard/professionals/video/start" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Start Session" />} />
+              <Route path="/dashboard/professionals/video/upcoming" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Upcoming Sessions" />} />
+              <Route path="/dashboard/professionals/video/history" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Session History" />} />
+              <Route path="/dashboard/professionals/resources" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Resources" />} />
+              <Route path="/dashboard/professionals/resources/documents" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Documents" />} />
+              <Route path="/dashboard/professionals/resources/templates" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Templates" />} />
+              <Route path="/dashboard/professionals/resources/educational" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Educational" />} />
+              <Route path="/dashboard/professionals/performance" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Performance" />} />
+              <Route path="/dashboard/professionals/performance/analytics" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Analytics" />} />
+              <Route path="/dashboard/professionals/performance/ratings" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Ratings & Reviews" />} />
+              <Route path="/dashboard/professionals/performance/financial" element={<ComingSoonPage title="Professionals" type="professionals" pageName="Financial Reports" />} />
               
               <Route path="*" element={<NotFound />} />
             </Routes>
