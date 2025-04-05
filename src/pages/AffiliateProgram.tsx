@@ -21,8 +21,6 @@ export default function AffiliateProgram() {
     phone: "",
     city: "",
     instagram: "",
-    tiktok: "",
-    linkedin: "",
     howHeard: "",
     whyJoin: "",
     shareOnSocial: false
@@ -402,28 +400,6 @@ export default function AffiliateProgram() {
                     onChange={handleInputChange}
                     placeholder="@yourusername"
                     required 
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="tiktok" className="block text-sm font-medium mb-1">TikTok Handle (Optional)</label>
-                  <Input 
-                    id="tiktok" 
-                    name="tiktok" 
-                    value={formData.tiktok} 
-                    onChange={handleInputChange}
-                    placeholder="@yourusername"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="linkedin" className="block text-sm font-medium mb-1">LinkedIn Profile (Optional)</label>
-                  <Input 
-                    id="linkedin" 
-                    name="linkedin" 
-                    value={formData.linkedin} 
-                    onChange={handleInputChange}
-                    placeholder="linkedin.com/in/yourprofile"
                   />
                 </div>
                 

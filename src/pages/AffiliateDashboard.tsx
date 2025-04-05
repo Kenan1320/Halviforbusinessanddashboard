@@ -1,13 +1,12 @@
-
 import React, { useState } from "react";
 import { Toaster, toast } from "sonner";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { 
-  ArrowLeft, DollarSign, Users, TrendingUp, BarChart3, 
+  ArrowLeft, DollarSign, Users, TrendingUp, 
   LineChart, PieChart, CircleDot, Copy, Settings, LogOut, 
-  UserPlus, Bell, AlertCircle, CheckCircle2
+  UserPlus, Bell, AlertCircle, CheckCircle2, BarChart3
 } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -26,7 +25,6 @@ import {
 export default function AffiliateDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
   
-  // Sample data for the dashboard
   const dashboardData = {
     balance: 1245.78,
     pendingPayment: 350.25,
@@ -68,7 +66,6 @@ export default function AffiliateDashboard() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Toaster position="top-right" />
       
-      {/* Top Navigation */}
       <header className="bg-white dark:bg-gray-800 shadow">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
@@ -144,7 +141,6 @@ export default function AffiliateDashboard() {
         </div>
       </header>
       
-      {/* Main Dashboard Content */}
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -157,10 +153,8 @@ export default function AffiliateDashboard() {
               <TabsTrigger value="settings" className="text-sm hidden md:block">Settings</TabsTrigger>
             </TabsList>
           
-            {/* Overview Tab */}
             <TabsContent value="overview" className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {/* Card 1: Current Balance */}
                 <Card>
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-500">Current Balance</CardTitle>
@@ -176,7 +170,6 @@ export default function AffiliateDashboard() {
                   </CardFooter>
                 </Card>
                 
-                {/* Card 2: Total Earnings */}
                 <Card>
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-500">Total Earnings</CardTitle>
@@ -192,7 +185,6 @@ export default function AffiliateDashboard() {
                   </CardFooter>
                 </Card>
                 
-                {/* Card 3: Total Referrals */}
                 <Card>
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-500">Active Referrals</CardTitle>
@@ -208,7 +200,6 @@ export default function AffiliateDashboard() {
                   </CardFooter>
                 </Card>
                 
-                {/* Card 4: Special Status */}
                 <Card>
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm font-medium text-gray-500">Affiliate Status</CardTitle>
@@ -225,7 +216,6 @@ export default function AffiliateDashboard() {
                 </Card>
               </div>
               
-              {/* Referral Link */}
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium text-gray-500">Your Referral Link</CardTitle>
@@ -242,7 +232,6 @@ export default function AffiliateDashboard() {
                 </CardContent>
               </Card>
               
-              {/* Recent Referrals */}
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium text-gray-500">Recent Referrals</CardTitle>
@@ -290,7 +279,6 @@ export default function AffiliateDashboard() {
                 </CardFooter>
               </Card>
               
-              {/* Performance Chart Card */}
               <Card>
                 <CardHeader className="pb-2">
                   <CardTitle className="text-sm font-medium text-gray-500">Referral Performance</CardTitle>
@@ -307,7 +295,6 @@ export default function AffiliateDashboard() {
               </Card>
             </TabsContent>
             
-            {/* Referrals Tab */}
             <TabsContent value="referrals" className="space-y-8">
               <Card>
                 <CardHeader>
@@ -441,7 +428,6 @@ export default function AffiliateDashboard() {
               </div>
             </TabsContent>
             
-            {/* Earnings Tab */}
             <TabsContent value="earnings" className="space-y-8">
               <Card>
                 <CardHeader>
@@ -542,7 +528,6 @@ export default function AffiliateDashboard() {
               </Card>
             </TabsContent>
             
-            {/* Challenges Tab */}
             <TabsContent value="challenges" className="space-y-8">
               <Card>
                 <CardHeader>
@@ -702,7 +687,6 @@ export default function AffiliateDashboard() {
               </Card>
             </TabsContent>
             
-            {/* Resources Tab */}
             <TabsContent value="resources" className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <Card>
@@ -857,7 +841,6 @@ export default function AffiliateDashboard() {
               </Card>
             </TabsContent>
             
-            {/* Settings Tab */}
             <TabsContent value="settings" className="space-y-8">
               <Card>
                 <CardHeader>
