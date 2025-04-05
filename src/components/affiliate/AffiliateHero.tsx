@@ -13,7 +13,7 @@ const AffiliateHero = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-halvi-100 dark:bg-halvi-900 text-halvi-600 dark:text-halvi-300 mb-6">
             <Users className="w-8 h-8" />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Halvi Affiliate Program</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Halvi Affiliate Programs</h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
             Earn commissions by referring businesses to Halvi. Help grow the halal economy while creating a passive income stream.
           </p>

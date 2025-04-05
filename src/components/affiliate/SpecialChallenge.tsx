@@ -95,8 +95,8 @@ const SpecialChallenge = ({ daysRemaining, challenges }: SpecialChallengeProps) 
             <a href="#apply">Join the Challenge</a>
           </Button>
           <div className="mt-4">
-            <Link to="/affiliate-get-familiar#challenge" className="text-amber-600 dark:text-amber-400 hover:underline">
-              Learn more about how the challenge works
+            <Link to="/affiliate-get-familiar" className="text-amber-600 dark:text-amber-400 hover:underline">
+              Learn more about how the affiliate programs work
             </Link>
           </div>
         </div>
