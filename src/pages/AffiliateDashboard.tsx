@@ -436,7 +436,7 @@ export default function AffiliateDashboard() {
                 <CardContent>
                   <div className="h-[300px] flex items-center justify-center">
                     <div className="text-center space-y-2">
-                      <BarChart className="h-8 w-8 text-amber-500 mx-auto" />
+                      <BarChart3 className="h-8 w-8 text-amber-500 mx-auto" />
                       <p className="text-sm text-gray-500">Earnings data visualization</p>
                       <p className="text-xs text-gray-400">(This is a placeholder in guest mode)</p>
                     </div>
