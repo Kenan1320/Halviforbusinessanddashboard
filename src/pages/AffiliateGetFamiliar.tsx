@@ -1,18 +1,60 @@
 
 import React, { useState } from "react";
-import { Toaster } from "sonner";
+import { Toaster, toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuroraBackground from "@/components/AuroraBackground";
-import { BookOpen, ArrowLeft, CheckCircle, Clock, Trophy, DollarSign } from "lucide-react";
+import { BookOpen, ArrowLeft, CheckCircle, Clock, Trophy, DollarSign, User, LogIn } from "lucide-react";
 import { motion } from "framer-motion";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 
 export default function AffiliateGetFamiliar() {
   const [mode, setMode] = useState("affiliatePrograms");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  
+  const handleLogin = (e) => {
+    e.preventDefault();
+    
+    // Validation
+    if (!email || !password) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+    
+    // Simulate login process
+    toast.loading("Logging in...");
+    
+    // Simulate API call
+    setTimeout(() => {
+      toast.dismiss();
+      toast.success("Login successful!");
+      navigate("/creator-partners-dashboard");
+    }, 1500);
+  };
+
+  const handleGuestAccess = () => {
+    toast.loading("Accessing guest mode...");
+    
+    setTimeout(() => {
+      toast.dismiss();
+      navigate("/creator-partners-dashboard");
+    }, 1000);
+  };
   
   return (
     <div className="overflow-hidden">
@@ -114,11 +156,7 @@ export default function AffiliateGetFamiliar() {
                         </div>
                         <div className="flex items-start gap-2">
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <p className="text-sm">Commissions on all orders up to 40K</p>
-                        </div>
-                        <div className="flex items-start gap-2">
-                          <Trophy className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
-                          <p className="text-sm">Current leader: 8 referrals</p>
+                          <p className="text-sm">Commissions on all orders for 16 months</p>
                         </div>
                       </CardContent>
                       <CardFooter>
@@ -180,7 +218,7 @@ export default function AffiliateGetFamiliar() {
                       <h4 className="font-bold mb-2">Special Challenge Winners (40% Commission)</h4>
                       <p className="text-gray-600 dark:text-gray-300">
                         If you win our 4-day challenge by referring the most businesses, you'll receive Special Affiliate status 
-                        with a 40% commission rate for 16 months. This applies to all orders (up to 40,000) for businesses you refer during that period.
+                        with a 40% commission rate for 16 months. This applies to all orders from businesses you refer during that period.
                       </p>
                     </div>
                     
@@ -199,6 +237,79 @@ export default function AffiliateGetFamiliar() {
             <TabsContent value="creatorPartners">
               <div className="space-y-8">
                 <section>
+                  <div className="flex justify-center mb-8">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button size="lg" className="bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700">
+                          <LogIn className="mr-2 h-5 w-5" />
+                          Login to Your Dashboard
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="sm:max-w-md">
+                        <DialogHeader>
+                          <DialogTitle>Creator Partner Dashboard</DialogTitle>
+                          <DialogDescription>
+                            Access your exclusive dashboard to manage your partnership with Halvi.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className="grid gap-4 py-4">
+                          <Tabs defaultValue="login" className="w-full">
+                            <TabsList className="grid grid-cols-2 mb-4">
+                              <TabsTrigger value="login">Partner Login</TabsTrigger>
+                              <TabsTrigger value="guest">Guest Mode</TabsTrigger>
+                            </TabsList>
+                            
+                            <TabsContent value="login" className="space-y-4">
+                              <form onSubmit={handleLogin} className="space-y-4">
+                                <div>
+                                  <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
+                                  <Input
+                                    id="email"
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="Enter your email"
+                                    required
+                                  />
+                                </div>
+                                
+                                <div>
+                                  <label htmlFor="password" className="block text-sm font-medium mb-1">Password</label>
+                                  <Input
+                                    id="password"
+                                    type={showPassword ? "text" : "password"}
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    placeholder="Enter your password"
+                                    required
+                                  />
+                                </div>
+                                
+                                <Button type="submit" className="w-full">Login to Dashboard</Button>
+                              </form>
+                              <p className="text-sm text-center text-gray-500">
+                                Don't have login credentials yet? Apply to become a Creator Partner.
+                              </p>
+                            </TabsContent>
+                            
+                            <TabsContent value="guest" className="space-y-4 text-center">
+                              <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg">
+                                <User className="h-12 w-12 mx-auto text-purple-600 dark:text-purple-400 mb-2" />
+                                <h4 className="font-medium mb-2">Guest Access</h4>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">
+                                  Preview the Creator Partners Dashboard without requiring login credentials.
+                                </p>
+                              </div>
+                              <Button onClick={handleGuestAccess} className="w-full">
+                                Access Guest Mode
+                              </Button>
+                            </TabsContent>
+                          </Tabs>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </div>
+
                   <h2 className="text-3xl font-bold mb-6 text-center">Creator Partners Program</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <Card className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/30 dark:to-blue-950/30 border-purple-100 dark:border-purple-900 shadow-md hover:shadow-lg transition-shadow">

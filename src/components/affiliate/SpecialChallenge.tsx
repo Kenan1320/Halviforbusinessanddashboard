@@ -46,9 +46,9 @@ const SpecialChallenge = ({ daysRemaining, challenges }: SpecialChallengeProps) 
           
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
             <DollarSign className="h-10 w-10 text-amber-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Up to 40,000 Orders</h3>
+            <h3 className="text-xl font-bold mb-2">All Orders for 16 Months</h3>
             <p className="text-gray-600 dark:text-gray-300">
-              Earn commissions on up to 40,000 orders from each referred business.
+              Earn commissions on all orders from each referred business for 16 months.
             </p>
           </div>
         </div>
