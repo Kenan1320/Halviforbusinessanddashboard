@@ -95,23 +95,23 @@ export function Hero() {
                 </Link>
               </Button>
               
-              {/* Vibrating Affiliate Button */}
-              <div className="mt-4">
+              {/* Affiliate Section */}
+              <div className="mt-4 space-y-3">
                 <VibratingButton 
                   text="Become an Affiliate - Passive Income" 
                   link="/affiliates"
                   className="shadow-lg shadow-amber-500/20"
                 />
-              </div>
-              
-              {/* Get Familiar Button */}
-              <div className="mt-4">
-                <Button asChild variant="secondary" size="lg" className="rounded-full px-8">
-                  <Link to="/affiliate-get-familiar" className="flex items-center">
-                    <BookOpen className="mr-2 h-4 w-4" />
-                    Get Familiar with Affiliate Program
-                  </Link>
-                </Button>
+                
+                {/* Get Familiar Button - positioned inside affiliate section */}
+                <div className="text-center">
+                  <Button asChild variant="secondary" size="lg" className="rounded-full px-8">
+                    <Link to="/affiliate-get-familiar" className="flex items-center">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      Get Familiar with Affiliate Program
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
