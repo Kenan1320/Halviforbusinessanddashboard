@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import AuroraBackground from "./AuroraBackground";
-import { BookOpen, Calendar, Users } from "lucide-react";
+import { BookOpen, Calendar } from "lucide-react";
 import BusinessModeSelector from "./BusinessModeSelector";
 import VibratingButton from "./VibratingButton";
 
@@ -95,26 +95,23 @@ export function Hero() {
                 </Link>
               </Button>
               
-              {/* Vibrating Affiliate Button with Dropdown */}
+              {/* Vibrating Affiliate Button */}
               <div className="mt-4">
                 <VibratingButton 
                   text="Become an Affiliate - Passive Income" 
                   link="/affiliates"
                   className="shadow-lg shadow-amber-500/20"
-                  hasDropdown={true}
-                  dropdownItems={[
-                    {
-                      text: "Get Familiar with Affiliate Program",
-                      link: "/affiliate-get-familiar",
-                      icon: <BookOpen className="h-4 w-4" />
-                    },
-                    {
-                      text: "Affiliate Dashboard",
-                      link: "/affiliate-dashboard",
-                      icon: <Users className="h-4 w-4" />
-                    }
-                  ]}
                 />
+              </div>
+              
+              {/* Get Familiar Button */}
+              <div className="mt-4">
+                <Button asChild variant="secondary" size="lg" className="rounded-full px-8">
+                  <Link to="/affiliate-get-familiar" className="flex items-center">
+                    <BookOpen className="mr-2 h-4 w-4" />
+                    Get Familiar with Affiliate Program
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
