@@ -49,9 +49,9 @@ import PaymentHistory from "@/pages/dashboards/drivers/PaymentHistory";
 import RoutesActive from "@/pages/dashboards/drivers/RoutesActive";
 import PerformanceRatings from "@/pages/dashboards/drivers/PerformanceRatings";
 import DriverProfile from "@/pages/dashboards/drivers/DriverProfile";
-import Affiliate from "@/pages/Affiliate";
-import AffiliateDashboard from "@/pages/AffiliateDashboard";
+import AffiliateProgram from "@/pages/AffiliateProgram";
 import AffiliateGetFamiliar from "@/pages/AffiliateGetFamiliar";
+import AffiliateDashboard from "@/pages/AffiliateDashboard";
 import CreatorPartnersLogin from "@/pages/CreatorPartnersLogin";
 import CreatorPartnersDashboard from "@/pages/CreatorPartnersDashboard";
 
@@ -105,10 +105,13 @@ export default function App() {
         <Route path="/dashboard/drivers/routes" element={<RoutesActive />} />
         <Route path="/dashboard/drivers/ratings" element={<PerformanceRatings />} />
         <Route path="/dashboard/drivers/profile" element={<DriverProfile />} />
+        
+        {/* Consolidate affiliate routes */}
         <Route path="/affiliate" element={<Navigate to="/affiliates" replace />} />
-        <Route path="/affiliates" element={<Affiliate />} />
+        <Route path="/affiliates" element={<AffiliateProgram />} />
         <Route path="/affiliate-dashboard" element={<AffiliateDashboard />} />
         <Route path="/affiliate-get-familiar" element={<AffiliateGetFamiliar />} />
+        
         <Route path="/creator-partners-login" element={<CreatorPartnersLogin />} />
         <Route path="/creator-partners-dashboard" element={<CreatorPartnersDashboard />} />
         <Route path="*" element={<NotFound />} />

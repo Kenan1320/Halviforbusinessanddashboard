@@ -25,6 +25,13 @@ const SpecialChallenge = ({ daysRemaining, challenges }: SpecialChallengeProps) 
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             Refer the most businesses during our 4-day challenge and earn Special Affiliate status with <span className="font-bold text-amber-600 dark:text-amber-400">doubled commission rate (40%)</span> for a full year!
           </p>
+          <div className="mt-4">
+            <Button asChild variant="secondary" size="sm" className="bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 hover:bg-amber-200 dark:hover:bg-amber-800/50 border-0">
+              <Link to="/affiliate-get-familiar">
+                Get familiar with the Affiliate Programs
+              </Link>
+            </Button>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -94,11 +101,6 @@ const SpecialChallenge = ({ daysRemaining, challenges }: SpecialChallengeProps) 
           <Button asChild size="lg" className="rounded-full px-8 bg-gradient-to-r from-amber-500 to-orange-600">
             <a href="#apply">Join the Challenge</a>
           </Button>
-          <div className="mt-4">
-            <Link to="/affiliate-get-familiar#challenge" className="text-amber-600 dark:text-amber-400 hover:underline">
-              Learn more about how the challenge works
-            </Link>
-          </div>
         </div>
       </div>
     </div>

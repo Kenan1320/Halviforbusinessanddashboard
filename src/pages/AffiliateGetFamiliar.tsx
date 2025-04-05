@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Toaster, toast } from "sonner";
+import { Toaster } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -9,11 +9,12 @@ import { Link } from "react-router-dom";
 import AuroraBackground from "@/components/AuroraBackground";
 import AffiliateChallenge from "@/components/affiliate/AffiliateChallenge";
 import CreatorPartners from "@/components/affiliate/CreatorPartners";
-import { BookOpen, Users, ArrowLeft, Calendar } from "lucide-react";
+import { BookOpen, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
 
 export default function AffiliateGetFamiliar() {
-  const [mode, setMode] = useState("challenge");
+  const [mode, setMode] = useState("affiliatePrograms");
   
   return (
     <div className="overflow-hidden">
@@ -57,16 +58,9 @@ export default function AffiliateGetFamiliar() {
               className="flex flex-wrap gap-4 justify-center"
             >
               <Button asChild variant="outline" size="lg" className="rounded-full px-8">
-                <Link to="/affiliate">
+                <Link to="/affiliates">
                   <ArrowLeft className="mr-2 h-4 w-4" />
-                  Back to Affiliate Program
-                </Link>
-              </Button>
-              
-              <Button asChild size="lg" className="rounded-full px-8">
-                <Link to="/schedule-meeting">
-                  <Calendar className="mr-2 h-4 w-4" />
-                  Schedule a Meeting
+                  Back to Become an Affiliate - Passive Income
                 </Link>
               </Button>
             </motion.div>
@@ -83,45 +77,131 @@ export default function AffiliateGetFamiliar() {
               transition={{ duration: 0.5 }}
               className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 p-8 rounded-xl border border-amber-100 dark:border-amber-900 text-center mb-10 shadow-sm"
             >
-              <h2 className="text-2xl font-bold mb-4">Special 4-Day Challenge</h2>
+              <h2 className="text-2xl font-bold mb-4">Affiliate Programs Overview</h2>
               <p className="text-lg mb-6">
-                Participate in our special 4-day challenge to become a Special Affiliate and earn <span className="font-bold text-amber-600 dark:text-amber-400">40% commission</span> - double the standard rate!
+                Halvi offers two affiliate programs: our standard affiliate program where you earn 20% commission, and our special 4-day challenge which lets you earn <span className="font-bold text-amber-600 dark:text-amber-400">40% commission</span> as a Special Affiliate!
               </p>
-              <Button asChild size="lg" className="rounded-full px-8 bg-gradient-to-r from-amber-500 to-orange-600">
-                <a href="#challenge">Learn More About the Challenge</a>
-              </Button>
             </motion.div>
           </div>
           
-          <Tabs value={mode} onValueChange={setMode} id="challenge" className="max-w-4xl mx-auto">
-            <TabsList className="grid w-full grid-cols-2 mb-8">
-              <TabsTrigger value="challenge" className="text-lg py-3">Affiliate Challenge</TabsTrigger>
-              <TabsTrigger value="creator" className="text-lg py-3">Creator Partners</TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="challenge">
-              <AffiliateChallenge />
-            </TabsContent>
-            
-            <TabsContent value="creator">
-              <CreatorPartners />
-            </TabsContent>
-          </Tabs>
-          
-          <div className="mt-12 text-center">
-            <h3 className="text-2xl font-bold mb-6">Ready to Become an Affiliate?</h3>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Button asChild size="lg" className="rounded-full px-8 bg-gradient-to-r from-amber-500 to-orange-600">
-                <Link to="/affiliate">Apply Now</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-full px-8">
-                <Link to="/schedule-meeting">
-                  <Calendar className="mr-2 h-4 w-4" />
-                  Schedule a Meeting
-                </Link>
-              </Button>
-            </div>
-          </div>
+          <Card className="mb-8 overflow-hidden border-0 shadow-lg">
+            <CardContent className="p-0">
+              <Tabs value={mode} onValueChange={setMode} className="w-full">
+                <TabsList className="w-full grid grid-cols-2 rounded-none h-14">
+                  <TabsTrigger 
+                    value="affiliatePrograms" 
+                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-500/10 data-[state=active]:to-orange-500/10 data-[state=active]:border-b-2 data-[state=active]:border-amber-500 rounded-none h-full text-base font-medium transition-all"
+                  >
+                    Affiliate Programs
+                  </TabsTrigger>
+                  <TabsTrigger 
+                    value="creator" 
+                    className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-500/10 data-[state=active]:to-orange-500/10 data-[state=active]:border-b-2 data-[state=active]:border-amber-500 rounded-none h-full text-base font-medium transition-all"
+                  >
+                    Creator Partners
+                  </TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="affiliatePrograms" className="pt-6 px-6 pb-8">
+                  <div className="space-y-8">
+                    <div>
+                      <h3 className="text-2xl font-bold mb-4">Our Affiliate Programs</h3>
+                      
+                      <Tabs defaultValue="challenge" className="mt-6">
+                        <TabsList className="w-full grid grid-cols-2 mb-6">
+                          <TabsTrigger value="challenge" className="text-base py-3">
+                            4-Day Special Affiliate Challenge
+                          </TabsTrigger>
+                          <TabsTrigger value="regular" className="text-base py-3">
+                            Regular Affiliates
+                          </TabsTrigger>
+                        </TabsList>
+                        
+                        <TabsContent value="challenge">
+                          <Card className="border border-amber-100 dark:border-amber-900/40">
+                            <CardContent className="p-6">
+                              <h3 className="text-xl font-bold mb-3 text-amber-700 dark:text-amber-400">Special Challenge Program</h3>
+                              <p className="mb-4 text-gray-700 dark:text-gray-300">
+                                Compete with other affiliates over a 4-day period to refer the most businesses to Halvi. The winner earns Special Affiliate status with 40% commission for 16 months!
+                              </p>
+                              <div className="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg">
+                                <h4 className="font-medium mb-2">Benefits:</h4>
+                                <ul className="list-disc pl-5 space-y-1">
+                                  <li>40% commission rate (double the standard)</li>
+                                  <li>Special recognition on our platform</li>
+                                  <li>Priority support for your referred businesses</li>
+                                  <li>Exclusive access to special promotions</li>
+                                </ul>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </TabsContent>
+                        
+                        <TabsContent value="regular">
+                          <Card className="border border-amber-100 dark:border-amber-900/40">
+                            <CardContent className="p-6">
+                              <h3 className="text-xl font-bold mb-3 text-amber-700 dark:text-amber-400">Regular Affiliate Program</h3>
+                              <p className="mb-4 text-gray-700 dark:text-gray-300">
+                                Refer businesses to join Halvi and earn a 20% commission on Halvi's profit from each business for a full year, up to $40,000 in orders.
+                              </p>
+                              <div className="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg">
+                                <h4 className="font-medium mb-2">Benefits:</h4>
+                                <ul className="list-disc pl-5 space-y-1">
+                                  <li>20% commission on all referred businesses</li>
+                                  <li>No cap on the number of businesses you can refer</li>
+                                  <li>Monthly payments via bank transfer or PayPal</li>
+                                  <li>Access to marketing materials and support</li>
+                                </ul>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </TabsContent>
+                      </Tabs>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-2xl font-bold mb-4">How It Works</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <Card className="border border-amber-100 dark:border-amber-900/40">
+                          <CardContent className="p-6 text-center">
+                            <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                              <span className="text-xl font-bold text-amber-600 dark:text-amber-400">1</span>
+                            </div>
+                            <h4 className="font-semibold mb-2">Apply</h4>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Submit your application through our affiliate form</p>
+                          </CardContent>
+                        </Card>
+                        
+                        <Card className="border border-amber-100 dark:border-amber-900/40">
+                          <CardContent className="p-6 text-center">
+                            <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                              <span className="text-xl font-bold text-amber-600 dark:text-amber-400">2</span>
+                            </div>
+                            <h4 className="font-semibold mb-2">Share</h4>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Get your unique referral link and share with businesses</p>
+                          </CardContent>
+                        </Card>
+                        
+                        <Card className="border border-amber-100 dark:border-amber-900/40">
+                          <CardContent className="p-6 text-center">
+                            <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                              <span className="text-xl font-bold text-amber-600 dark:text-amber-400">3</span>
+                            </div>
+                            <h4 className="font-semibold mb-2">Earn</h4>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">Collect your commission on every successful referral</p>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </div>
+                  </div>
+                </TabsContent>
+                
+                <TabsContent value="creator" className="pt-6 px-6 pb-8">
+                  <CreatorPartners />
+                </TabsContent>
+              </Tabs>
+            </CardContent>
+          </Card>
         </div>
       </div>
       
