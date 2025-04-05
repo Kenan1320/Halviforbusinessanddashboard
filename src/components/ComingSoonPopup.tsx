@@ -42,7 +42,10 @@ export default function ComingSoonPopup({ serviceName, onClose }: ComingSoonPopu
   };
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog open={isOpen} onOpenChange={(open) => {
+      setIsOpen(open);
+      if (!open) handleClose();
+    }}>
       <DialogContent className="sm:max-w-md bg-white dark:bg-gray-900 p-0">
         <DialogHeader className="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-6 rounded-t-lg">
           <DialogTitle className="text-2xl font-bold">Coming Soon!</DialogTitle>

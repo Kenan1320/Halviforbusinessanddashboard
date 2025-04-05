@@ -53,6 +53,19 @@ import AffiliateProgram from "@/pages/AffiliateProgram";
 import AffiliateInfo from "@/pages/AffiliateInfo";
 import Affiliate from "@/pages/Affiliate";
 import AffiliateDashboard from "@/pages/AffiliateDashboard";
+import ComingSoonPopup from "@/components/ComingSoonPopup";
+import { useState } from "react";
+
+// Create a wrapper component for pages with coming soon popup
+const WithComingSoonPopup = ({ serviceName, children }: { serviceName: string, children: React.ReactNode }) => {
+  const [showPopup, setShowPopup] = useState(true);
+  
+  if (showPopup) {
+    return <ComingSoonPopup serviceName={serviceName} onClose={() => setShowPopup(false)} />;
+  }
+  
+  return <>{children}</>;
+};
 
 export default function App() {
   return (
@@ -66,12 +79,36 @@ export default function App() {
         <Route path="/schedule-meeting" element={<ScheduleMeetingPage />} />
         <Route path="/local" element={<Local />} />
         <Route path="/mall" element={<Mall />} />
-        <Route path="/eats" element={<Eats />} />
-        <Route path="/rides" element={<Rides />} />
-        <Route path="/counselor" element={<Counselor />} />
-        <Route path="/therapist" element={<Therapist />} />
-        <Route path="/lawyer" element={<Lawyer />} />
-        <Route path="/professional" element={<Professional />} />
+        <Route path="/eats" element={
+          <WithComingSoonPopup serviceName="Halvi Eats">
+            <Eats />
+          </WithComingSoonPopup>
+        } />
+        <Route path="/rides" element={
+          <WithComingSoonPopup serviceName="Halvi Rides">
+            <Rides />
+          </WithComingSoonPopup>
+        } />
+        <Route path="/counselor" element={
+          <WithComingSoonPopup serviceName="Halvi Counselor">
+            <Counselor />
+          </WithComingSoonPopup>
+        } />
+        <Route path="/therapist" element={
+          <WithComingSoonPopup serviceName="Halvi Therapist">
+            <Therapist />
+          </WithComingSoonPopup>
+        } />
+        <Route path="/lawyer" element={
+          <WithComingSoonPopup serviceName="Halvi Lawyer">
+            <Lawyer />
+          </WithComingSoonPopup>
+        } />
+        <Route path="/professional" element={
+          <WithComingSoonPopup serviceName="Halvi Professional">
+            <Professional />
+          </WithComingSoonPopup>
+        } />
         <Route path="/local-business-info" element={<LocalBusinessInfo />} />
         <Route path="/restaurant-partner-info" element={<RestaurantPartnerInfo />} />
         <Route path="/professional-application" element={<ProfessionalApplication />} />
