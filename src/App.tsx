@@ -1,4 +1,3 @@
-
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "@/pages/Index";
@@ -51,6 +50,7 @@ import PerformanceRatings from "@/pages/dashboards/drivers/PerformanceRatings";
 import DriverProfile from "@/pages/dashboards/drivers/DriverProfile";
 import AffiliateProgram from "@/pages/AffiliateProgram";
 import AffiliateInfo from "@/pages/AffiliateInfo";
+import Affiliate from "@/pages/Affiliate";
 
 export default function App() {
   return (
@@ -102,8 +102,8 @@ export default function App() {
         <Route path="/dashboard/drivers/routes" element={<RoutesActive />} />
         <Route path="/dashboard/drivers/ratings" element={<PerformanceRatings />} />
         <Route path="/dashboard/drivers/profile" element={<DriverProfile />} />
-        <Route path="/affiliates" element={<AffiliateProgram />} />
-        <Route path="/affiliate-info" element={<AffiliateInfo />} />
+        <Route path="/affiliate" element={<AffiliateInfo />} />
+        <Route path="/affiliates" element={<Affiliate />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
