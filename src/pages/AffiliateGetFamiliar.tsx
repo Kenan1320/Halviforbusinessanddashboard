@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Toaster, toast } from "sonner";
 import Navbar from "@/components/Navbar";
@@ -103,13 +102,13 @@ export default function AffiliateGetFamiliar() {
                   </NavigationMenuTrigger>
                 </NavigationMenuItem>
                 <NavigationMenuItem className={mode === "creatorPartners" ? "block" : "hidden"}>
-                  <Button asChild size="sm" className="ml-4 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white">
-                    <DialogTrigger>
-                      <LogIn className="mr-2 h-4 w-4" />
-                      Login to Dashboard
-                    </DialogTrigger>
-                  </Button>
                   <Dialog>
+                    <DialogTrigger asChild>
+                      <Button size="sm" className="ml-4 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white">
+                        <LogIn className="mr-2 h-4 w-4" />
+                        Login to Dashboard
+                      </Button>
+                    </DialogTrigger>
                     <DialogContent className="sm:max-w-md">
                       <DialogHeader>
                         <DialogTitle>Creator Partner Dashboard</DialogTitle>
