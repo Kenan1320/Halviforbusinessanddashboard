@@ -22,7 +22,7 @@ export default function AffiliateProgram() {
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
   const y = useTransform(scrollYProgress, [0, 0.2], [0, -50]);
   
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Set to true to enable guest access
   const [countdown, setCountdown] = useState({
     days: 2,
     hours: 14,
@@ -229,6 +229,17 @@ export default function AffiliateProgram() {
                   <div className="mt-4 text-center text-sm text-gray-500">
                     <p>Not registered yet? <Link to="/signup" className="text-amber-400 hover:underline">Sign up</Link> to become an affiliate</p>
                   </div>
+                  
+                  {/* Added guest access button */}
+                  <div className="mt-4 pt-4 border-t border-gray-700">
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-gray-700 text-gray-300 hover:bg-gray-800"
+                      onClick={() => setIsLoggedIn(true)}
+                    >
+                      Continue as Guest
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -246,24 +257,8 @@ export default function AffiliateProgram() {
       <Toaster position="top-right" />
       <Navbar />
       
-      {/* Mode selector at the very top */}
-      <div className="fixed top-0 left-0 right-0 z-50 pt-16 px-4 bg-gray-950/90 backdrop-blur-md border-b border-gray-800">
-        <motion.div
-          style={{ opacity, scale, y }}
-          className="container mx-auto max-w-6xl"
-        >
-          <Tabs defaultValue="dashboard" value={currentTab} onValueChange={setCurrentTab} className="mb-4 mt-4">
-            <TabsList className="bg-gray-900 border border-gray-800 w-full grid grid-cols-2 md:grid-cols-4">
-              <TabsTrigger value="dashboard" className="data-[state=active]:bg-amber-500 data-[state=active]:text-white">Dashboard</TabsTrigger>
-              <TabsTrigger value="challenge" className="data-[state=active]:bg-amber-500 data-[state=active]:text-white">Challenge</TabsTrigger>
-              <TabsTrigger value="referrals" className="data-[state=active]:bg-amber-500 data-[state=active]:text-white">Referrals</TabsTrigger>
-              <TabsTrigger value="special" className="data-[state=active]:bg-amber-500 data-[state=active]:text-white">Special Status</TabsTrigger>
-            </TabsList>
-          </Tabs>
-        </motion.div>
-      </div>
-      
-      <main className="flex-grow pt-40 pb-16 px-4">
+      {/* Top challenge section */}
+      <main className="flex-grow pt-20 pb-16 px-4">
         <div className="container mx-auto max-w-6xl">
           {/* Challenge Countdown Timer always shown at top */}
           <motion.div
@@ -305,6 +300,16 @@ export default function AffiliateProgram() {
               </div>
             </div>
           </motion.div>
+          
+          {/* Mode selector tabs - now full width on mobile */}
+          <Tabs defaultValue="dashboard" value={currentTab} onValueChange={setCurrentTab} className="mb-4 mt-4">
+            <TabsList className="w-full grid grid-cols-2 md:grid-cols-4 bg-gray-900 border border-gray-800">
+              <TabsTrigger value="dashboard" className="data-[state=active]:bg-amber-500 data-[state=active]:text-white">Dashboard</TabsTrigger>
+              <TabsTrigger value="challenge" className="data-[state=active]:bg-amber-500 data-[state=active]:text-white">Challenge</TabsTrigger>
+              <TabsTrigger value="referrals" className="data-[state=active]:bg-amber-500 data-[state=active]:text-white">Referrals</TabsTrigger>
+              <TabsTrigger value="special" className="data-[state=active]:bg-amber-500 data-[state=active]:text-white">Special Status</TabsTrigger>
+            </TabsList>
+          </Tabs>
             
           {/* Dashboard Tab Content */}
           <TabsContent value="dashboard" className="mt-4">
@@ -349,19 +354,19 @@ export default function AffiliateProgram() {
                   <CardTitle className="text-xl text-white">Your Referral Link</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex items-center">
+                  <div className="flex flex-col sm:flex-row items-center gap-2">
                     <Input 
                       value={referralLink} 
                       readOnly 
-                      className="bg-gray-800 border-gray-700 text-white flex-grow mr-2"
+                      className="bg-gray-800 border-gray-700 text-white flex-grow"
                     />
                     <Button 
                       onClick={handleCopyLink}
                       variant="outline"
-                      className="border-gray-700 text-white hover:bg-gray-800"
+                      className="border-gray-700 text-white hover:bg-gray-800 whitespace-nowrap"
                     >
-                      {copied ? <Check className="h-4 w-4" /> : <CopyIcon className="h-4 w-4" />}
-                      {copied ? "Copied!" : "Copy"}
+                      {copied ? <Check className="h-4 w-4 mr-2" /> : <CopyIcon className="h-4 w-4 mr-2" />}
+                      {copied ? "Copied!" : "Copy Link"}
                     </Button>
                   </div>
                   <p className="mt-2 text-sm text-gray-400">
@@ -493,18 +498,18 @@ export default function AffiliateProgram() {
                 
                 <Card className="bg-gray-900 border-gray-800">
                   <CardHeader>
-                    <div className="flex justify-between items-center">
-                      <CardTitle className="text-xl text-white">Submit Entry</CardTitle>
-                      <div className="flex items-center text-xs text-amber-400">
-                        <div className="relative mr-2 flex h-3 w-3">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                          <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                        </div>
-                        {registeredCount}/10 spots filled
-                      </div>
-                    </div>
+                    <CardTitle className="text-xl text-white">Submit Entry</CardTitle>
                   </CardHeader>
                   <CardContent>
+                    {/* Spots filled indicator */}
+                    <div className="mb-4 flex items-center justify-center">
+                      <div className="relative mr-2 flex h-3 w-3">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                      </div>
+                      <span className="text-sm text-amber-400">{registeredCount}/10 spots filled</span>
+                    </div>
+                  
                     {activeChallenge ? (
                       <div className="py-4">
                         <form className="space-y-4">
@@ -534,15 +539,9 @@ export default function AffiliateProgram() {
                         <p className="text-gray-400 mb-4">Entry submission opens on the 4th day at 7AM</p>
                         <Button 
                           onClick={handleRegisterForChallenge}
-                          className="bg-gradient-to-r from-amber-500 to-orange-500"
+                          className="bg-gradient-to-r from-amber-500 to-orange-500 w-full"
                         >
-                          <div className="flex items-center">
-                            <span className="relative mr-2 flex h-3 w-3">
-                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                            </span>
-                            Register for Next Challenge ({registeredCount}/10)
-                          </div>
+                          Register for Next Challenge
                         </Button>
                       </div>
                     )}

@@ -1,8 +1,8 @@
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Store, ShoppingBag, Utensils, Car, Briefcase, Check } from "lucide-react";
+import { Store, ShoppingBag, Utensils, Car, Briefcase, Check, User } from "lucide-react";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
@@ -42,6 +42,15 @@ const dashboardCards = [
 ];
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+  
+  const handleGuestAccess = () => {
+    // Simulate guest login
+    localStorage.setItem("guestMode", "true");
+    // Redirect to affiliate dashboard
+    navigate('/affiliate');
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Navbar />
@@ -63,7 +72,7 @@ export default function Dashboard() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="max-w-md mx-auto mb-12 bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-700"
+              className="max-w-md mx-auto mb-6 bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-gray-700"
             >
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Sign In</h2>
@@ -108,6 +117,21 @@ export default function Dashboard() {
                     </Button>
                   </div>
                 </form>
+                
+                {/* Guest access option */}
+                <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-3">
+                    Want to explore without an account?
+                  </p>
+                  <Button 
+                    variant="outline" 
+                    onClick={handleGuestAccess}
+                    className="w-full flex items-center justify-center"
+                  >
+                    <User className="mr-2 h-4 w-4" />
+                    Continue as Guest
+                  </Button>
+                </div>
               </div>
             </motion.div>
 

@@ -10,9 +10,17 @@ interface VibratingButtonProps {
   icon?: React.ReactNode;
   className?: string;
   onClick?: () => void;
+  fullWidth?: boolean;
 }
 
-const VibratingButton = ({ text, link, icon, className = "", onClick }: VibratingButtonProps) => {
+const VibratingButton = ({ 
+  text, 
+  link, 
+  icon, 
+  className = "", 
+  onClick,
+  fullWidth = false
+}: VibratingButtonProps) => {
   const handleClick = (e: React.MouseEvent) => {
     if (onClick) {
       e.preventDefault();
@@ -21,9 +29,9 @@ const VibratingButton = ({ text, link, icon, className = "", onClick }: Vibratin
   };
 
   return (
-    <Link to={link} onClick={handleClick}>
+    <Link to={link} onClick={handleClick} className={fullWidth ? "w-full block" : ""}>
       <motion.div
-        className={`relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium rounded-full cursor-pointer shadow-lg shadow-amber-500/20 dark:shadow-amber-500/10 ${className}`}
+        className={`relative inline-flex items-center gap-2 px-4 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium rounded-full cursor-pointer shadow-lg shadow-amber-500/20 dark:shadow-amber-500/10 ${fullWidth ? "w-full justify-center" : ""} ${className}`}
         whileHover={{ scale: 1.05 }}
         animate={{
           y: [0, -3, 0, -3, 0],
