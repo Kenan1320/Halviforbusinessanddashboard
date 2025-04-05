@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Calendar, Users, DollarSign, TrendingUp, Trophy, Clock } from "lucide-react";
+import { Calendar, Users, DollarSign, TrendingUp, Trophy, Clock, BookOpen } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -117,6 +117,12 @@ export default function AffiliateProgram() {
                 <Link to="/schedule-meeting">
                   <Calendar className="mr-2 h-4 w-4" />
                   Schedule a Meeting
+                </Link>
+              </Button>
+              <Button asChild variant="secondary" size="lg" className="rounded-full px-8">
+                <Link to="/affiliate-get-familiar">
+                  <BookOpen className="mr-2 h-4 w-4" />
+                  Get Familiar
                 </Link>
               </Button>
             </div>
