@@ -23,7 +23,7 @@ const SpecialChallenge = ({ daysRemaining, challenges }: SpecialChallengeProps) 
           <span className="inline-block px-4 py-1 bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 rounded-full text-sm font-medium mb-4">Limited Time Opportunity</span>
           <h2 className="text-3xl font-bold mb-4">Special Affiliate Challenge</h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Refer the most businesses during our 4-day challenge and earn Special Affiliate status with <span className="font-bold text-amber-600 dark:text-amber-400">doubled commission rate (40%)</span> for a full year!
+            Refer the most businesses during our 4-day challenge and earn Special Affiliate status with <span className="font-bold text-amber-600 dark:text-amber-400">doubled commission rate (40%)</span> for a full 16 months!
           </p>
         </div>
         
@@ -32,7 +32,7 @@ const SpecialChallenge = ({ daysRemaining, challenges }: SpecialChallengeProps) 
             <Trophy className="h-10 w-10 text-amber-500 mb-4" />
             <h3 className="text-xl font-bold mb-2">40% Commission</h3>
             <p className="text-gray-600 dark:text-gray-300">
-              Double the standard rate for all your referrals for a full year.
+              Double the standard rate on all orders from your referrals for 16 months.
             </p>
           </div>
           
@@ -46,9 +46,9 @@ const SpecialChallenge = ({ daysRemaining, challenges }: SpecialChallengeProps) 
           
           <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
             <DollarSign className="h-10 w-10 text-amber-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">Up to $40,000</h3>
+            <h3 className="text-xl font-bold mb-2">Up to 40,000 Orders</h3>
             <p className="text-gray-600 dark:text-gray-300">
-              Potential earnings from referring 50 businesses over one year.
+              Earn commissions on up to 40,000 orders from each referred business.
             </p>
           </div>
         </div>

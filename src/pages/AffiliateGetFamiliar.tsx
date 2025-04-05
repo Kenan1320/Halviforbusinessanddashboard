@@ -69,7 +69,7 @@ export default function AffiliateGetFamiliar() {
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto">
           <Tabs value={mode} onValueChange={setMode} id="challenge" className="max-w-4xl mx-auto">
-            <TabsList className="w-full mb-8 bg-gradient-to-r from-amber-50/80 to-orange-50/80 dark:from-amber-900/20 dark:to-orange-900/20 p-1.5 rounded-xl shadow-sm">
+            <TabsList className="w-full mb-8 bg-gradient-to-r from-amber-50/80 to-orange-50/80 dark:from-amber-900/20 dark:to-orange-900/20 p-1.5 rounded-xl shadow-lg">
               <TabsTrigger 
                 value="affiliatePrograms" 
                 className="text-lg py-3 px-6 rounded-lg transition-all data-[state=active]:bg-white dark:data-[state=active]:bg-gray-800 data-[state=active]:shadow-sm"
@@ -89,7 +89,7 @@ export default function AffiliateGetFamiliar() {
                 <section>
                   <h2 className="text-3xl font-bold mb-6 text-center">Affiliate Programs</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <Card className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 border-amber-100 dark:border-amber-900 overflow-hidden">
+                    <Card className="bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/30 dark:to-orange-950/30 border-amber-100 dark:border-amber-900 overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                       <CardHeader className="pb-3">
                         <CardTitle className="flex items-center gap-2">
                           <Clock className="h-6 w-6 text-amber-600" />
@@ -106,11 +106,15 @@ export default function AffiliateGetFamiliar() {
                         </div>
                         <div className="flex items-start gap-2">
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <p className="text-sm">Win Special Affiliate status for a full year</p>
+                          <p className="text-sm">Win Special Affiliate status for 16 months</p>
                         </div>
                         <div className="flex items-start gap-2">
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                           <p className="text-sm"><span className="font-bold">40% commission rate</span> - double the standard!</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                          <p className="text-sm">Commissions on all orders up to 40K</p>
                         </div>
                         <div className="flex items-start gap-2">
                           <Trophy className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
@@ -124,7 +128,7 @@ export default function AffiliateGetFamiliar() {
                       </CardFooter>
                     </Card>
                     
-                    <Card className="border-gray-200 dark:border-gray-800 overflow-hidden">
+                    <Card className="border-gray-200 dark:border-gray-800 overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                       <CardHeader className="pb-3">
                         <CardTitle className="flex items-center gap-2">
                           <DollarSign className="h-6 w-6 text-halvi-600" />
@@ -137,7 +141,7 @@ export default function AffiliateGetFamiliar() {
                       <CardContent className="space-y-4">
                         <div className="flex items-start gap-2">
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <p className="text-sm"><span className="font-bold">20% commission</span> on platform fees</p>
+                          <p className="text-sm"><span className="font-bold">20% commission</span> on all orders</p>
                         </div>
                         <div className="flex items-start gap-2">
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
@@ -145,11 +149,11 @@ export default function AffiliateGetFamiliar() {
                         </div>
                         <div className="flex items-start gap-2">
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <p className="text-sm">Earn for a full year per referral</p>
+                          <p className="text-sm">Earn commissions on all referred shop orders</p>
                         </div>
                         <div className="flex items-start gap-2">
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <p className="text-sm">Average $400 earning per successful referral</p>
+                          <p className="text-sm">Commissions on up to 40K orders per shop</p>
                         </div>
                       </CardContent>
                       <CardFooter>
@@ -161,14 +165,14 @@ export default function AffiliateGetFamiliar() {
                   </div>
                 </section>
                 
-                <section className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
+                <section className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl shadow-md">
                   <h3 className="text-2xl font-bold mb-6">How Commission Works</h3>
                   <div className="space-y-6">
                     <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
                       <h4 className="font-bold mb-2">Regular Affiliates (20% Commission)</h4>
                       <p className="text-gray-600 dark:text-gray-300">
-                        For each business you refer, you earn 20% of their platform fees for a full year. 
-                        With the average business generating $2,000 in annual fees, that's approximately $400 per referral.
+                        For each business you refer, you earn 20% commission on all orders placed through their shop. 
+                        This applies to up to 40,000 orders per referred business, providing substantial earning potential.
                       </p>
                     </div>
                     
@@ -176,7 +180,7 @@ export default function AffiliateGetFamiliar() {
                       <h4 className="font-bold mb-2">Special Challenge Winners (40% Commission)</h4>
                       <p className="text-gray-600 dark:text-gray-300">
                         If you win our 4-day challenge by referring the most businesses, you'll receive Special Affiliate status 
-                        with a 40% commission rate for an entire year. This applies to all businesses you refer during that period.
+                        with a 40% commission rate for 16 months. This applies to all orders (up to 40,000) for businesses you refer during that period.
                       </p>
                     </div>
                     
@@ -184,7 +188,7 @@ export default function AffiliateGetFamiliar() {
                       <h4 className="font-bold mb-2">Payment Details</h4>
                       <p className="text-gray-600 dark:text-gray-300">
                         Payments are processed monthly via bank transfer or PayPal when your balance exceeds $100. 
-                        Commissions are calculated based on the actual platform fees paid by your referrals in the previous month.
+                        Commissions are calculated based on the actual orders placed through your referred businesses in the previous month.
                       </p>
                     </div>
                   </div>
@@ -197,7 +201,7 @@ export default function AffiliateGetFamiliar() {
                 <section>
                   <h2 className="text-3xl font-bold mb-6 text-center">Creator Partners Program</h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <Card className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/30 dark:to-blue-950/30 border-purple-100 dark:border-purple-900">
+                    <Card className="bg-gradient-to-br from-purple-50 to-blue-50 dark:from-purple-950/30 dark:to-blue-950/30 border-purple-100 dark:border-purple-900 shadow-md hover:shadow-lg transition-shadow">
                       <CardHeader>
                         <CardTitle>Become a Creator Partner</CardTitle>
                         <CardDescription>
@@ -207,7 +211,11 @@ export default function AffiliateGetFamiliar() {
                       <CardContent className="space-y-4">
                         <div className="flex items-start gap-2">
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <p className="text-sm">Higher commission rates than standard affiliates</p>
+                          <p className="text-sm">10% commission on all orders from referred affiliates</p>
+                        </div>
+                        <div className="flex items-start gap-2">
+                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                          <p className="text-sm">Earn from up to 40,000 orders per business</p>
                         </div>
                         <div className="flex items-start gap-2">
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
@@ -225,7 +233,7 @@ export default function AffiliateGetFamiliar() {
                       </CardFooter>
                     </Card>
                     
-                    <Card className="border-gray-200 dark:border-gray-800">
+                    <Card className="border-gray-200 dark:border-gray-800 shadow-md hover:shadow-lg transition-shadow">
                       <CardHeader>
                         <CardTitle>Requirements</CardTitle>
                         <CardDescription>
@@ -255,16 +263,16 @@ export default function AffiliateGetFamiliar() {
                   </div>
                 </section>
                 
-                <section className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl">
+                <section className="bg-gray-50 dark:bg-gray-900 p-8 rounded-xl shadow-md">
                   <h3 className="text-2xl font-bold mb-6">Creator Partner Benefits</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <Card className="border-0 bg-transparent shadow-none">
                       <CardHeader className="pb-2">
-                        <CardTitle className="text-xl">Higher Commission</CardTitle>
+                        <CardTitle className="text-xl">Commission Structure</CardTitle>
                       </CardHeader>
                       <CardContent>
                         <p className="text-gray-600 dark:text-gray-300">
-                          Creator Partners receive up to 50% commission on platform fees from businesses they refer.
+                          Creator Partners receive 10% commission on all orders from businesses referred by their affiliates, up to 40,000 orders per business.
                         </p>
                       </CardContent>
                     </Card>
@@ -275,7 +283,7 @@ export default function AffiliateGetFamiliar() {
                       </CardHeader>
                       <CardContent>
                         <p className="text-gray-600 dark:text-gray-300">
-                          We promote your content through our channels and provide exclusive promotional assets.
+                          We promote your content through our channels and provide exclusive promotional assets to maximize your affiliate network.
                         </p>
                       </CardContent>
                     </Card>

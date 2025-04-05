@@ -19,7 +19,7 @@ const RegularAffiliate = () => {
           <DollarSign className="h-10 w-10 text-halvi-600 dark:text-halvi-400 mb-4" />
           <h3 className="text-xl font-bold mb-2">20% Commission</h3>
           <p className="text-gray-600 dark:text-gray-300">
-            Earn 20% of platform fees from every business you refer for a full year.
+            Earn 20% commission on all orders from every business you refer.
           </p>
         </motion.div>
         
@@ -31,9 +31,9 @@ const RegularAffiliate = () => {
           className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm"
         >
           <TrendingUp className="h-10 w-10 text-halvi-600 dark:text-halvi-400 mb-4" />
-          <h3 className="text-xl font-bold mb-2">$400 Per Referral</h3>
+          <h3 className="text-xl font-bold mb-2">Up to 40K Orders</h3>
           <p className="text-gray-600 dark:text-gray-300">
-            Average earning per successful business referral over one year.
+            Earn commissions on up to 40,000 orders from each referred business.
           </p>
         </motion.div>
         
@@ -47,7 +47,7 @@ const RegularAffiliate = () => {
           <Users className="h-10 w-10 text-halvi-600 dark:text-halvi-400 mb-4" />
           <h3 className="text-xl font-bold mb-2">Unlimited Referrals</h3>
           <p className="text-gray-600 dark:text-gray-300">
-            No cap on how many businesses you can refer or how much you can earn.
+            No cap on how many businesses you can refer and earn from.
           </p>
         </motion.div>
       </div>
@@ -116,7 +116,7 @@ const RegularAffiliate = () => {
             </div>
             <h3 className="font-semibold mb-2">Get Paid</h3>
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Earn 20% commission on platform fees for a full year for each successful referral.
+              Earn 20% commission on orders from your referred businesses (up to 40K orders each).
             </p>
           </motion.div>
         </div>
@@ -125,7 +125,7 @@ const RegularAffiliate = () => {
       <div className="text-center">
         <h2 className="text-2xl font-bold mb-6">Join Our Affiliate Program</h2>
         <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-          Our affiliates earn an average of $400 per successful business referral. With no cap on the number of businesses you can refer, your earning potential is limitless.
+          Earn passive income by referring businesses to Halvi. With 20% commission on up to 40,000 orders per business, your earning potential is substantial.
         </p>
         <Button asChild size="lg" className="rounded-full px-8 bg-gradient-to-r from-amber-500 to-orange-600">
           <a href="#apply">Apply as Affiliate</a>
