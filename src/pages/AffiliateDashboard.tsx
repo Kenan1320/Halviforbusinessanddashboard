@@ -450,7 +450,7 @@ export default function AffiliateDashboard() {
                 <CardContent>
                   <div className="h-[300px] flex items-center justify-center">
                     <div className="text-center space-y-2">
-                      <BarChart3 className="h-8 w-8 text-amber-500 mx-auto" />
+                      <BarChart className="h-8 w-8 text-amber-500 mx-auto" />
                       <p className="text-sm text-gray-500">Earnings data visualization</p>
                       <p className="text-xs text-gray-400">(This is a placeholder in guest mode)</p>
                     </div>
@@ -601,14 +601,11 @@ export default function AffiliateDashboard() {
                     </div>
                   </div>
                 </CardContent>
-                <CardFooter className="flex flex-col gap-2 items-center">
+                <CardFooter>
                   <Button className="w-full bg-gradient-to-r from-amber-500 to-orange-600">
-                    Register for Next Challenge
+                    <CircleDot className="mr-2 h-4 w-4" />
+                    View Live Challenge
                   </Button>
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-sm text-gray-600">8 spots filled, 2 remaining</span>
-                  </div>
                 </CardFooter>
               </Card>
               
@@ -649,39 +646,217 @@ export default function AffiliateDashboard() {
                   </div>
                 </CardContent>
               </Card>
-            </TabsContent>
-
-            {/* Resources Tab */}
-            <TabsContent value="resources" className="space-y-8">
-              <Card>
+              
+              <Card className="bg-gradient-to-r from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20">
                 <CardHeader>
-                  <CardTitle>Marketing Resources</CardTitle>
+                  <CardTitle>Special Affiliate Benefits</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-gray-500 mb-4">
-                    Access marketing materials to help you promote Halvi to potential businesses.
-                  </p>
-                  <div className="grid gap-4">
-                    <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
-                      <h4 className="font-medium mb-2">Affiliate Marketing Guide</h4>
-                      <p className="text-sm text-gray-500 mb-3">Learn proven strategies to get more businesses to join.</p>
-                      <Button variant="outline" size="sm">Download PDF</Button>
-                    </div>
-                    <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
-                      <h4 className="font-medium mb-2">Social Media Templates</h4>
-                      <p className="text-sm text-gray-500 mb-3">Ready-to-use posts for promoting your referral link.</p>
-                      <Button variant="outline" size="sm">Access Templates</Button>
-                    </div>
-                    <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
-                      <h4 className="font-medium mb-2">Email Templates</h4>
-                      <p className="text-sm text-gray-500 mb-3">Professional emails to send to potential business partners.</p>
-                      <Button variant="outline" size="sm">View Templates</Button>
-                    </div>
-                  </div>
+                  <ul className="space-y-3">
+                    <li className="flex items-start">
+                      <div className="mr-3 mt-1 bg-amber-100 dark:bg-amber-900/30 p-1 rounded-full">
+                        <CheckCircle2 className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <div>
+                        <strong className="font-medium">Double Commission Rate</strong>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">
+                          Earn 40% of Halvi's profit from every referred business (vs standard 20%)
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="mr-3 mt-1 bg-amber-100 dark:bg-amber-900/30 p-1 rounded-full">
+                        <CheckCircle2 className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <div>
+                        <strong className="font-medium">Extended Duration</strong>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">
+                          Special Affiliate status lasts for 16 months from the date earned
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="mr-3 mt-1 bg-amber-100 dark:bg-amber-900/30 p-1 rounded-full">
+                        <CheckCircle2 className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <div>
+                        <strong className="font-medium">Priority Support</strong>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">
+                          Get dedicated support and priority responses for your referrals
+                        </p>
+                      </div>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="mr-3 mt-1 bg-amber-100 dark:bg-amber-900/30 p-1 rounded-full">
+                        <CheckCircle2 className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                      </div>
+                      <div>
+                        <strong className="font-medium">Exclusive Resources</strong>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">
+                          Access exclusive marketing materials and strategies
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
                 </CardContent>
               </Card>
             </TabsContent>
-
+            
+            {/* Resources Tab */}
+            <TabsContent value="resources" className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Marketing Materials</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-500 mb-4">
+                      Download professional marketing materials to help promote Halvi to potential businesses.
+                    </p>
+                    <ul className="space-y-3">
+                      <li>
+                        <Button variant="outline" className="w-full justify-start">
+                          <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                            <polyline points="14 2 14 8 20 8" />
+                          </svg>
+                          Halvi Business Brochure
+                        </Button>
+                      </li>
+                      <li>
+                        <Button variant="outline" className="w-full justify-start">
+                          <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <circle cx="8.5" cy="8.5" r="1.5" />
+                            <polyline points="21 15 16 10 5 21" />
+                          </svg>
+                          Logo Pack & Brand Assets
+                        </Button>
+                      </li>
+                      <li>
+                        <Button variant="outline" className="w-full justify-start">
+                          <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                            <line x1="16" y1="2" x2="16" y2="6" />
+                            <line x1="8" y1="2" x2="8" y2="6" />
+                            <line x1="3" y1="10" x2="21" y2="10" />
+                          </svg>
+                          Email Templates
+                        </Button>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+                
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Video Tutorials</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-500 mb-4">
+                      Learn how to maximize your earning potential as a Halvi affiliate.
+                    </p>
+                    <ul className="space-y-3">
+                      <li>
+                        <Button variant="outline" className="w-full justify-start">
+                          <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polygon points="23 7 16 12 23 17 23 7" />
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                          </svg>
+                          Getting Started Guide
+                        </Button>
+                      </li>
+                      <li>
+                        <Button variant="outline" className="w-full justify-start">
+                          <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polygon points="23 7 16 12 23 17 23 7" />
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                          </svg>
+                          Referral Best Practices
+                        </Button>
+                      </li>
+                      <li>
+                        <Button variant="outline" className="w-full justify-start">
+                          <svg className="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polygon points="23 7 16 12 23 17 23 7" />
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                          </svg>
+                          Dashboard Tutorial
+                        </Button>
+                      </li>
+                    </ul>
+                  </CardContent>
+                </Card>
+                
+                <Card>
+                  <CardHeader>
+                    <CardTitle>FAQs</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-500 mb-4">
+                      Find answers to common questions about the Halvi Affiliate Program.
+                    </p>
+                    <div className="space-y-3">
+                      <details className="text-sm">
+                        <summary className="font-medium cursor-pointer">How much can I earn?</summary>
+                        <p className="mt-2 text-gray-500 pl-4">
+                          Regular affiliates earn 20% of Halvi's profit from every business they refer, up to $40,000 in orders. Special Affiliates earn 40% for 16 months.
+                        </p>
+                      </details>
+                      <Separator />
+                      <details className="text-sm">
+                        <summary className="font-medium cursor-pointer">When do I get paid?</summary>
+                        <p className="mt-2 text-gray-500 pl-4">
+                          Payments are processed monthly on the 10th of each month for the previous month's activity.
+                        </p>
+                      </details>
+                      <Separator />
+                      <details className="text-sm">
+                        <summary className="font-medium cursor-pointer">How do challenges work?</summary>
+                        <p className="mt-2 text-gray-500 pl-4">
+                          Challenges last 4 days with 10 participants. The affiliate who refers the most new businesses wins Special Affiliate status.
+                        </p>
+                      </details>
+                      <Separator />
+                      <details className="text-sm">
+                        <summary className="font-medium cursor-pointer">Can I refer multiple businesses?</summary>
+                        <p className="mt-2 text-gray-500 pl-4">
+                          Yes! There's no limit to how many businesses you can refer. Each successful referral generates commission for you.
+                        </p>
+                      </details>
+                    </div>
+                  </CardContent>
+                  <CardFooter>
+                    <Button variant="link" className="w-full">View All FAQs</Button>
+                  </CardFooter>
+                </Card>
+              </div>
+              
+              <Card>
+                <CardHeader>
+                  <CardTitle>Contact Support</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-500 mb-4">
+                    Need assistance? Our dedicated affiliate support team is here to help you.
+                  </p>
+                  <div className="grid gap-4">
+                    <div>
+                      <label className="text-sm font-medium">Subject</label>
+                      <input type="text" className="w-full mt-1 p-2 border border-gray-200 dark:border-gray-700 rounded-md" placeholder="What do you need help with?" />
+                    </div>
+                    <div>
+                      <label className="text-sm font-medium">Message</label>
+                      <textarea className="w-full mt-1 p-2 border border-gray-200 dark:border-gray-700 rounded-md h-24" placeholder="Describe your issue or question..."></textarea>
+                    </div>
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button className="w-full">Submit Support Request</Button>
+                </CardFooter>
+              </Card>
+            </TabsContent>
+            
             {/* Settings Tab */}
             <TabsContent value="settings" className="space-y-8">
               <Card>
@@ -689,47 +864,115 @@ export default function AffiliateDashboard() {
                   <CardTitle>Account Settings</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-gray-500 mb-4">
-                    Manage your affiliate account settings and preferences.
-                  </p>
-                  <div className="grid gap-6">
-                    <div>
-                      <h4 className="text-sm font-medium mb-2">Profile Information</h4>
-                      <div className="grid gap-4">
-                        <div>
-                          <label className="text-sm font-medium mb-1 block">Name</label>
-                          <input type="text" className="w-full p-2 border border-gray-200 dark:border-gray-700 rounded-md" value="Guest User" disabled />
-                        </div>
-                        <div>
-                          <label className="text-sm font-medium mb-1 block">Email</label>
-                          <input type="email" className="w-full p-2 border border-gray-200 dark:border-gray-700 rounded-md" value="guest@example.com" disabled />
+                  <div className="space-y-6">
+                    <div className="flex flex-col md:flex-row md:items-center gap-4 pb-6 border-b dark:border-gray-700">
+                      <div className="md:w-1/4">
+                        <Avatar className="h-16 w-16">
+                          <AvatarImage src="" />
+                          <AvatarFallback className="bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 text-xl">G</AvatarFallback>
+                        </Avatar>
+                      </div>
+                      <div className="md:w-3/4 space-y-2">
+                        <h3 className="font-medium">Profile Photo</h3>
+                        <p className="text-sm text-gray-500">Upload a profile photo to personalize your account.</p>
+                        <div className="flex gap-2">
+                          <Button variant="outline" size="sm">Upload</Button>
+                          <Button variant="ghost" size="sm">Remove</Button>
                         </div>
                       </div>
                     </div>
-                    <Separator />
-                    <div>
-                      <h4 className="text-sm font-medium mb-2">Notification Settings</h4>
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm">New referral notifications</span>
-                          <input type="checkbox" defaultChecked disabled className="rounded text-amber-500" />
+                    
+                    <div className="flex flex-col md:flex-row md:items-center gap-4 pb-6 border-b dark:border-gray-700">
+                      <div className="md:w-1/4">
+                        <h3 className="font-medium">Personal Information</h3>
+                      </div>
+                      <div className="md:w-3/4 grid gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className="text-sm font-medium">First Name</label>
+                            <input type="text" className="w-full mt-1 p-2 border border-gray-200 dark:border-gray-700 rounded-md" placeholder="Guest" />
+                          </div>
+                          <div>
+                            <label className="text-sm font-medium">Last Name</label>
+                            <input type="text" className="w-full mt-1 p-2 border border-gray-200 dark:border-gray-700 rounded-md" placeholder="User" />
+                          </div>
                         </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm">Payment notifications</span>
-                          <input type="checkbox" defaultChecked disabled className="rounded text-amber-500" />
+                        <div>
+                          <label className="text-sm font-medium">Email</label>
+                          <input type="email" className="w-full mt-1 p-2 border border-gray-200 dark:border-gray-700 rounded-md" placeholder="guest@example.com" />
                         </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm">Challenge updates</span>
-                          <input type="checkbox" defaultChecked disabled className="rounded text-amber-500" />
+                        <div>
+                          <label className="text-sm font-medium">Phone Number</label>
+                          <input type="tel" className="w-full mt-1 p-2 border border-gray-200 dark:border-gray-700 rounded-md" placeholder="+1 (555) 123-4567" />
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex flex-col md:flex-row md:items-center gap-4 pb-6 border-b dark:border-gray-700">
+                      <div className="md:w-1/4">
+                        <h3 className="font-medium">Payment Information</h3>
+                      </div>
+                      <div className="md:w-3/4 grid gap-4">
+                        <div>
+                          <label className="text-sm font-medium">Payment Method</label>
+                          <select className="w-full mt-1 p-2 border border-gray-200 dark:border-gray-700 rounded-md bg-white dark:bg-gray-900">
+                            <option>Bank Transfer</option>
+                            <option>PayPal</option>
+                            <option>Check</option>
+                          </select>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className="text-sm font-medium">Bank Name</label>
+                            <input type="text" className="w-full mt-1 p-2 border border-gray-200 dark:border-gray-700 rounded-md" placeholder="Bank Name" />
+                          </div>
+                          <div>
+                            <label className="text-sm font-medium">Account Number</label>
+                            <input type="text" className="w-full mt-1 p-2 border border-gray-200 dark:border-gray-700 rounded-md" placeholder="●●●●●●●●1234" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="flex flex-col md:flex-row md:items-center gap-4">
+                      <div className="md:w-1/4">
+                        <h3 className="font-medium">Notifications</h3>
+                      </div>
+                      <div className="md:w-3/4 space-y-4">
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <p className="font-medium">Email Notifications</p>
+                            <p className="text-sm text-gray-500">Receive updates about your referrals and earnings</p>
+                          </div>
+                          <div>
+                            <input type="checkbox" checked className="h-4 w-4 rounded border-gray-300 text-amber-500 focus:ring-amber-500" />
+                          </div>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <p className="font-medium">SMS Notifications</p>
+                            <p className="text-sm text-gray-500">Get text alerts for important updates</p>
+                          </div>
+                          <div>
+                            <input type="checkbox" className="h-4 w-4 rounded border-gray-300 text-amber-500 focus:ring-amber-500" />
+                          </div>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <div>
+                            <p className="font-medium">Challenge Reminders</p>
+                            <p className="text-sm text-gray-500">Get notified about upcoming challenges</p>
+                          </div>
+                          <div>
+                            <input type="checkbox" checked className="h-4 w-4 rounded border-gray-300 text-amber-500 focus:ring-amber-500" />
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </CardContent>
-                <CardFooter>
-                  <Button disabled className="w-full">
-                    Save Changes (Login Required)
-                  </Button>
+                <CardFooter className="flex justify-end">
+                  <Button variant="outline" className="mr-2">Cancel</Button>
+                  <Button>Save Changes</Button>
                 </CardFooter>
               </Card>
             </TabsContent>
