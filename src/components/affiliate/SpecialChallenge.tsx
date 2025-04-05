@@ -83,11 +83,6 @@ const SpecialChallenge = ({ daysRemaining, challenges }: SpecialChallengeProps) 
               </table>
             </div>
           </div>
-          <div className="bg-amber-50 dark:bg-amber-900/20 p-4 text-center">
-            <p className="text-amber-800 dark:text-amber-300 font-medium">
-              Need just 9 referrals to take the lead and win Special Affiliate status!
-            </p>
-          </div>
         </div>
         
         <div className="text-center">
