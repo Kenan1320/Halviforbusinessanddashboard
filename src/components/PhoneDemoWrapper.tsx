@@ -1,12 +1,20 @@
 
 import React from "react";
 import AutoSwipeDemo from "./AutoSwipeDemo";
+import { useLocation } from "react-router-dom";
 
 interface PhoneDemoWrapperProps {
   children?: React.ReactNode;
 }
 
 export default function PhoneDemoWrapper({ children }: PhoneDemoWrapperProps) {
+  const location = useLocation();
+  
+  // Don't show phone demo on the affiliate page
+  if (location.pathname === "/affiliates" || location.pathname === "/affiliate") {
+    return <div>{children}</div>;
+  }
+  
   return (
     <div className="relative">
       {/* The phone demo */}

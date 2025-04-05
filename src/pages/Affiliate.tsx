@@ -1,22 +1,77 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Toaster, toast } from "sonner";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, DollarSign, Users, TrendingUp, Share2, ChevronDown, Clock, Award, Zap } from "lucide-react";
+import { ArrowRight, DollarSign, Users, TrendingUp, Share2, ChevronDown, Clock, Award, Zap, LogIn } from "lucide-react";
 import AuroraBackground from "@/components/AuroraBackground";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import PhoneDemoWrapper from "@/components/PhoneDemoWrapper";
 import GlassCard from "@/components/GlassCard";
 import VibratingButton from "@/components/VibratingButton";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Affiliate() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [countdownTime, setCountdownTime] = useState({
+    days: 3,
+    hours: 12,
+    minutes: 45,
+    seconds: 33
+  });
+  const [registeredCount, setRegisteredCount] = useState(7);
+  const [activeTab, setActiveTab] = useState("challenge");
+
+  // Rolling countdown effect
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdownTime(prevTime => {
+        let newSeconds = prevTime.seconds - 1;
+        let newMinutes = prevTime.minutes;
+        let newHours = prevTime.hours;
+        let newDays = prevTime.days;
+
+        if (newSeconds < 0) {
+          newSeconds = 59;
+          newMinutes -= 1;
+        }
+
+        if (newMinutes < 0) {
+          newMinutes = 59;
+          newHours -= 1;
+        }
+
+        if (newHours < 0) {
+          newHours = 23;
+          newDays -= 1;
+        }
+
+        if (newDays < 0) {
+          // Reset to next challenge
+          return {
+            days: 3,
+            hours: 12,
+            minutes: 45,
+            seconds: 33
+          };
+        }
+
+        return {
+          days: newDays,
+          hours: newHours,
+          minutes: newMinutes,
+          seconds: newSeconds
+        };
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const benefits = [
     {
@@ -65,22 +120,77 @@ export default function Affiliate() {
       <Navbar />
       
       <AuroraBackground>
-        <section className="pt-24 pb-16 px-4">
+        <section className="pt-20 pb-16 px-4">
           <div className="container mx-auto max-w-6xl">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Halvi Affiliate Program</h1>
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <div className="text-center mb-8">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-600">
+                Halvi Affiliate Program
+              </h1>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
                 Earn passive income by referring businesses to Halvi's platform.
                 Join our affiliate program and earn up to 40% of our profit share.
               </p>
               
-              <div className="mt-8">
-                <VibratingButton 
-                  text="Become an Affiliate - Passive Income" 
-                  link="#apply-now"
-                  className="shadow-lg shadow-amber-500/20"
-                />
-              </div>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button 
+                    size="lg" 
+                    className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-6 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse"
+                  >
+                    Access Your Dashboard - Track Your Earnings <LogIn className="ml-2" />
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Access Your Dashboard</DialogTitle>
+                    <DialogDescription>
+                      If you've received your login credentials via email after submitting an application, you can access your dashboard to track earnings.
+                    </DialogDescription>
+                  </DialogHeader>
+                  <div className="grid gap-4 py-4">
+                    <div className="grid grid-cols-1 gap-4">
+                      <div>
+                        <label htmlFor="email" className="block text-sm font-medium mb-1">
+                          Email
+                        </label>
+                        <Input id="email" type="email" placeholder="your@email.com" />
+                      </div>
+                      <div>
+                        <label htmlFor="password" className="block text-sm font-medium mb-1">
+                          Password
+                        </label>
+                        <Input id="password" type="password" placeholder="••••••••" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex justify-between">
+                    <Button variant="outline">Cancel</Button>
+                    <Button className="bg-gradient-to-r from-amber-500 to-orange-600">
+                      Login
+                    </Button>
+                  </div>
+                  <div className="text-center text-sm text-gray-500 mt-4">
+                    Haven't applied yet? <Link to="#apply-now" className="text-amber-500 hover:underline">Apply now</Link>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </div>
+
+            <div className="mt-10 mb-8">
+              <Tabs 
+                defaultValue={activeTab} 
+                onValueChange={setActiveTab}
+                className="max-w-4xl mx-auto"
+              >
+                <TabsList className="grid grid-cols-2 w-full bg-white/10 backdrop-blur-md dark:bg-gray-950/50 rounded-full p-1">
+                  <TabsTrigger value="challenge" className="rounded-full py-3 text-base font-medium">
+                    4-Day Special Challenge
+                  </TabsTrigger>
+                  <TabsTrigger value="regular" className="rounded-full py-3 text-base font-medium">
+                    Regular Affiliate Program
+                  </TabsTrigger>
+                </TabsList>
+              </Tabs>
             </div>
           </div>
         </section>
@@ -95,7 +205,7 @@ export default function Affiliate() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {benefits.map((benefit, index) => (
               <motion.div 
                 key={index}
@@ -103,167 +213,199 @@ export default function Affiliate() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm"
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-all"
               >
-                <div className="flex items-start">
-                  <div className="mr-4 p-2 bg-halvi-50 dark:bg-halvi-900/30 rounded-lg text-halvi-600 dark:text-halvi-300">
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-4 p-3 bg-gradient-to-br from-amber-100 to-orange-200 dark:from-amber-900/30 dark:to-orange-800/30 rounded-lg text-amber-600 dark:text-amber-300">
                     {benefit.icon}
                   </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
-                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
                 </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
-      
-      <section className="py-16 px-4 bg-white dark:bg-gray-950">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">The 4-Day Challenge</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Compete with other affiliates and earn Special Affiliate status
-            </p>
-          </div>
-          
-          <GlassCard className="mb-12 p-8 bg-gradient-to-r from-amber-500/10 to-orange-500/10 dark:from-amber-900/20 dark:to-orange-900/20">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-2xl font-bold mb-4">Challenge Overview</h3>
-                <ul className="space-y-4">
-                  <li className="flex items-start">
-                    <Zap className="h-5 w-5 text-amber-500 mt-1 mr-2 flex-shrink-0" />
-                    <span>10 affiliates compete over 4 days</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="h-5 w-5 text-amber-500 mt-1 mr-2 flex-shrink-0" />
-                    <span>Refer the most new businesses to win</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="h-5 w-5 text-amber-500 mt-1 mr-2 flex-shrink-0" />
-                    <span>Winner earns Special Affiliate status</span>
-                  </li>
-                  <li className="flex items-start">
-                    <Zap className="h-5 w-5 text-amber-500 mt-1 mr-2 flex-shrink-0" />
-                    <span>Special Affiliates earn 40% of Halvi's profit for 16 months</span>
-                  </li>
-                </ul>
-                
-                <div className="mt-8">
-                  <h4 className="text-lg font-semibold mb-2">Next Challenge Begins:</h4>
-                  <div className="flex space-x-4 mb-4">
-                    <div className="bg-gradient-to-b from-amber-500 to-orange-600 text-white py-2 px-4 rounded-md flex flex-col items-center">
-                      <span className="text-2xl font-bold">03</span>
-                      <span className="text-xs">Days</span>
+
+      {activeTab === "challenge" && (
+        <section className="py-16 px-4 bg-white dark:bg-gray-950">
+          <div className="container mx-auto max-w-6xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">The 4-Day Challenge</h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                Compete with other affiliates and earn Special Affiliate status
+              </p>
+            </div>
+            
+            <GlassCard className="mb-12 p-8 bg-gradient-to-r from-amber-500/10 to-orange-500/10 dark:from-amber-900/20 dark:to-orange-900/20">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Challenge Overview</h3>
+                  <ul className="space-y-4">
+                    <li className="flex items-start">
+                      <Zap className="h-5 w-5 text-amber-500 mt-1 mr-2 flex-shrink-0" />
+                      <span>10 affiliates compete over 4 days</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Zap className="h-5 w-5 text-amber-500 mt-1 mr-2 flex-shrink-0" />
+                      <span>Refer the most new businesses to win</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Zap className="h-5 w-5 text-amber-500 mt-1 mr-2 flex-shrink-0" />
+                      <span>Winner earns Special Affiliate status</span>
+                    </li>
+                    <li className="flex items-start">
+                      <Zap className="h-5 w-5 text-amber-500 mt-1 mr-2 flex-shrink-0" />
+                      <span>Special Affiliates earn 40% of Halvi's profit for 16 months</span>
+                    </li>
+                  </ul>
+                  
+                  <div className="mt-8">
+                    <h4 className="text-lg font-semibold mb-4">Next Challenge Begins:</h4>
+                    <div className="flex space-x-4 mb-6">
+                      {/* Days counter with rolling effect */}
+                      <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
+                        <span className="text-2xl font-bold relative z-10">{String(countdownTime.days).padStart(2, '0')}</span>
+                        <span className="text-xs relative z-10">Days</span>
+                        <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
+                      </div>
+                      
+                      {/* Hours counter with rolling effect */}
+                      <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
+                        <span className="text-2xl font-bold relative z-10">{String(countdownTime.hours).padStart(2, '0')}</span>
+                        <span className="text-xs relative z-10">Hours</span>
+                        <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
+                      </div>
+                      
+                      {/* Minutes counter with rolling effect */}
+                      <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
+                        <span className="text-2xl font-bold relative z-10">{String(countdownTime.minutes).padStart(2, '0')}</span>
+                        <span className="text-xs relative z-10">Minutes</span>
+                        <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
+                      </div>
+                      
+                      {/* Seconds counter with rolling effect */}
+                      <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
+                        <span className="text-2xl font-bold relative z-10 animate-pulse">{String(countdownTime.seconds).padStart(2, '0')}</span>
+                        <span className="text-xs relative z-10">Seconds</span>
+                        <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
+                      </div>
                     </div>
-                    <div className="bg-gradient-to-b from-amber-500 to-orange-600 text-white py-2 px-4 rounded-md flex flex-col items-center">
-                      <span className="text-2xl font-bold">12</span>
-                      <span className="text-xs">Hours</span>
-                    </div>
-                    <div className="bg-gradient-to-b from-amber-500 to-orange-600 text-white py-2 px-4 rounded-md flex flex-col items-center">
-                      <span className="text-2xl font-bold">45</span>
-                      <span className="text-xs">Minutes</span>
-                    </div>
-                    <div className="bg-gradient-to-b from-amber-500 to-orange-600 text-white py-2 px-4 rounded-md flex flex-col items-center">
-                      <span className="text-2xl font-bold">33</span>
-                      <span className="text-xs">Seconds</span>
+                    
+                    <div className="flex flex-col space-y-3">
+                      <Button className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700">
+                        Register for Next Challenge ({registeredCount}/10 spots filled)
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                      
+                      <p className="text-sm text-gray-500">
+                        Challenge opens at 7:00 AM on the 4th day. Limited to 10 participants only.
+                      </p>
                     </div>
                   </div>
-                  
-                  <Button className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700">
-                    Register for Next Challenge
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
+                </div>
+                
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
+                  <h3 className="text-2xl font-bold mb-4 text-center">Current Leaderboard</h3>
+                  <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
+                    <table className="w-full text-sm">
+                      <thead className="bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-900/20 dark:to-orange-800/20">
+                        <tr>
+                          <th className="py-3 px-4 text-left font-medium">Rank</th>
+                          <th className="py-3 px-4 text-left font-medium">Name</th>
+                          <th className="py-3 px-4 text-left font-medium">Stores</th>
+                          <th className="py-3 px-4 text-left font-medium">Value</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+                        <tr className="bg-amber-50 dark:bg-amber-900/20">
+                          <td className="py-3 px-4 font-medium">1</td>
+                          <td className="py-3 px-4 font-medium">Sarah J.</td>
+                          <td className="py-3 px-4">8</td>
+                          <td className="py-3 px-4">$12,450</td>
+                        </tr>
+                        <tr>
+                          <td className="py-3 px-4 font-medium">2</td>
+                          <td className="py-3 px-4">Ahmad M.</td>
+                          <td className="py-3 px-4">7</td>
+                          <td className="py-3 px-4">$10,320</td>
+                        </tr>
+                        <tr>
+                          <td className="py-3 px-4 font-medium">3</td>
+                          <td className="py-3 px-4">Priya K.</td>
+                          <td className="py-3 px-4">6</td>
+                          <td className="py-3 px-4">$9,150</td>
+                        </tr>
+                        <tr>
+                          <td className="py-3 px-4 font-medium">4</td>
+                          <td className="py-3 px-4">John D.</td>
+                          <td className="py-3 px-4">5</td>
+                          <td className="py-3 px-4">$7,200</td>
+                        </tr>
+                        <tr>
+                          <td className="py-3 px-4 font-medium">5</td>
+                          <td className="py-3 px-4">Leila H.</td>
+                          <td className="py-3 px-4">3</td>
+                          <td className="py-3 px-4">$5,830</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="text-sm text-gray-500 mt-2 text-center">Updated every minute</p>
                 </div>
               </div>
-              
-              <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
-                <h3 className="text-2xl font-bold mb-4 text-center">Current Leaderboard</h3>
-                <div className="overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
-                  <table className="w-full text-sm">
-                    <thead className="bg-gray-100 dark:bg-gray-800">
-                      <tr>
-                        <th className="py-3 px-4 text-left font-medium">Rank</th>
-                        <th className="py-3 px-4 text-left font-medium">Name</th>
-                        <th className="py-3 px-4 text-left font-medium">Stores</th>
-                        <th className="py-3 px-4 text-left font-medium">Value</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-                      <tr className="bg-amber-50 dark:bg-amber-900/20">
-                        <td className="py-3 px-4 font-medium">1</td>
-                        <td className="py-3 px-4 font-medium">Sarah J.</td>
-                        <td className="py-3 px-4">8</td>
-                        <td className="py-3 px-4">$12,450</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 px-4 font-medium">2</td>
-                        <td className="py-3 px-4">Ahmad M.</td>
-                        <td className="py-3 px-4">7</td>
-                        <td className="py-3 px-4">$10,320</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 px-4 font-medium">3</td>
-                        <td className="py-3 px-4">Priya K.</td>
-                        <td className="py-3 px-4">6</td>
-                        <td className="py-3 px-4">$9,150</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 px-4 font-medium">4</td>
-                        <td className="py-3 px-4">John D.</td>
-                        <td className="py-3 px-4">5</td>
-                        <td className="py-3 px-4">$7,200</td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 px-4 font-medium">5</td>
-                        <td className="py-3 px-4">Leila H.</td>
-                        <td className="py-3 px-4">3</td>
-                        <td className="py-3 px-4">$5,830</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <p className="text-sm text-gray-500 mt-2 text-center">Updated every minute</p>
-              </div>
-            </div>
-          </GlassCard>
-        </div>
-      </section>
-      
-      <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Affiliate Dashboard Preview</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Get access to powerful tools to track and optimize your referrals
-            </p>
+            </GlassCard>
           </div>
-          
-          <PhoneDemoWrapper>
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-              <GlassCard>
-                <h3 className="text-xl font-bold mb-4">Track Earnings</h3>
-                <p className="text-gray-600 dark:text-gray-300">Monitor your commission earnings in real-time with detailed analytics.</p>
+        </section>
+      )}
+      
+      {activeTab === "regular" && (
+        <section className="py-16 px-4 bg-white dark:bg-gray-950">
+          <div className="container mx-auto max-w-6xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Regular Affiliate Program</h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+                Earn 20% commission on every business you refer to Halvi
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+              <GlassCard className="p-6 hover:shadow-lg transition-all">
+                <div className="bg-amber-100 dark:bg-amber-900/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <Share2 className="h-8 w-8 text-amber-600 dark:text-amber-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-center">Share Your Link</h3>
+                <p className="text-center text-gray-600 dark:text-gray-300">
+                  Get your unique referral link after applying and share it with potential businesses
+                </p>
               </GlassCard>
               
-              <GlassCard>
-                <h3 className="text-xl font-bold mb-4">Manage Referrals</h3>
-                <p className="text-gray-600 dark:text-gray-300">Keep track of all businesses you've referred and their current status.</p>
+              <GlassCard className="p-6 hover:shadow-lg transition-all">
+                <div className="bg-amber-100 dark:bg-amber-900/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <Users className="h-8 w-8 text-amber-600 dark:text-amber-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-center">Businesses Sign Up</h3>
+                <p className="text-center text-gray-600 dark:text-gray-300">
+                  When businesses use your link to join Halvi, they're automatically tracked as your referrals
+                </p>
               </GlassCard>
               
-              <GlassCard>
-                <h3 className="text-xl font-bold mb-4">Get Marketing Tools</h3>
-                <p className="text-gray-600 dark:text-gray-300">Access custom links, promotional materials, and conversion tracking.</p>
+              <GlassCard className="p-6 hover:shadow-lg transition-all">
+                <div className="bg-amber-100 dark:bg-amber-900/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                  <DollarSign className="h-8 w-8 text-amber-600 dark:text-amber-400" />
+                </div>
+                <h3 className="text-xl font-bold mb-2 text-center">Earn Commissions</h3>
+                <p className="text-center text-gray-600 dark:text-gray-300">
+                  Earn 20% of Halvi's profit from each referred business, up to $40K in orders
+                </p>
               </GlassCard>
             </div>
-          </PhoneDemoWrapper>
-        </div>
-      </section>
+          </div>
+        </section>
+      )}
       
-      <section id="apply-now" className="py-16 px-4 bg-white dark:bg-gray-950">
+      <section id="apply-now" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
@@ -306,7 +448,7 @@ export default function Affiliate() {
                     className="flex"
                   >
                     <div className="mr-6 flex-shrink-0">
-                      <span className="text-3xl font-bold text-halvi-500 dark:text-halvi-400">{step.number}</span>
+                      <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-orange-500">{step.number}</span>
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
@@ -410,7 +552,7 @@ export default function Affiliate() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+      <section className="py-16 px-4 bg-white dark:bg-gray-950">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center">
             <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
