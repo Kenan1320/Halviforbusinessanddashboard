@@ -27,33 +27,61 @@ const SpecialChallenge = ({ daysRemaining, challenges }: SpecialChallengeProps) 
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
-            <Trophy className="h-10 w-10 text-amber-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">40% Commission</h3>
-            <p className="text-gray-600 dark:text-gray-300">
-              Double the standard rate on all orders from your referrals for 16 months.
-            </p>
-          </div>
+        <div className="relative">
+          <div className="absolute left-8 h-full w-0.5 bg-gradient-to-b from-amber-300 to-orange-300 z-0"></div>
           
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
-            <Clock className="h-10 w-10 text-amber-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">{daysRemaining} Days Remaining</h3>
-            <p className="text-gray-600 dark:text-gray-300">
-              The challenge ends soon! Don't miss your chance to participate.
-            </p>
-          </div>
-          
-          <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm">
-            <DollarSign className="h-10 w-10 text-amber-500 mb-4" />
-            <h3 className="text-xl font-bold mb-2">All Orders for 16 Months</h3>
-            <p className="text-gray-600 dark:text-gray-300">
-              Earn commissions on all orders from each referred business for 16 months.
-            </p>
+          <div className="space-y-16 relative z-10 pl-16">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute -left-16 bg-amber-100 rounded-full p-3 border border-amber-200">
+                <Trophy className="h-6 w-6 text-amber-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">40% Commission</h3>
+              <p className="text-gray-600 dark:text-gray-300 max-w-xl">
+                Double the standard rate on all orders from your referrals for 16 months. This special rate applies to all orders placed through businesses you refer during this period.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute -left-16 bg-amber-100 rounded-full p-3 border border-amber-200">
+                <Clock className="h-6 w-6 text-amber-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">{daysRemaining} Days Remaining</h3>
+              <p className="text-gray-600 dark:text-gray-300 max-w-xl">
+                The challenge ends soon! Don't miss your chance to participate. Refer businesses quickly to increase your chances of winning.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="absolute -left-16 bg-amber-100 rounded-full p-3 border border-amber-200">
+                <DollarSign className="h-6 w-6 text-amber-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">All Orders for 16 Months</h3>
+              <p className="text-gray-600 dark:text-gray-300 max-w-xl">
+                Earn commissions on all orders from each referred business for 16 months, with no limit on the number of orders. This can result in substantial passive income.
+              </p>
+            </motion.div>
           </div>
         </div>
         
-        <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow mb-8">
+        <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow mt-16 mb-8">
           <div className="p-6">
             <h3 className="text-xl font-bold mb-4">Current Leaderboard</h3>
             <div className="overflow-x-auto">
