@@ -13,7 +13,7 @@ export default function PhoneDemoWrapper({ children }: PhoneDemoWrapperProps) {
       <AutoSwipeDemo />
       
       {/* Increased space buffer to prevent content overlap - doubled from before */}
-      <div className="h-96 md:h-128"></div>
+      <div className="h-[192px] md:h-[256px]"></div>
       
       {/* Optional additional content */}
       {children}

@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import AuroraBackground from "./AuroraBackground";
 import { Calendar } from "lucide-react";
 import BusinessModeSelector from "./BusinessModeSelector";
+import VibratingButton from "./VibratingButton";
 
 export function Hero() {
   return (
@@ -93,6 +94,15 @@ export function Hero() {
                   Schedule your Onboarding Meeting
                 </Link>
               </Button>
+              
+              {/* Vibrating Affiliate Button */}
+              <div className="mt-4">
+                <VibratingButton 
+                  text="Become an Affiliate - Passive Income" 
+                  link="/affiliates"
+                  className="shadow-lg shadow-amber-500/20"
+                />
+              </div>
             </div>
           </div>
         </motion.div>
