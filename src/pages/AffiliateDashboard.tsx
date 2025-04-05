@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Toaster, toast } from "sonner";
 import { motion } from "framer-motion";
@@ -646,3 +647,95 @@ export default function AffiliateDashboard() {
                       </tbody>
                     </table>
                   </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Resources Tab */}
+            <TabsContent value="resources" className="space-y-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Marketing Resources</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-500 mb-4">
+                    Access marketing materials to help you promote Halvi to potential businesses.
+                  </p>
+                  <div className="grid gap-4">
+                    <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                      <h4 className="font-medium mb-2">Affiliate Marketing Guide</h4>
+                      <p className="text-sm text-gray-500 mb-3">Learn proven strategies to get more businesses to join.</p>
+                      <Button variant="outline" size="sm">Download PDF</Button>
+                    </div>
+                    <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                      <h4 className="font-medium mb-2">Social Media Templates</h4>
+                      <p className="text-sm text-gray-500 mb-3">Ready-to-use posts for promoting your referral link.</p>
+                      <Button variant="outline" size="sm">Access Templates</Button>
+                    </div>
+                    <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg">
+                      <h4 className="font-medium mb-2">Email Templates</h4>
+                      <p className="text-sm text-gray-500 mb-3">Professional emails to send to potential business partners.</p>
+                      <Button variant="outline" size="sm">View Templates</Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Settings Tab */}
+            <TabsContent value="settings" className="space-y-8">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Account Settings</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-gray-500 mb-4">
+                    Manage your affiliate account settings and preferences.
+                  </p>
+                  <div className="grid gap-6">
+                    <div>
+                      <h4 className="text-sm font-medium mb-2">Profile Information</h4>
+                      <div className="grid gap-4">
+                        <div>
+                          <label className="text-sm font-medium mb-1 block">Name</label>
+                          <input type="text" className="w-full p-2 border border-gray-200 dark:border-gray-700 rounded-md" value="Guest User" disabled />
+                        </div>
+                        <div>
+                          <label className="text-sm font-medium mb-1 block">Email</label>
+                          <input type="email" className="w-full p-2 border border-gray-200 dark:border-gray-700 rounded-md" value="guest@example.com" disabled />
+                        </div>
+                      </div>
+                    </div>
+                    <Separator />
+                    <div>
+                      <h4 className="text-sm font-medium mb-2">Notification Settings</h4>
+                      <div className="space-y-3">
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm">New referral notifications</span>
+                          <input type="checkbox" defaultChecked disabled className="rounded text-amber-500" />
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm">Payment notifications</span>
+                          <input type="checkbox" defaultChecked disabled className="rounded text-amber-500" />
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm">Challenge updates</span>
+                          <input type="checkbox" defaultChecked disabled className="rounded text-amber-500" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Button disabled className="w-full">
+                    Save Changes (Login Required)
+                  </Button>
+                </CardFooter>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </main>
+    </div>
+  );
+}
