@@ -52,6 +52,7 @@ import DriverProfile from "@/pages/dashboards/drivers/DriverProfile";
 import AffiliateProgram from "@/pages/AffiliateProgram";
 import AffiliateInfo from "@/pages/AffiliateInfo";
 import Affiliate from "@/pages/Affiliate";
+import AffiliateDashboard from "@/pages/AffiliateDashboard";
 
 export default function App() {
   return (
@@ -105,6 +106,7 @@ export default function App() {
         <Route path="/dashboard/drivers/profile" element={<DriverProfile />} />
         <Route path="/affiliate" element={<AffiliateInfo />} />
         <Route path="/affiliates" element={<Affiliate />} />
+        <Route path="/affiliate-dashboard" element={<AffiliateDashboard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

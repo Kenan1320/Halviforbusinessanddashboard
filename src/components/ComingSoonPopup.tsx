@@ -1,7 +1,8 @@
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, Clock, CalendarClock, Bell } from "lucide-react";
+import { motion } from "framer-motion";
+import { X, Send, Bell, CheckCircle } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
@@ -9,134 +10,119 @@ import { toast } from "sonner";
 interface ComingSoonPopupProps {
   serviceName: string;
   onClose: () => void;
-  showBackdrop?: boolean;
 }
 
-const ComingSoonPopup: React.FC<ComingSoonPopupProps> = ({
-  serviceName,
-  onClose,
-  showBackdrop = true
-}) => {
+export default function ComingSoonPopup({ serviceName, onClose }: ComingSoonPopupProps) {
+  const [isOpen, setIsOpen] = useState(true);
   const [email, setEmail] = useState("");
-  const [isJoining, setIsJoining] = useState(false);
+  const [name, setName] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  
+  const handleClose = () => {
+    setIsOpen(false);
+    setTimeout(onClose, 300); // Allow exit animation to play
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleJoinWaitlist = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsJoining(true);
     
-    // Simulate API call to join waitlist
+    if (!email || !name) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+    
+    // Simulate API call
+    toast.success("You've been added to the waitlist!");
+    setSubmitted(true);
+    
+    // After 3 seconds, close the popup
     setTimeout(() => {
-      toast.success("You've joined the waitlist!", {
-        description: `We'll notify you when ${serviceName} becomes available.`
-      });
-      setIsJoining(false);
-      onClose();
-    }, 1000);
+      handleClose();
+    }, 3000);
   };
 
   return (
-    <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        {showBackdrop && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-            onClick={onClose}
-          />
-        )}
-        
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl w-full max-w-md relative overflow-hidden"
-        >
-          {/* Gold gradient top border */}
-          <div className="h-2 bg-gradient-to-r from-amber-400 to-orange-500" />
-          
-          {/* Close button */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors"
-            aria-label="Close"
+    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <DialogContent className="sm:max-w-md bg-white dark:bg-gray-900 p-0">
+        <DialogHeader className="bg-gradient-to-r from-amber-500 to-orange-600 text-white p-6 rounded-t-lg">
+          <DialogTitle className="text-2xl font-bold">Coming Soon!</DialogTitle>
+          <button 
+            onClick={handleClose}
+            className="absolute top-4 right-4 p-1 rounded-full bg-white/20 hover:bg-white/30 transition-all"
           >
-            <X className="h-5 w-5" />
+            <X className="h-4 w-4 text-white" />
           </button>
-          
-          <div className="p-8">
-            <div className="flex justify-center mb-6">
-              <div className="rounded-full bg-amber-100 dark:bg-amber-900/30 p-4">
-                <Clock className="h-8 w-8 text-amber-600 dark:text-amber-400" />
-              </div>
-            </div>
-            
-            <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-2">
-              Coming Soon
-            </h2>
-            
-            <p className="text-center text-gray-600 dark:text-gray-300 mb-6">
-              {serviceName} is currently under development. Join our waitlist to be notified when it launches!
-            </p>
-            
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Email Address
-                </label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="your@email.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full"
-                />
-              </div>
-              
-              <div className="flex flex-col space-y-2">
-                <Button 
-                  type="submit" 
-                  disabled={isJoining}
-                  className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600"
-                >
-                  {isJoining ? (
-                    <>
-                      <span className="mr-2">Joining...</span>
-                      <div className="h-4 w-4 rounded-full border-2 border-white border-t-transparent animate-spin"></div>
-                    </>
-                  ) : (
-                    <>Join Waitlist</>
-                  )}
-                </Button>
-                
-                <Button 
-                  type="button" 
-                  variant="outline" 
-                  onClick={onClose}
-                >
-                  Maybe Later
-                </Button>
-              </div>
-            </form>
-            
-            <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-800">
-              <div className="flex items-start space-x-2">
-                <Bell className="h-4 w-4 text-amber-500 mt-0.5 flex-shrink-0" />
-                <p className="text-xs text-gray-500 dark:text-gray-400">
-                  We'll send you an email notification when {serviceName} is available for use. 
-                  No spam, we promise!
+        </DialogHeader>
+        
+        <div className="p-6">
+          {!submitted ? (
+            <>
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold mb-1">{serviceName}</h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  This service is coming soon! Join our waitlist to be notified when it launches.
                 </p>
               </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </AnimatePresence>
+              
+              <form onSubmit={handleJoinWaitlist} className="space-y-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium mb-1">
+                    Name
+                  </label>
+                  <Input 
+                    id="name" 
+                    value={name} 
+                    onChange={(e) => setName(e.target.value)} 
+                    placeholder="Your name"
+                    required
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium mb-1">
+                    Email
+                  </label>
+                  <Input 
+                    id="email" 
+                    type="email" 
+                    value={email} 
+                    onChange={(e) => setEmail(e.target.value)} 
+                    placeholder="your@email.com"
+                    required
+                  />
+                </div>
+                
+                <div className="flex justify-between items-center pt-2">
+                  <Button variant="outline" type="button" onClick={handleClose}>
+                    Maybe Later
+                  </Button>
+                  <Button 
+                    type="submit"
+                    className="bg-gradient-to-r from-amber-500 to-orange-600"
+                  >
+                    <Bell className="mr-2 h-4 w-4" />
+                    Join Waitlist
+                  </Button>
+                </div>
+              </form>
+            </>
+          ) : (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex flex-col items-center text-center py-4"
+            >
+              <div className="bg-green-100 dark:bg-green-900/30 rounded-full p-3 mb-4">
+                <CheckCircle className="h-8 w-8 text-green-600 dark:text-green-400" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Thank You!</h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                You've been added to our waitlist. We'll notify you when {serviceName} launches!
+              </p>
+            </motion.div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
   );
-};
-
-export default ComingSoonPopup;
+}

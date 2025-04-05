@@ -44,6 +44,7 @@ export default function Affiliate() {
   const [activeTab, setActiveTab] = useState("challenge");
   const [showRegistrationPopup, setShowRegistrationPopup] = useState(false);
   const [leaderboardUpdateTime, setLeaderboardUpdateTime] = useState(new Date());
+  const [showLoginDialog, setShowLoginDialog] = useState(false);
 
   // Rolling countdown effect
   useEffect(() => {
@@ -182,6 +183,10 @@ export default function Affiliate() {
     window.open(googleCalendarUrl, '_blank');
     toast.success("Challenge added to your Google Calendar!");
   };
+  
+  const handleAccessDashboard = () => {
+    setShowLoginDialog(true);
+  };
 
   return (
     <div className="min-h-screen relative">
@@ -236,50 +241,8 @@ export default function Affiliate() {
                 link="#"
                 icon={<LogIn className="ml-2 h-5 w-5" />}
                 className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                onClick={() => {
-                  const dialog = document.getElementById("dashboard-dialog") as HTMLButtonElement | null;
-                  if (dialog) dialog.click();
-                }}
+                onClick={handleAccessDashboard}
               />
-              
-              <Dialog>
-                <DialogTrigger asChild>
-                  <button id="dashboard-dialog" className="hidden" />
-                </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
-                  <DialogHeader>
-                    <DialogTitle>Access Your Dashboard</DialogTitle>
-                    <DialogDescription>
-                      If you've received your login credentials via email after submitting an application, you can access your dashboard to track earnings.
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="grid gap-4 py-4">
-                    <div className="grid grid-cols-1 gap-4">
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium mb-1">
-                          Email
-                        </label>
-                        <Input id="email" type="email" placeholder="your@email.com" />
-                      </div>
-                      <div>
-                        <label htmlFor="password" className="block text-sm font-medium mb-1">
-                          Password
-                        </label>
-                        <Input id="password" type="password" placeholder="••••••••" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex justify-between">
-                    <Button variant="outline">Cancel</Button>
-                    <Button className="bg-gradient-to-r from-amber-500 to-orange-600">
-                      Login
-                    </Button>
-                  </div>
-                  <div className="text-center text-sm text-gray-500 mt-4">
-                    Haven't applied yet? <Link to="#apply-now" className="text-amber-500 hover:underline">Apply now</Link>
-                  </div>
-                </DialogContent>
-              </Dialog>
             </div>
 
             <div className="mt-10 mb-8">
@@ -288,13 +251,21 @@ export default function Affiliate() {
                 onValueChange={setActiveTab}
                 className="max-w-6xl mx-auto"
               >
-                <TabsList className="grid grid-cols-2 w-full bg-white/10 backdrop-blur-md dark:bg-gray-950/50 rounded-full p-1">
-                  <TabsTrigger value="challenge" className="rounded-full py-3 text-base font-medium">
-                    4-Day Special Challenge
-                  </TabsTrigger>
-                  <TabsTrigger value="regular" className="rounded-full py-3 text-base font-medium">
-                    Affiliate Program
-                  </TabsTrigger>
+                <TabsList className="grid w-full bg-white/10 backdrop-blur-md dark:bg-gray-950/50 rounded-full p-1 mb-4 md:mb-0">
+                  <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <TabsTrigger 
+                      value="challenge" 
+                      className="rounded-full py-3 text-base font-medium w-full"
+                    >
+                      4-Day Special Challenge
+                    </TabsTrigger>
+                    <TabsTrigger 
+                      value="regular" 
+                      className="rounded-full py-3 text-base font-medium w-full"
+                    >
+                      Affiliate Program
+                    </TabsTrigger>
+                  </div>
                 </TabsList>
               </Tabs>
             </div>
@@ -372,15 +343,18 @@ export default function Affiliate() {
                         onClick={handleRegisterForChallenge}
                         className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700"
                       >
-                        <div className="flex items-center">
-                          <span className="relative mr-2 flex h-3 w-3">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                          </span>
-                          Register for Next Challenge ({registeredCount}/10 spots filled)
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </div>
+                        Register for Next Challenge
                       </Button>
+                      
+                      <div className="flex items-center">
+                        <span className="relative mr-2 flex h-3 w-3">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                        <p className="text-sm text-gray-500">
+                          {registeredCount}/10 spots filled
+                        </p>
+                      </div>
                       
                       <p className="text-sm text-gray-500">
                         Challenge opens at 7:00 AM on the 4th day. Limited to 10 participants only.
@@ -807,6 +781,70 @@ export default function Affiliate() {
             >
               Remind Me
             </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+      
+      {/* Login/Dashboard Access Dialog */}
+      <Dialog open={showLoginDialog} onOpenChange={setShowLoginDialog}>
+        <DialogContent className="sm:max-w-md bg-white dark:bg-gray-900">
+          <DialogHeader>
+            <DialogTitle>Access Your Dashboard</DialogTitle>
+            <DialogDescription>
+              If you've received your login credentials via email after submitting an application, you can access your dashboard to track earnings.
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-1 gap-4">
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium mb-1">
+                  Email
+                </label>
+                <Input id="email" type="email" placeholder="your@email.com" />
+              </div>
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium mb-1">
+                  Password
+                </label>
+                <Input id="password" type="password" placeholder="••••••••" />
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex flex-col gap-4">
+            <div className="flex justify-between">
+              <Button variant="outline" onClick={() => setShowLoginDialog(false)}>
+                Cancel
+              </Button>
+              <Button 
+                className="bg-gradient-to-r from-amber-500 to-orange-600"
+                onClick={() => window.location.href = "/affiliate-dashboard"}
+              >
+                Login
+              </Button>
+            </div>
+            
+            <div className="flex items-center justify-center">
+              <div className="w-full border-t border-gray-200 dark:border-gray-700 my-2"></div>
+              <span className="px-2 bg-white dark:bg-gray-900 text-sm text-gray-500">OR</span>
+              <div className="w-full border-t border-gray-200 dark:border-gray-700 my-2"></div>
+            </div>
+            
+            <Button 
+              variant="outline" 
+              className="w-full"
+              onClick={() => {
+                setShowLoginDialog(false);
+                window.location.href = "/affiliate-dashboard";
+              }}
+            >
+              Continue as Guest
+            </Button>
+            
+            <div className="text-center text-sm text-gray-500 mt-2">
+              Haven't applied yet? <Link to="#apply-now" className="text-amber-500 hover:underline" onClick={() => setShowLoginDialog(false)}>Apply now</Link>
+            </div>
           </div>
         </DialogContent>
       </Dialog>
