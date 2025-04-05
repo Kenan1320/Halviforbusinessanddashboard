@@ -18,7 +18,7 @@ const AffiliateHero = () => {
             Earn commissions by referring businesses to Halvi. Help grow the halal economy while creating a passive income stream.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild variant="secondary" size="lg" className="rounded-full px-8">
+            <Button asChild variant="secondary" size="lg" className="rounded-full px-8 bg-gradient-to-r from-amber-400 to-orange-500 text-white hover:from-amber-500 hover:to-orange-600">
               <Link to="/affiliate-get-familiar">
                 <BookOpen className="mr-2 h-4 w-4" />
                 Get Familiar

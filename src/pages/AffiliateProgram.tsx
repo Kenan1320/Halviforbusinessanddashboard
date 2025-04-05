@@ -9,10 +9,6 @@ import RegularAffiliate from "@/components/affiliate/RegularAffiliate";
 import SpecialChallenge from "@/components/affiliate/SpecialChallenge";
 import AffiliateForm from "@/components/affiliate/AffiliateForm";
 import AffiliateFAQSection from "@/components/affiliate/AffiliateFAQSection";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { BookOpen } from "lucide-react";
-import { motion } from "framer-motion";
 
 export default function AffiliateProgram() {
   // Sample app data
@@ -55,24 +51,6 @@ export default function AffiliateProgram() {
       <AffiliateHero />
       
       <div className="container mx-auto px-4 py-16">
-        {/* Get Familiar Button - positioned above the tabs */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-10"
-        >
-          <Button asChild variant="secondary" size="lg" className="rounded-full px-8 bg-gradient-to-r from-amber-400 to-orange-500 text-white hover:from-amber-500 hover:to-orange-600">
-            <Link to="/affiliate-get-familiar" className="flex items-center">
-              <BookOpen className="mr-2 h-4 w-4" />
-              Get Familiar with the Affiliate Program
-            </Link>
-          </Button>
-          <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-            Learn more about how our affiliate program works
-          </p>
-        </motion.div>
-
         <Tabs defaultValue="regular" className="max-w-4xl mx-auto">
           <TabsList className="grid w-full grid-cols-2 mb-8">
             <TabsTrigger value="regular" className="text-lg py-3">Regular Affiliate</TabsTrigger>

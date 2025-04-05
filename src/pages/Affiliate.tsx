@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { Toaster, toast } from "sonner";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
@@ -6,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { 
   ArrowRight, DollarSign, Users, TrendingUp, Share2, 
-  ChevronDown, Clock, Award, Zap, LogIn, Calendar 
+  ChevronDown, Clock, Award, Zap, LogIn, Calendar, BookOpen 
 } from "lucide-react";
 import AuroraBackground from "@/components/AuroraBackground";
 import Navbar from "@/components/Navbar";
@@ -46,7 +45,6 @@ export default function Affiliate() {
   const [leaderboardUpdateTime, setLeaderboardUpdateTime] = useState(new Date());
   const [showLoginDialog, setShowLoginDialog] = useState(false);
 
-  // Rolling countdown effect
   useEffect(() => {
     const timer = setInterval(() => {
       setCountdownTime(prevTime => {
@@ -71,7 +69,6 @@ export default function Affiliate() {
         }
 
         if (newDays < 0) {
-          // Reset to next challenge
           return {
             days: 3,
             hours: 12,
@@ -92,11 +89,10 @@ export default function Affiliate() {
     return () => clearInterval(timer);
   }, []);
   
-  // Leaderboard update time simulation
   useEffect(() => {
     const updateInterval = setInterval(() => {
       setLeaderboardUpdateTime(new Date());
-    }, 60000); // Every minute
+    }, 60000);
     
     return () => clearInterval(updateInterval);
   }, []);
@@ -128,7 +124,6 @@ export default function Affiliate() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       toast.success("Application submitted! Check your email for login details.", {
@@ -136,20 +131,17 @@ export default function Affiliate() {
         duration: 5000
       });
       
-      // Reset form
       const form = e.target as HTMLFormElement;
       form.reset();
     }, 1500);
   };
   
   const handleRegisterForChallenge = () => {
-    // Check if it's the 4th day and it's 7 AM or later
     const is4thDay = countdownTime.days === 0 && countdownTime.hours < 17;
     
     if (!is4thDay) {
       setShowRegistrationPopup(true);
     } else {
-      // Direct registration
       if (registeredCount < 10) {
         setRegisteredCount(prev => prev + 1);
         toast.success("You've been registered for the challenge!");
@@ -160,10 +152,9 @@ export default function Affiliate() {
   };
   
   const addToGoogleCalendar = () => {
-    // Calculate 4th day from now
     const challengeDate = new Date();
     challengeDate.setDate(challengeDate.getDate() + countdownTime.days);
-    challengeDate.setHours(7, 0, 0, 0); // 7 AM
+    challengeDate.setHours(7, 0, 0, 0);
     
     const startTime = challengeDate.toISOString().replace(/-|:|\.\d+/g, '');
     const endTime = new Date(challengeDate.getTime() + 60 * 60 * 1000).toISOString().replace(/-|:|\.\d+/g, '');
@@ -193,7 +184,6 @@ export default function Affiliate() {
       <Toaster position="top-right" />
       <Navbar />
       
-      {/* Vertical scroll line */}
       <div 
         ref={scrollLineRef}
         className="fixed left-8 top-1/2 transform -translate-y-1/2 h-1/2 w-1 bg-gray-200/30 dark:bg-gray-700/30 rounded-full hidden lg:block z-10"
@@ -231,18 +221,30 @@ export default function Affiliate() {
                 Join our affiliate program and earn up to 40% of our profit share.
               </p>
               
-              <VibratingButton 
-                text={
-                  <div className="flex flex-col">
-                    <span>Access Your Dashboard</span>
-                    <span>Track Your Earnings</span>
-                  </div>
-                }
-                link="#"
-                icon={<LogIn className="ml-2 h-5 w-5" />}
-                className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                onClick={handleAccessDashboard}
-              />
+              <div className="flex flex-col items-center space-y-4">
+                <VibratingButton 
+                  text={
+                    <div className="flex flex-col">
+                      <span>Access Your Dashboard</span>
+                      <span>Track Your Earnings</span>
+                    </div>
+                  }
+                  link="#"
+                  icon={<LogIn className="ml-2 h-5 w-5" />}
+                  className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  onClick={handleAccessDashboard}
+                />
+                
+                <Button asChild variant="secondary" size="lg" className="rounded-full px-8 bg-gradient-to-r from-amber-400 to-orange-500 text-white hover:from-amber-500 hover:to-orange-600 mt-4">
+                  <Link to="/affiliate-get-familiar" className="flex items-center">
+                    <BookOpen className="mr-2 h-4 w-4" />
+                    Get Familiar with the Affiliate Program
+                  </Link>
+                </Button>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                  Learn more about how our affiliate program works
+                </p>
+              </div>
             </div>
 
             <div className="mt-10 mb-8">
@@ -309,28 +311,24 @@ export default function Affiliate() {
                   <div className="mt-8">
                     <h4 className="text-lg font-semibold mb-4">Next Challenge Begins:</h4>
                     <div className="flex space-x-4 mb-6">
-                      {/* Days counter with rolling effect */}
                       <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
                         <span className="text-2xl font-bold relative z-10">{String(countdownTime.days).padStart(2, '0')}</span>
                         <span className="text-xs relative z-10">Days</span>
                         <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
                       </div>
                       
-                      {/* Hours counter with rolling effect */}
                       <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
                         <span className="text-2xl font-bold relative z-10">{String(countdownTime.hours).padStart(2, '0')}</span>
                         <span className="text-xs relative z-10">Hours</span>
                         <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
                       </div>
                       
-                      {/* Minutes counter with rolling effect */}
                       <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
                         <span className="text-2xl font-bold relative z-10">{String(countdownTime.minutes).padStart(2, '0')}</span>
                         <span className="text-xs relative z-10">Minutes</span>
                         <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
                       </div>
                       
-                      {/* Seconds counter with rolling effect */}
                       <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
                         <span className="text-2xl font-bold relative z-10 animate-pulse">{String(countdownTime.seconds).padStart(2, '0')}</span>
                         <span className="text-xs relative z-10">Seconds</span>
@@ -720,7 +718,6 @@ export default function Affiliate() {
         </div>
       </section>
       
-      {/* Registration popup */}
       <Dialog open={showRegistrationPopup} onOpenChange={setShowRegistrationPopup}>
         <DialogContent className="sm:max-w-md bg-white dark:bg-gray-900">
           <DialogHeader>
@@ -785,7 +782,6 @@ export default function Affiliate() {
         </DialogContent>
       </Dialog>
       
-      {/* Login/Dashboard Access Dialog */}
       <Dialog open={showLoginDialog} onOpenChange={setShowLoginDialog}>
         <DialogContent className="sm:max-w-md bg-white dark:bg-gray-900">
           <DialogHeader>

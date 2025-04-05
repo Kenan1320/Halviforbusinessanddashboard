@@ -1,6 +1,6 @@
 
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "@/pages/Index";
 import NotFound from "@/pages/NotFound";
 import SignIn from "@/pages/SignIn";
@@ -49,8 +49,6 @@ import PaymentHistory from "@/pages/dashboards/drivers/PaymentHistory";
 import RoutesActive from "@/pages/dashboards/drivers/RoutesActive";
 import PerformanceRatings from "@/pages/dashboards/drivers/PerformanceRatings";
 import DriverProfile from "@/pages/dashboards/drivers/DriverProfile";
-import AffiliateProgram from "@/pages/AffiliateProgram";
-import AffiliateInfo from "@/pages/AffiliateInfo";
 import Affiliate from "@/pages/Affiliate";
 import AffiliateDashboard from "@/pages/AffiliateDashboard";
 import AffiliateGetFamiliar from "@/pages/AffiliateGetFamiliar";
@@ -107,7 +105,7 @@ export default function App() {
         <Route path="/dashboard/drivers/routes" element={<RoutesActive />} />
         <Route path="/dashboard/drivers/ratings" element={<PerformanceRatings />} />
         <Route path="/dashboard/drivers/profile" element={<DriverProfile />} />
-        <Route path="/affiliate" element={<AffiliateInfo />} />
+        <Route path="/affiliate" element={<Navigate to="/affiliates" replace />} />
         <Route path="/affiliates" element={<Affiliate />} />
         <Route path="/affiliate-dashboard" element={<AffiliateDashboard />} />
         <Route path="/affiliate-get-familiar" element={<AffiliateGetFamiliar />} />
