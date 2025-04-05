@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -102,16 +101,6 @@ export function Hero() {
                   link="/affiliates"
                   className="shadow-lg shadow-amber-500/20"
                 />
-                
-                {/* Get Familiar Button - positioned inside affiliate section */}
-                <div className="text-center">
-                  <Button asChild variant="secondary" size="lg" className="rounded-full px-8">
-                    <Link to="/affiliate-get-familiar" className="flex items-center">
-                      <BookOpen className="mr-2 h-4 w-4" />
-                      Get Familiar with Affiliate Program
-                    </Link>
-                  </Button>
-                </div>
               </div>
             </div>
           </div>

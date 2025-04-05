@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Clock, DollarSign, Trophy } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 interface SpecialChallengeProps {
   daysRemaining: number;
@@ -93,6 +94,11 @@ const SpecialChallenge = ({ daysRemaining, challenges }: SpecialChallengeProps) 
           <Button asChild size="lg" className="rounded-full px-8 bg-gradient-to-r from-amber-500 to-orange-600">
             <a href="#apply">Join the Challenge</a>
           </Button>
+          <div className="mt-4">
+            <Link to="/affiliate-get-familiar#challenge" className="text-amber-600 dark:text-amber-400 hover:underline">
+              Learn more about how the challenge works
+            </Link>
+          </div>
         </div>
       </div>
     </div>
