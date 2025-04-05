@@ -142,6 +142,7 @@ export default function App() {
         <Route path="/dashboard/drivers/ratings" element={<PerformanceRatings />} />
         <Route path="/dashboard/drivers/profile" element={<DriverProfile />} />
         <Route path="/affiliate" element={<AffiliateInfo />} />
+        <Route path="/affiliate-program" element={<AffiliateProgram />} />
         <Route path="/affiliates" element={<Affiliate />} />
         <Route path="/affiliate-dashboard" element={<AffiliateDashboard />} />
         <Route path="*" element={<NotFound />} />
