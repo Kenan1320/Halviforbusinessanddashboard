@@ -21,7 +21,7 @@ const BusinessModeSelector = () => {
   return (
     <div className="w-full mb-8">
       {/* Full width glass-like container */}
-      <div className="w-full backdrop-blur-md bg-white/10 dark:bg-gray-800/30 border-t border-b border-gray-200/30 dark:border-gray-700/30">
+      <div className="w-full backdrop-blur-md bg-white/10 dark:bg-gray-800/30 border border-gray-200/30 dark:border-gray-700/30 rounded-lg overflow-hidden">
         <div className="w-full flex">
           <motion.button
             whileHover={{ backgroundColor: "rgba(var(--halvi-200), 0.5)" }}

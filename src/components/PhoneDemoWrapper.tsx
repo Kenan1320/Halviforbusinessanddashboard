@@ -10,8 +10,8 @@ interface PhoneDemoWrapperProps {
 export default function PhoneDemoWrapper({ children }: PhoneDemoWrapperProps) {
   const location = useLocation();
   
-  // Don't show phone demo on the affiliate page
-  if (location.pathname === "/affiliates" || location.pathname === "/affiliate") {
+  // Don't show phone demo on the affiliate pages
+  if (location.pathname === "/affiliates" || location.pathname === "/affiliate" || location.pathname === "/affiliate-program") {
     return <div>{children}</div>;
   }
   

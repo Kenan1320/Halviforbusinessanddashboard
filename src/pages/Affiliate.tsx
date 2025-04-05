@@ -1,10 +1,13 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Toaster, toast } from "sonner";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, DollarSign, Users, TrendingUp, Share2, ChevronDown, Clock, Award, Zap, LogIn } from "lucide-react";
+import { 
+  ArrowRight, DollarSign, Users, TrendingUp, Share2, 
+  ChevronDown, Clock, Award, Zap, LogIn, Calendar 
+} from "lucide-react";
 import AuroraBackground from "@/components/AuroraBackground";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -17,6 +20,19 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Affiliate() {
+  const { scrollYProgress } = useScroll();
+  const y1 = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
+  const y2 = useTransform(scrollYProgress, [0.3, 0.6], [0, 100]);
+  const y3 = useTransform(scrollYProgress, [0.6, 0.9], [0, 100]);
+  
+  const scrollLineRef = useRef(null);
+  const howItWorksRef = useRef(null);
+  const howItWorksInView = useInView(howItWorksRef, { once: false });
+  const challengeRef = useRef(null);
+  const challengeInView = useInView(challengeRef, { once: false });
+  const faqRef = useRef(null);
+  const faqInView = useInView(faqRef, { once: false });
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [countdownTime, setCountdownTime] = useState({
     days: 3,
@@ -26,6 +42,8 @@ export default function Affiliate() {
   });
   const [registeredCount, setRegisteredCount] = useState(7);
   const [activeTab, setActiveTab] = useState("challenge");
+  const [showRegistrationPopup, setShowRegistrationPopup] = useState(false);
+  const [leaderboardUpdateTime, setLeaderboardUpdateTime] = useState(new Date());
 
   // Rolling countdown effect
   useEffect(() => {
@@ -72,6 +90,15 @@ export default function Affiliate() {
 
     return () => clearInterval(timer);
   }, []);
+  
+  // Leaderboard update time simulation
+  useEffect(() => {
+    const updateInterval = setInterval(() => {
+      setLeaderboardUpdateTime(new Date());
+    }, 60000); // Every minute
+    
+    return () => clearInterval(updateInterval);
+  }, []);
 
   const benefits = [
     {
@@ -113,11 +140,79 @@ export default function Affiliate() {
       form.reset();
     }, 1500);
   };
+  
+  const handleRegisterForChallenge = () => {
+    // Check if it's the 4th day and it's 7 AM or later
+    const is4thDay = countdownTime.days === 0 && countdownTime.hours < 17;
+    
+    if (!is4thDay) {
+      setShowRegistrationPopup(true);
+    } else {
+      // Direct registration
+      if (registeredCount < 10) {
+        setRegisteredCount(prev => prev + 1);
+        toast.success("You've been registered for the challenge!");
+      } else {
+        toast.error("Sorry, all spots are filled for this challenge.");
+      }
+    }
+  };
+  
+  const addToGoogleCalendar = () => {
+    // Calculate 4th day from now
+    const challengeDate = new Date();
+    challengeDate.setDate(challengeDate.getDate() + countdownTime.days);
+    challengeDate.setHours(7, 0, 0, 0); // 7 AM
+    
+    const startTime = challengeDate.toISOString().replace(/-|:|\.\d+/g, '');
+    const endTime = new Date(challengeDate.getTime() + 60 * 60 * 1000).toISOString().replace(/-|:|\.\d+/g, '');
+    
+    const eventDetails = {
+      action: 'TEMPLATE',
+      text: 'Halvi Affiliate Challenge Registration',
+      dates: `${startTime}/${endTime}`,
+      details: 'Register for the 4-Day Special Affiliate Challenge on Halvi to earn Special Affiliate status and 40% commission.',
+      location: 'https://halvi.app/affiliates',
+    };
+    
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?${Object.entries(eventDetails)
+      .map(([key, value]) => `${key}=${encodeURIComponent(value as string)}`)
+      .join('&')}`;
+    
+    window.open(googleCalendarUrl, '_blank');
+    toast.success("Challenge added to your Google Calendar!");
+  };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
       <Toaster position="top-right" />
       <Navbar />
+      
+      {/* Vertical scroll line */}
+      <div 
+        ref={scrollLineRef}
+        className="fixed left-8 top-1/2 transform -translate-y-1/2 h-1/2 w-1 bg-gray-200/30 dark:bg-gray-700/30 rounded-full hidden lg:block z-10"
+      >
+        <motion.div 
+          className="absolute top-0 left-0 w-full bg-amber-500 rounded-full"
+          style={{ height: scrollYProgress, transformOrigin: "top" }}
+        />
+        
+        <motion.div 
+          className={`absolute w-4 h-4 rounded-full -left-1.5 bg-white border-2 border-amber-500 transition-all duration-300 ${howItWorksInView ? 'scale-150' : ''}`}
+          style={{ top: y1 }}
+        />
+        
+        <motion.div 
+          className={`absolute w-4 h-4 rounded-full -left-1.5 bg-white border-2 border-amber-500 transition-all duration-300 ${challengeInView ? 'scale-150' : ''}`}
+          style={{ top: y2 }}
+        />
+        
+        <motion.div 
+          className={`absolute w-4 h-4 rounded-full -left-1.5 bg-white border-2 border-amber-500 transition-all duration-300 ${faqInView ? 'scale-150' : ''}`}
+          style={{ top: y3 }}
+        />
+      </div>
       
       <AuroraBackground>
         <section className="pt-20 pb-16 px-4">
@@ -131,14 +226,25 @@ export default function Affiliate() {
                 Join our affiliate program and earn up to 40% of our profit share.
               </p>
               
+              <VibratingButton 
+                text={
+                  <div className="flex flex-col">
+                    <span>Access Your Dashboard</span>
+                    <span>Track Your Earnings</span>
+                  </div>
+                }
+                link="#"
+                icon={<LogIn className="ml-2 h-5 w-5" />}
+                className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                onClick={() => {
+                  const dialog = document.getElementById("dashboard-dialog") as HTMLButtonElement | null;
+                  if (dialog) dialog.click();
+                }}
+              />
+              
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button 
-                    size="lg" 
-                    className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 text-white px-8 py-6 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse"
-                  >
-                    Access Your Dashboard - Track Your Earnings <LogIn className="ml-2" />
-                  </Button>
+                  <button id="dashboard-dialog" className="hidden" />
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-md">
                   <DialogHeader>
@@ -180,14 +286,14 @@ export default function Affiliate() {
               <Tabs 
                 defaultValue={activeTab} 
                 onValueChange={setActiveTab}
-                className="max-w-4xl mx-auto"
+                className="max-w-6xl mx-auto"
               >
                 <TabsList className="grid grid-cols-2 w-full bg-white/10 backdrop-blur-md dark:bg-gray-950/50 rounded-full p-1">
                   <TabsTrigger value="challenge" className="rounded-full py-3 text-base font-medium">
                     4-Day Special Challenge
                   </TabsTrigger>
                   <TabsTrigger value="regular" className="rounded-full py-3 text-base font-medium">
-                    Regular Affiliate Program
+                    Affiliate Program
                   </TabsTrigger>
                 </TabsList>
               </Tabs>
@@ -196,40 +302,8 @@ export default function Affiliate() {
         </section>
       </AuroraBackground>
       
-      <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">How It Works</h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Our affiliate program rewards you for bringing new businesses to the Halvi platform
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {benefits.map((benefit, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-all"
-              >
-                <div className="flex flex-col items-center text-center">
-                  <div className="mb-4 p-3 bg-gradient-to-br from-amber-100 to-orange-200 dark:from-amber-900/30 dark:to-orange-800/30 rounded-lg text-amber-600 dark:text-amber-300">
-                    {benefit.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {activeTab === "challenge" && (
-        <section className="py-16 px-4 bg-white dark:bg-gray-950">
+        <section className="py-16 px-4 bg-white dark:bg-gray-950" ref={challengeRef}>
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">The 4-Day Challenge</h2>
@@ -238,7 +312,7 @@ export default function Affiliate() {
               </p>
             </div>
             
-            <GlassCard className="mb-12 p-8 bg-gradient-to-r from-amber-500/10 to-orange-500/10 dark:from-amber-900/20 dark:to-orange-900/20">
+            <GlassCard className="mb-12 p-8 bg-gradient-to-r from-amber-500/10 to-orange-500/10 dark:from-amber-900/20 dark:to-orange-900/20 w-full mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-2xl font-bold mb-4">Challenge Overview</h3>
@@ -294,9 +368,18 @@ export default function Affiliate() {
                     </div>
                     
                     <div className="flex flex-col space-y-3">
-                      <Button className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700">
-                        Register for Next Challenge ({registeredCount}/10 spots filled)
-                        <ArrowRight className="ml-2 h-4 w-4" />
+                      <Button 
+                        onClick={handleRegisterForChallenge}
+                        className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700"
+                      >
+                        <div className="flex items-center">
+                          <span className="relative mr-2 flex h-3 w-3">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                          </span>
+                          Register for Next Challenge ({registeredCount}/10 spots filled)
+                          <ArrowRight className="ml-2 h-4 w-4" />
+                        </div>
                       </Button>
                       
                       <p className="text-sm text-gray-500">
@@ -352,7 +435,15 @@ export default function Affiliate() {
                       </tbody>
                     </table>
                   </div>
-                  <p className="text-sm text-gray-500 mt-2 text-center">Updated every minute</p>
+                  <div className="flex items-center justify-center mt-2">
+                    <div className="relative mr-2 flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </div>
+                    <p className="text-sm text-gray-500 text-center">
+                      Updated {leaderboardUpdateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </p>
+                  </div>
                 </div>
               </div>
             </GlassCard>
@@ -361,51 +452,103 @@ export default function Affiliate() {
       )}
       
       {activeTab === "regular" && (
-        <section className="py-16 px-4 bg-white dark:bg-gray-950">
+        <motion.section 
+          className="py-16 px-4 bg-white dark:bg-gray-950" 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="container mx-auto max-w-6xl">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Regular Affiliate Program</h2>
+              <h2 className="text-3xl font-bold mb-4">Affiliate Program</h2>
               <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Earn 20% commission on every business you refer to Halvi
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-              <GlassCard className="p-6 hover:shadow-lg transition-all">
-                <div className="bg-amber-100 dark:bg-amber-900/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <Share2 className="h-8 w-8 text-amber-600 dark:text-amber-400" />
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-center">Share Your Link</h3>
-                <p className="text-center text-gray-600 dark:text-gray-300">
-                  Get your unique referral link after applying and share it with potential businesses
-                </p>
-              </GlassCard>
+              <motion.div
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <GlassCard className="p-6 hover:shadow-lg transition-all h-full">
+                  <div className="bg-amber-100 dark:bg-amber-900/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <Share2 className="h-8 w-8 text-amber-600 dark:text-amber-400" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-center">Share Your Link</h3>
+                  <p className="text-center text-gray-600 dark:text-gray-300">
+                    Get your unique referral link after applying and share it with potential businesses
+                  </p>
+                </GlassCard>
+              </motion.div>
               
-              <GlassCard className="p-6 hover:shadow-lg transition-all">
-                <div className="bg-amber-100 dark:bg-amber-900/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-8 w-8 text-amber-600 dark:text-amber-400" />
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-center">Businesses Sign Up</h3>
-                <p className="text-center text-gray-600 dark:text-gray-300">
-                  When businesses use your link to join Halvi, they're automatically tracked as your referrals
-                </p>
-              </GlassCard>
+              <motion.div
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300, delay: 0.05 }}
+              >
+                <GlassCard className="p-6 hover:shadow-lg transition-all h-full">
+                  <div className="bg-amber-100 dark:bg-amber-900/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <Users className="h-8 w-8 text-amber-600 dark:text-amber-400" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-center">Businesses Sign Up</h3>
+                  <p className="text-center text-gray-600 dark:text-gray-300">
+                    When businesses use your link to join Halvi, they're automatically tracked as your referrals
+                  </p>
+                </GlassCard>
+              </motion.div>
               
-              <GlassCard className="p-6 hover:shadow-lg transition-all">
-                <div className="bg-amber-100 dark:bg-amber-900/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                  <DollarSign className="h-8 w-8 text-amber-600 dark:text-amber-400" />
-                </div>
-                <h3 className="text-xl font-bold mb-2 text-center">Earn Commissions</h3>
-                <p className="text-center text-gray-600 dark:text-gray-300">
-                  Earn 20% of Halvi's profit from each referred business, up to $40K in orders
-                </p>
-              </GlassCard>
+              <motion.div
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300, delay: 0.1 }}
+              >
+                <GlassCard className="p-6 hover:shadow-lg transition-all h-full">
+                  <div className="bg-amber-100 dark:bg-amber-900/20 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                    <DollarSign className="h-8 w-8 text-amber-600 dark:text-amber-400" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-2 text-center">Earn Commissions</h3>
+                  <p className="text-center text-gray-600 dark:text-gray-300">
+                    Earn 20% of Halvi's profit from each referred business, up to $40K in orders
+                  </p>
+                </GlassCard>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
       )}
       
-      <section id="apply-now" className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+      <section id="how-it-works" ref={howItWorksRef} className="py-16 px-4 bg-gray-50 dark:bg-gray-900">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">How It Works</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Our affiliate program rewards you for bringing new businesses to the Halvi platform
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {benefits.map((benefit, index) => (
+              <motion.div 
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-all"
+              >
+                <div className="flex flex-col items-center text-center">
+                  <div className="mb-4 p-3 bg-gradient-to-br from-amber-100 to-orange-200 dark:from-amber-900/30 dark:to-orange-800/30 rounded-lg text-amber-600 dark:text-amber-300">
+                    {benefit.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300">{benefit.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      <section id="apply-now" className="py-16 px-4 bg-white dark:bg-gray-950">
         <div className="container mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
@@ -552,7 +695,7 @@ export default function Affiliate() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-white dark:bg-gray-950">
+      <section className="py-16 px-4 bg-gray-50 dark:bg-gray-900" ref={faqRef}>
         <div className="container mx-auto max-w-6xl">
           <div className="text-center">
             <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
@@ -602,6 +745,71 @@ export default function Affiliate() {
           </div>
         </div>
       </section>
+      
+      {/* Registration popup */}
+      <Dialog open={showRegistrationPopup} onOpenChange={setShowRegistrationPopup}>
+        <DialogContent className="sm:max-w-md bg-white dark:bg-gray-900">
+          <DialogHeader>
+            <DialogTitle>Reserve Your Spot</DialogTitle>
+            <DialogDescription>
+              Registration opens at 7:00 AM on {new Date(new Date().getTime() + (countdownTime.days * 24 * 60 * 60 * 1000)).toLocaleDateString()}.
+              Add this event to your calendar to make sure you don't miss it!
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="py-4">
+            <div className="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg mb-4">
+              <h4 className="font-medium mb-2 flex items-center">
+                <Clock className="h-4 w-4 mr-2 text-amber-600" />
+                Important Registration Info
+              </h4>
+              <ul className="text-sm space-y-2 text-gray-600 dark:text-gray-300">
+                <li className="flex items-start">
+                  <span className="text-amber-600 mr-2">•</span>
+                  <span>Only 10 participants can join each challenge</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-amber-600 mr-2">•</span>
+                  <span>Spots are filled on a first-come, first-served basis</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-amber-600 mr-2">•</span>
+                  <span>Registration opens exactly at 7:00 AM</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-amber-600 mr-2">•</span>
+                  <span>Current spots filled: {registeredCount}/10</span>
+                </li>
+              </ul>
+            </div>
+            
+            <Button 
+              onClick={addToGoogleCalendar}
+              className="w-full flex items-center justify-center bg-white hover:bg-gray-50 text-gray-900 border border-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white dark:border-gray-700"
+            >
+              <Calendar className="mr-2 h-5 w-5" />
+              Add to Google Calendar
+            </Button>
+          </div>
+          
+          <div className="flex justify-end gap-2">
+            <Button variant="outline" onClick={() => setShowRegistrationPopup(false)}>
+              Close
+            </Button>
+            <Button 
+              className="bg-gradient-to-r from-amber-500 to-orange-600"
+              onClick={() => {
+                setShowRegistrationPopup(false);
+                toast.success("We'll remind you when registration opens!", {
+                  description: "Check your calendar for the exact date and time."
+                });
+              }}
+            >
+              Remind Me
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
       
       <Footer />
     </div>
