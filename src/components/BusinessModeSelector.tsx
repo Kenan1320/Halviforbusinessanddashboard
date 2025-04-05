@@ -2,30 +2,26 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Button } from "@/components/ui/button";
 
 const BusinessModeSelector = () => {
   const navigate = useNavigate();
   const [selectedMode, setSelectedMode] = useState<'challenge' | 'regular'>('challenge');
-  const [showDashboardAccess, setShowDashboardAccess] = useState<boolean>(false);
 
-  const handleModeSelect = (value: string) => {
-    if (value) {
-      setSelectedMode(value as 'challenge' | 'regular');
-    }
+  const handleModeSelect = (value: 'challenge' | 'regular') => {
+    setSelectedMode(value);
   };
 
   return (
     <div className="w-full mb-8">
-      {/* Full width glass-like container */}
-      <div className="w-full backdrop-blur-md bg-white/10 dark:bg-gray-800/30 border-t border-b border-gray-200/30 dark:border-gray-700/30">
+      {/* Full width glass-like container with improved styling */}
+      <div className="w-full backdrop-blur-md bg-white/10 dark:bg-gray-800/30 border-t border-b border-gray-200/30 dark:border-gray-700/30 rounded-full overflow-hidden">
         <div className="w-full flex">
           <motion.button
             whileHover={{ backgroundColor: "rgba(var(--halvi-200), 0.5)" }}
             whileTap={{ scale: 0.98 }}
             onClick={() => handleModeSelect('challenge')}
-            className={`flex-1 py-5 relative overflow-hidden ${
+            className={`flex-1 py-4 px-6 relative overflow-hidden ${
               selectedMode === 'challenge' ? 'bg-white/20 dark:bg-gray-700/30' : ''
             }`}
           >
@@ -65,7 +61,7 @@ const BusinessModeSelector = () => {
             whileHover={{ backgroundColor: "rgba(var(--halvi-200), 0.5)" }}
             whileTap={{ scale: 0.98 }}
             onClick={() => handleModeSelect('regular')}
-            className={`flex-1 py-5 relative overflow-hidden ${
+            className={`flex-1 py-4 px-6 relative overflow-hidden ${
               selectedMode === 'regular' ? 'bg-white/20 dark:bg-gray-700/30' : ''
             }`}
           >
@@ -74,7 +70,7 @@ const BusinessModeSelector = () => {
                 ? 'text-gray-900 dark:text-white' 
                 : 'text-gray-600 dark:text-gray-300'
             }`}>
-              Regular Affiliate Program
+              Affiliate Program
             </span>
             
             <motion.div
