@@ -9,7 +9,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, CheckCircle, Clock, Trophy, DollarSign, User, LogIn, Share2, TrendingUp, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { HeroGeometric } from "@/components/ui/HeroGeometric";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Dialog,
   DialogContent,
@@ -21,6 +20,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ScrollAnimation from "@/components/ScrollAnimation";
 
 export default function AffiliateGetFamiliar() {
   const [mode, setMode] = useState("affiliatePrograms");
@@ -94,7 +94,7 @@ export default function AffiliateGetFamiliar() {
   };
   
   return (
-    <div className="overflow-hidden bg-gradient-to-b from-amber-50 to-white">
+    <div className="overflow-x-hidden bg-gradient-to-b from-amber-50 to-white">
       <Toaster position="top-right" />
       <Navbar />
       
@@ -232,19 +232,15 @@ export default function AffiliateGetFamiliar() {
                     Choose from our two affiliate programs and start earning commissions by referring businesses to Halvi.
                   </p>
                 </motion.div>
-                
-                <ScrollArea className="h-[600px] pr-4">
-                  <div className="space-y-16">
-                    {/* 4-Day Special Challenge */}
+
+                {/* Content displayed in a continuous flow */}
+                <div className="space-y-16">
+                  {/* 4-Day Special Challenge */}
+                  <ScrollAnimation>
                     <div className="relative">
                       <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-amber-300 to-orange-300 z-0"></div>
                       
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="pl-8"
-                      >
+                      <div className="pl-8">
                         <div className="flex items-center gap-3 mb-6">
                           <div className="absolute -left-3 bg-amber-100 p-3 rounded-full border border-amber-200">
                             <Clock className="h-6 w-6 text-amber-600" />
@@ -356,19 +352,16 @@ export default function AffiliateGetFamiliar() {
                             Perfect for those who can refer multiple businesses quickly!
                           </p>
                         </div>
-                      </motion.div>
+                      </div>
                     </div>
-                    
-                    {/* Regular Affiliate Program */}
+                  </ScrollAnimation>
+                  
+                  {/* Regular Affiliate Program */}
+                  <ScrollAnimation>
                     <div className="relative">
                       <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-amber-300 to-orange-300 z-0"></div>
                       
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className="pl-8"
-                      >
+                      <div className="pl-8">
                         <div className="flex items-center gap-3 mb-6">
                           <div className="absolute -left-3 bg-amber-100 p-3 rounded-full border border-amber-200">
                             <DollarSign className="h-6 w-6 text-amber-600" />
@@ -482,19 +475,16 @@ export default function AffiliateGetFamiliar() {
                             Ideal for steady, long-term participation
                           </p>
                         </div>
-                      </motion.div>
+                      </div>
                     </div>
-                    
-                    {/* How Commission Works */}
+                  </ScrollAnimation>
+                  
+                  {/* How Commission Works */}
+                  <ScrollAnimation>
                     <div className="relative">
                       <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-amber-300 to-orange-300 z-0"></div>
                       
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="pl-8"
-                      >
+                      <div className="pl-8">
                         <h3 className="text-2xl font-bold mb-8">How Commission Works</h3>
                         
                         <div className="space-y-8">
@@ -550,19 +540,16 @@ export default function AffiliateGetFamiliar() {
                             </div>
                           </motion.div>
                         </div>
-                      </motion.div>
+                      </div>
                     </div>
+                  </ScrollAnimation>
 
-                    {/* Access Your Affiliate Dashboard */}
+                  {/* Access Your Affiliate Dashboard */}
+                  <ScrollAnimation>
                     <div className="relative">
                       <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-amber-300 to-orange-300 z-0"></div>
                       
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="pl-8"
-                      >
+                      <div className="pl-8">
                         <h3 className="text-2xl font-bold mb-6">Access Your Affiliate Dashboard</h3>
                         <p className="text-gray-600 mb-6">
                           Track your referrals, commissions, and affiliate status through our dedicated dashboard.
@@ -638,27 +625,23 @@ export default function AffiliateGetFamiliar() {
                             </div>
                           </DialogContent>
                         </Dialog>
-                      </motion.div>
+                      </div>
                     </div>
-                  </div>
-                </ScrollArea>
+                  </ScrollAnimation>
+                </div>
               </section>
             </div>
           ) : (
             <div className="space-y-24">
               <section>
-                <ScrollArea className="h-[600px] pr-4">
-                  <div className="space-y-16">
-                    {/* Creator Partners Program */}
+                {/* Creator Partners Content in a continuous flow */}
+                <div className="space-y-16">
+                  {/* Creator Partners Program */}
+                  <ScrollAnimation>
                     <div className="relative">
                       <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-purple-300 to-blue-300 z-0"></div>
                       
-                      <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="pl-8"
-                      >
+                      <div className="pl-8">
                         <div className="flex items-center gap-3 mb-6">
                           <div className="absolute -left-3 bg-purple-100 p-3 rounded-full border border-purple-200">
                             <Trophy className="h-6 w-6 text-purple-600" />
@@ -771,19 +754,16 @@ export default function AffiliateGetFamiliar() {
                             For influencers with established audiences
                           </p>
                         </div>
-                      </motion.div>
+                      </div>
                     </div>
-                    
-                    {/* Creator Partners Requirements */}
+                  </ScrollAnimation>
+                  
+                  {/* Creator Partners Requirements */}
+                  <ScrollAnimation>
                     <div className="relative">
                       <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-purple-300 to-blue-300 z-0"></div>
                       
-                      <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className="pl-8"
-                      >
+                      <div className="pl-8">
                         <div className="flex items-center gap-3 mb-6">
                           <div className="absolute -left-3 bg-purple-100 p-3 rounded-full border border-purple-200">
                             <User className="h-6 w-6 text-purple-600" />
@@ -817,19 +797,16 @@ export default function AffiliateGetFamiliar() {
                         <p className="text-sm text-gray-600 mt-6">
                           Applications reviewed on a case-by-case basis
                         </p>
-                      </motion.div>
+                      </div>
                     </div>
-                    
-                    {/* Creator Partner Benefits */}
+                  </ScrollAnimation>
+                  
+                  {/* Creator Partner Benefits */}
+                  <ScrollAnimation>
                     <div className="relative">
                       <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-purple-300 to-blue-300 z-0"></div>
                       
-                      <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="pl-8"
-                      >
+                      <div className="pl-8">
                         <h3 className="text-2xl font-bold mb-8">Creator Partner Benefits</h3>
                         
                         <div className="space-y-8">
@@ -869,19 +846,16 @@ export default function AffiliateGetFamiliar() {
                             </div>
                           </div>
                         </div>
-                      </motion.div>
+                      </div>
                     </div>
-                    
-                    {/* Access Your Dashboard */}
+                  </ScrollAnimation>
+                  
+                  {/* Access Your Dashboard */}
+                  <ScrollAnimation>
                     <div className="relative">
                       <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-purple-300 to-blue-300 z-0"></div>
                       
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="pl-8"
-                      >
+                      <div className="pl-8">
                         <h3 className="text-2xl font-bold mb-6">Access Your Creator Dashboard</h3>
                         <p className="text-gray-600 mb-6">
                           Track your network performance, commission earnings, and access exclusive content.
@@ -957,10 +931,10 @@ export default function AffiliateGetFamiliar() {
                             </div>
                           </DialogContent>
                         </Dialog>
-                      </motion.div>
+                      </div>
                     </div>
-                  </div>
-                </ScrollArea>
+                  </ScrollAnimation>
+                </div>
               </section>
             </div>
           )}

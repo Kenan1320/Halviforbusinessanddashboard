@@ -8,6 +8,7 @@ import RegularAffiliate from "@/components/affiliate/RegularAffiliate";
 import SpecialChallenge from "@/components/affiliate/SpecialChallenge";
 import AffiliateForm from "@/components/affiliate/AffiliateForm";
 import AffiliateFAQSection from "@/components/affiliate/AffiliateFAQSection";
+import ScrollAnimation from "@/components/ScrollAnimation";
 
 export default function AffiliateProgram() {
   // Sample app data
@@ -48,14 +49,14 @@ export default function AffiliateProgram() {
   ];
   
   return (
-    <div className="overflow-hidden bg-gradient-to-b from-amber-50 to-white">
+    <div className="overflow-x-hidden bg-gradient-to-b from-amber-50 to-white">
       <Toaster position="top-right" />
       <Navbar />
       
       <AffiliateHero />
       
-      {/* Challenge Overview Section */}
-      <div className="bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-900/40 dark:to-orange-900/40 py-8">
+      {/* Challenge Overview Section - Moved to top per request */}
+      <ScrollAnimation className="py-8 bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-900/40 dark:to-orange-900/40">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
             <div className="p-6">
@@ -95,31 +96,31 @@ export default function AffiliateProgram() {
             </div>
           </div>
         </div>
-      </div>
+      </ScrollAnimation>
       
       <div className="container mx-auto px-4 py-16">
         {/* Display sections in a flowing, continuous layout */}
-        <section className="mb-16">
+        <ScrollAnimation className="mb-16">
           <h2 className="text-2xl font-bold mb-8 text-center">Regular Affiliate Program</h2>
           <div className="max-w-6xl mx-auto">
             <RegularAffiliate />
           </div>
-        </section>
+        </ScrollAnimation>
         
-        <section className="mb-16">
+        <ScrollAnimation className="mb-16">
           <h2 className="text-2xl font-bold mb-8 text-center">Special Affiliate Challenge</h2>
           <div className="max-w-6xl mx-auto">
             <SpecialChallenge daysRemaining={daysRemaining} challenges={challenges} />
           </div>
-        </section>
+        </ScrollAnimation>
         
-        <div className="max-w-6xl mx-auto">
+        <ScrollAnimation className="max-w-6xl mx-auto mb-16">
           <AffiliateForm />
-        </div>
+        </ScrollAnimation>
         
-        <div className="max-w-6xl mx-auto">
+        <ScrollAnimation className="max-w-6xl mx-auto">
           <AffiliateFAQSection faqs={affiliateFaqs} />
-        </div>
+        </ScrollAnimation>
       </div>
       
       <Footer />
