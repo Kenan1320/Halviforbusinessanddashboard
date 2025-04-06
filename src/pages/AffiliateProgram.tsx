@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Toaster } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AffiliateHero from "@/components/affiliate/AffiliateHero";
 import RegularAffiliate from "@/components/affiliate/RegularAffiliate";
 import SpecialChallenge from "@/components/affiliate/SpecialChallenge";
@@ -99,20 +98,16 @@ export default function AffiliateProgram() {
       </div>
       
       <div className="container mx-auto px-4 py-16">
-        <Tabs defaultValue="regular" className="max-w-4xl mx-auto">
-          <TabsList className="grid w-full grid-cols-2 mb-8">
-            <TabsTrigger value="regular" className="text-lg py-3">Regular Affiliate</TabsTrigger>
-            <TabsTrigger value="challenge" className="text-lg py-3">Special Challenge</TabsTrigger>
-          </TabsList>
-          
-          <TabsContent value="regular">
-            <RegularAffiliate />
-          </TabsContent>
-          
-          <TabsContent value="challenge">
-            <SpecialChallenge daysRemaining={daysRemaining} challenges={challenges} />
-          </TabsContent>
-        </Tabs>
+        {/* Display sections in a flowing, scrollable layout */}
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold mb-8 text-center">Regular Affiliate Program</h2>
+          <RegularAffiliate />
+        </section>
+        
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold mb-8 text-center">Special Affiliate Challenge</h2>
+          <SpecialChallenge daysRemaining={daysRemaining} challenges={challenges} />
+        </section>
         
         <AffiliateForm />
         
