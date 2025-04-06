@@ -18,6 +18,11 @@ export default function AffiliateProgram() {
     { position: 2, name: "Sarah K.", referrals: 6, earnings: "$1,200" },
     { position: 3, name: "Yusuf A.", referrals: 5, earnings: "$1,000" },
   ];
+  
+  // Challenge overview data
+  const spotsTotal = 50;
+  const spotsFilled = 32;
+  const spotsRemaining = spotsTotal - spotsFilled;
 
   // FAQ content specific to affiliates
   const affiliateFaqs = [
@@ -44,11 +49,54 @@ export default function AffiliateProgram() {
   ];
   
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden bg-gradient-to-b from-amber-50 to-white">
       <Toaster position="top-right" />
       <Navbar />
       
       <AffiliateHero />
+      
+      {/* Challenge Overview Section */}
+      <div className="bg-gradient-to-r from-amber-100 to-orange-100 dark:from-amber-900/40 dark:to-orange-900/40 py-8">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
+            <div className="p-6">
+              <h2 className="text-xl font-bold mb-4 text-center">Special Challenge Registration</h2>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div className="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg text-center">
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Days Remaining</p>
+                  <p className="text-3xl font-bold text-amber-600 dark:text-amber-400">{daysRemaining}</p>
+                </div>
+                
+                <div className="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg text-center">
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Spots Remaining</p>
+                  <p className="text-3xl font-bold text-amber-600 dark:text-amber-400">{spotsRemaining}</p>
+                </div>
+                
+                <div className="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg text-center relative">
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Spots Filled</p>
+                  <p className="text-3xl font-bold text-amber-600 dark:text-amber-400">{spotsFilled}/{spotsTotal}</p>
+                  <div className="w-full bg-gray-200 rounded-full h-2.5 mt-2">
+                    <div 
+                      className="bg-amber-600 h-2.5 rounded-full" 
+                      style={{ width: `${(spotsFilled/spotsTotal) * 100}%` }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="text-center">
+                <button 
+                  className="px-6 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-full hover:from-amber-600 hover:to-orange-700 transition-all"
+                >
+                  Register for Next Challenge
+                </button>
+                <p className="text-sm text-gray-500 mt-2">Next challenge starts in 5 days</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       
       <div className="container mx-auto px-4 py-16">
         <Tabs defaultValue="regular" className="max-w-4xl mx-auto">
