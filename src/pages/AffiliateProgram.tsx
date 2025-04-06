@@ -59,7 +59,7 @@ export default function AffiliateProgram() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-md overflow-hidden">
             <div className="p-6">
-              <h2 className="text-xl font-bold mb-4 text-center">Special Challenge Registration</h2>
+              <h2 className="text-xl font-bold mb-4 text-center">Challenge Overview</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div className="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg text-center">
@@ -98,20 +98,28 @@ export default function AffiliateProgram() {
       </div>
       
       <div className="container mx-auto px-4 py-16">
-        {/* Display sections in a flowing, scrollable layout */}
+        {/* Display sections in a flowing, continuous layout */}
         <section className="mb-16">
           <h2 className="text-2xl font-bold mb-8 text-center">Regular Affiliate Program</h2>
-          <RegularAffiliate />
+          <div className="max-w-6xl mx-auto">
+            <RegularAffiliate />
+          </div>
         </section>
         
         <section className="mb-16">
           <h2 className="text-2xl font-bold mb-8 text-center">Special Affiliate Challenge</h2>
-          <SpecialChallenge daysRemaining={daysRemaining} challenges={challenges} />
+          <div className="max-w-6xl mx-auto">
+            <SpecialChallenge daysRemaining={daysRemaining} challenges={challenges} />
+          </div>
         </section>
         
-        <AffiliateForm />
+        <div className="max-w-6xl mx-auto">
+          <AffiliateForm />
+        </div>
         
-        <AffiliateFAQSection faqs={affiliateFaqs} />
+        <div className="max-w-6xl mx-auto">
+          <AffiliateFAQSection faqs={affiliateFaqs} />
+        </div>
       </div>
       
       <Footer />

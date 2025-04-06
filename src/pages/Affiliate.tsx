@@ -14,7 +14,6 @@ import Footer from "@/components/Footer";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import VibratingButton from "@/components/VibratingButton";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -276,271 +275,281 @@ export default function Affiliate() {
               </p>
             </div>
             
-            <ScrollArea className="h-[600px] pr-4">
-              <div className="space-y-12">
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-gradient-to-r from-white to-amber-50 border border-amber-100 p-8 rounded-xl shadow-md"
-                >
-                  <h3 className="text-2xl font-bold mb-6 flex items-center text-amber-800">
-                    <Clock className="mr-3 h-6 w-6 text-amber-600" />
-                    Challenge Overview
-                  </h3>
-                  
-                  <div className="space-y-4 pl-4">
-                    <motion.div 
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.1 }}
-                      className="flex items-start"
-                    >
-                      <div className="bg-amber-100 p-2 rounded-full mr-4 mt-1">
-                        <Zap className="h-4 w-4 text-amber-600" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-lg mb-1">10 Affiliates Compete</h4>
-                        <p className="text-gray-600">Limited spots make competition exciting and exclusive</p>
-                      </div>
-                    </motion.div>
-                    
-                    <motion.div 
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.2 }}
-                      className="flex items-start"
-                    >
-                      <div className="bg-amber-100 p-2 rounded-full mr-4 mt-1">
-                        <Zap className="h-4 w-4 text-amber-600" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-lg mb-1">Refer the Most Businesses</h4>
-                        <p className="text-gray-600">The affiliate who refers the most businesses in 4 days wins</p>
-                      </div>
-                    </motion.div>
-                    
-                    <motion.div 
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.3 }}
-                      className="flex items-start"
-                    >
-                      <div className="bg-amber-100 p-2 rounded-full mr-4 mt-1">
-                        <Award className="h-4 w-4 text-amber-600" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-lg mb-1">Win Special Affiliate Status</h4>
-                        <p className="text-gray-600">Earn exclusive privileges and recognition in the Halvi community</p>
-                      </div>
-                    </motion.div>
-                    
-                    <motion.div 
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.5, delay: 0.4 }}
-                      className="flex items-start"
-                    >
-                      <div className="bg-amber-100 p-2 rounded-full mr-4 mt-1">
-                        <DollarSign className="h-4 w-4 text-amber-600" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-lg mb-1">Double Commission Rate</h4>
-                        <p className="text-gray-600">Special Affiliates earn 40% of Halvi's profit for 16 months</p>
-                      </div>
-                    </motion.div>
-                  </div>
-                </motion.div>
+            <div className="space-y-12">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="bg-gradient-to-r from-white to-amber-50 border border-amber-100 p-8 rounded-xl shadow-md"
+              >
+                <h3 className="text-2xl font-bold mb-6 flex items-center text-amber-800">
+                  <Clock className="mr-3 h-6 w-6 text-amber-600" />
+                  Challenge Overview
+                </h3>
                 
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-gradient-to-r from-white to-amber-50 border border-amber-100 p-8 rounded-xl shadow-md"
-                >
-                  <div className="flex flex-col md:flex-row gap-8">
-                    <div className="md:w-1/2">
-                      <h3 className="text-2xl font-bold mb-6 text-amber-800">Next Challenge Begins</h3>
-                      <div className="flex space-x-4 mb-6">
-                        <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
-                          <span className="text-2xl font-bold relative z-10">{String(countdownTime.days).padStart(2, '0')}</span>
-                          <span className="text-xs relative z-10">Days</span>
-                          <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
-                        </div>
-                        
-                        <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
-                          <span className="text-2xl font-bold relative z-10">{String(countdownTime.hours).padStart(2, '0')}</span>
-                          <span className="text-xs relative z-10">Hours</span>
-                          <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
-                        </div>
-                        
-                        <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
-                          <span className="text-2xl font-bold relative z-10">{String(countdownTime.minutes).padStart(2, '0')}</span>
-                          <span className="text-xs relative z-10">Minutes</span>
-                          <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
-                        </div>
-                        
-                        <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
-                          <span className="text-2xl font-bold relative z-10 animate-pulse">{String(countdownTime.seconds).padStart(2, '0')}</span>
-                          <span className="text-xs relative z-10">Seconds</span>
-                          <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
-                        </div>
+                <div className="space-y-4 pl-4">
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.1 }}
+                    className="flex items-start"
+                  >
+                    <div className="bg-amber-100 p-2 rounded-full mr-4 mt-1">
+                      <Zap className="h-4 w-4 text-amber-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg mb-1">10 Affiliates Compete</h4>
+                      <p className="text-gray-600">Limited spots make competition exciting and exclusive</p>
+                    </div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="flex items-start"
+                  >
+                    <div className="bg-amber-100 p-2 rounded-full mr-4 mt-1">
+                      <Zap className="h-4 w-4 text-amber-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg mb-1">Refer the Most Businesses</h4>
+                      <p className="text-gray-600">The affiliate who refers the most businesses in 4 days wins</p>
+                    </div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.3 }}
+                    className="flex items-start"
+                  >
+                    <div className="bg-amber-100 p-2 rounded-full mr-4 mt-1">
+                      <Award className="h-4 w-4 text-amber-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg mb-1">Win Special Affiliate Status</h4>
+                      <p className="text-gray-600">Earn exclusive privileges and recognition in the Halvi community</p>
+                    </div>
+                  </motion.div>
+                  
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="flex items-start"
+                  >
+                    <div className="bg-amber-100 p-2 rounded-full mr-4 mt-1">
+                      <DollarSign className="h-4 w-4 text-amber-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-lg mb-1">Double Commission Rate</h4>
+                      <p className="text-gray-600">Special Affiliates earn 40% of Halvi's profit for 16 months</p>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="bg-gradient-to-r from-white to-amber-50 border border-amber-100 p-8 rounded-xl shadow-md"
+              >
+                <div className="flex flex-col md:flex-row gap-8">
+                  <div className="md:w-1/2">
+                    <h3 className="text-2xl font-bold mb-6 text-amber-800">Challenge Overview</h3>
+                    <div className="flex space-x-4 mb-6">
+                      <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
+                        <span className="text-2xl font-bold relative z-10">{String(countdownTime.days).padStart(2, '0')}</span>
+                        <span className="text-xs relative z-10">Days</span>
+                        <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
                       </div>
                       
-                      <div className="flex flex-col space-y-3">
-                        <Dialog>
-                          <DialogTrigger asChild>
-                            <Button 
-                              className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700"
-                            >
-                              Apply for Special Challenge
-                            </Button>
-                          </DialogTrigger>
-                          <DialogContent className="sm:max-w-lg">
-                            <DialogHeader>
-                              <DialogTitle>Apply for 4-Day Special Challenge</DialogTitle>
-                              <DialogDescription>
-                                Fill out this form to participate in our next 4-Day Special Affiliate Challenge.
-                              </DialogDescription>
-                            </DialogHeader>
-                            
-                            <form className="space-y-4 py-4" onSubmit={handleSubmit}>
-                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                  <label className="block text-sm font-medium mb-1" htmlFor="first-name">
-                                    First Name
-                                  </label>
-                                  <Input 
-                                    id="first-name"
-                                    name="firstName"
-                                    type="text" 
-                                    required
-                                  />
-                                </div>
-                                <div>
-                                  <label className="block text-sm font-medium mb-1" htmlFor="last-name">
-                                    Last Name
-                                  </label>
-                                  <Input 
-                                    id="last-name"
-                                    name="lastName"
-                                    type="text" 
-                                    required
-                                  />
-                                </div>
-                              </div>
-                              
-                              <div>
-                                <label className="block text-sm font-medium mb-1" htmlFor="email">
-                                  Email Address
-                                </label>
-                                <Input 
-                                  id="email"
-                                  name="email"
-                                  type="email" 
-                                  required
-                                />
-                              </div>
-                              
-                              <div>
-                                <label className="block text-sm font-medium mb-1" htmlFor="phone">
-                                  Phone Number
-                                </label>
-                                <Input 
-                                  id="phone"
-                                  name="phone"
-                                  type="tel" 
-                                  required
-                                />
-                              </div>
-                              
-                              <div>
-                                <label className="block text-sm font-medium mb-1" htmlFor="referral-plan">
-                                  How many businesses do you plan to refer in the 4-day period?
-                                </label>
-                                <Input 
-                                  id="referral-plan"
-                                  name="referralPlan"
-                                  type="number" 
-                                  required
-                                />
-                              </div>
-                              
-                              <Button 
-                                type="submit"
-                                className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700" 
-                                size="lg"
-                                disabled={isSubmitting}
-                              >
-                                {isSubmitting ? "Submitting..." : "Submit Application"}
-                              </Button>
-                            </form>
-                          </DialogContent>
-                        </Dialog>
-                        
-                        <div className="flex items-center">
-                          <span className="relative mr-2 flex h-3 w-3">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-                          </span>
-                          <p className="text-sm text-gray-500">
-                            {registeredCount}/10 spots filled
-                          </p>
-                        </div>
+                      <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
+                        <span className="text-2xl font-bold relative z-10">{String(countdownTime.hours).padStart(2, '0')}</span>
+                        <span className="text-xs relative z-10">Hours</span>
+                        <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
+                      </div>
+                      
+                      <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
+                        <span className="text-2xl font-bold relative z-10">{String(countdownTime.minutes).padStart(2, '0')}</span>
+                        <span className="text-xs relative z-10">Minutes</span>
+                        <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
+                      </div>
+                      
+                      <div className="relative bg-gradient-to-b from-amber-500 to-orange-600 text-white py-3 px-5 rounded-md flex flex-col items-center overflow-hidden">
+                        <span className="text-2xl font-bold relative z-10 animate-pulse">{String(countdownTime.seconds).padStart(2, '0')}</span>
+                        <span className="text-xs relative z-10">Seconds</span>
+                        <div className="absolute inset-0 bg-black/10 animate-pulse"></div>
                       </div>
                     </div>
                     
-                    <div className="md:w-1/2">
-                      <h3 className="text-2xl font-bold mb-4 text-center text-amber-800">Current Leaderboard</h3>
-                      <div className="overflow-hidden rounded-lg border border-gray-200">
-                        <table className="w-full text-sm">
-                          <thead className="bg-gradient-to-r from-amber-100 to-orange-100">
-                            <tr>
-                              <th className="py-3 px-4 text-left font-medium">Rank</th>
-                              <th className="py-3 px-4 text-left font-medium">Name</th>
-                              <th className="py-3 px-4 text-left font-medium">Stores</th>
-                              <th className="py-3 px-4 text-left font-medium">Value</th>
-                            </tr>
-                          </thead>
-                          <tbody className="divide-y divide-gray-200">
-                            <tr className="bg-amber-50">
-                              <td className="py-3 px-4 font-medium">1</td>
-                              <td className="py-3 px-4 font-medium">Sarah J.</td>
-                              <td className="py-3 px-4">8</td>
-                              <td className="py-3 px-4">$12,450</td>
-                            </tr>
-                            <tr>
-                              <td className="py-3 px-4 font-medium">2</td>
-                              <td className="py-3 px-4">Ahmad M.</td>
-                              <td className="py-3 px-4">7</td>
-                              <td className="py-3 px-4">$10,320</td>
-                            </tr>
-                            <tr>
-                              <td className="py-3 px-4 font-medium">3</td>
-                              <td className="py-3 px-4">Priya K.</td>
-                              <td className="py-3 px-4">6</td>
-                              <td className="py-3 px-4">$9,150</td>
-                            </tr>
-                            <tr>
-                              <td className="py-3 px-4 font-medium">4</td>
-                              <td className="py-3 px-4">John D.</td>
-                              <td className="py-3 px-4">5</td>
-                              <td className="py-3 px-4">$7,200</td>
-                            </tr>
-                            <tr>
-                              <td className="py-3 px-4 font-medium">5</td>
-                              <td className="py-3 px-4">Leila H.</td>
-                              <td className="py-3 px-4">3</td>
-                              <td className="py-3 px-4">$5,830</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                    <div className="flex flex-col space-y-3">
+                      <Dialog>
+                        <DialogTrigger asChild>
+                          <Button 
+                            className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700"
+                          >
+                            Apply for Special Challenge
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-lg">
+                          <DialogHeader>
+                            <DialogTitle>Apply for 4-Day Special Challenge</DialogTitle>
+                            <DialogDescription>
+                              Fill out this form to participate in our next 4-Day Special Affiliate Challenge.
+                            </DialogDescription>
+                          </DialogHeader>
+                          
+                          <form className="space-y-4 py-4" onSubmit={handleSubmit}>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                              <div>
+                                <label className="block text-sm font-medium mb-1" htmlFor="first-name">
+                                  First Name
+                                </label>
+                                <Input 
+                                  id="first-name"
+                                  name="firstName"
+                                  type="text" 
+                                  required
+                                />
+                              </div>
+                              <div>
+                                <label className="block text-sm font-medium mb-1" htmlFor="last-name">
+                                  Last Name
+                                </label>
+                                <Input 
+                                  id="last-name"
+                                  name="lastName"
+                                  type="text" 
+                                  required
+                                />
+                              </div>
+                            </div>
+                            
+                            <div>
+                              <label className="block text-sm font-medium mb-1" htmlFor="email">
+                                Email Address
+                              </label>
+                              <Input 
+                                id="email"
+                                name="email"
+                                type="email" 
+                                required
+                              />
+                            </div>
+                            
+                            <div>
+                              <label className="block text-sm font-medium mb-1" htmlFor="phone">
+                                Phone Number
+                              </label>
+                              <Input 
+                                id="phone"
+                                name="phone"
+                                type="tel" 
+                                required
+                              />
+                            </div>
+                            
+                            <div>
+                              <label className="block text-sm font-medium mb-1" htmlFor="referral-plan">
+                                How many businesses do you plan to refer in the 4-day period?
+                              </label>
+                              <Input 
+                                id="referral-plan"
+                                name="referralPlan"
+                                type="number" 
+                                required
+                              />
+                            </div>
+                            
+                            <div>
+                              <label className="block text-sm font-medium mb-1" htmlFor="referral-strategy">
+                                How are you planning to refer business to Halvi?
+                              </label>
+                              <Textarea 
+                                id="referral-strategy"
+                                name="referralStrategy"
+                                rows={3}
+                                required
+                              />
+                            </div>
+                            
+                            <Button 
+                              type="submit"
+                              className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700" 
+                              size="lg"
+                              disabled={isSubmitting}
+                            >
+                              {isSubmitting ? "Submitting..." : "Submit Application"}
+                            </Button>
+                          </form>
+                        </DialogContent>
+                      </Dialog>
+                      
+                      <div className="flex items-center">
+                        <span className="relative mr-2 flex h-3 w-3">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                        <p className="text-sm text-gray-500">
+                          {registeredCount}/10 spots filled
+                        </p>
                       </div>
                     </div>
                   </div>
-                </motion.div>
-              </div>
-            </ScrollArea>
+                  
+                  <div className="md:w-1/2">
+                    <h3 className="text-2xl font-bold mb-4 text-center text-amber-800">Current Leaderboard</h3>
+                    <div className="overflow-hidden rounded-lg border border-gray-200">
+                      <table className="w-full text-sm">
+                        <thead className="bg-gradient-to-r from-amber-100 to-orange-100">
+                          <tr>
+                            <th className="py-3 px-4 text-left font-medium">Rank</th>
+                            <th className="py-3 px-4 text-left font-medium">Name</th>
+                            <th className="py-3 px-4 text-left font-medium">Stores</th>
+                            <th className="py-3 px-4 text-left font-medium">Value</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-200">
+                          <tr className="bg-amber-50">
+                            <td className="py-3 px-4 font-medium">1</td>
+                            <td className="py-3 px-4 font-medium">Sarah J.</td>
+                            <td className="py-3 px-4">8</td>
+                            <td className="py-3 px-4">$12,450</td>
+                          </tr>
+                          <tr>
+                            <td className="py-3 px-4 font-medium">2</td>
+                            <td className="py-3 px-4">Ahmad M.</td>
+                            <td className="py-3 px-4">7</td>
+                            <td className="py-3 px-4">$10,320</td>
+                          </tr>
+                          <tr>
+                            <td className="py-3 px-4 font-medium">3</td>
+                            <td className="py-3 px-4">Priya K.</td>
+                            <td className="py-3 px-4">6</td>
+                            <td className="py-3 px-4">$9,150</td>
+                          </tr>
+                          <tr>
+                            <td className="py-3 px-4 font-medium">4</td>
+                            <td className="py-3 px-4">John D.</td>
+                            <td className="py-3 px-4">5</td>
+                            <td className="py-3 px-4">$7,200</td>
+                          </tr>
+                          <tr>
+                            <td className="py-3 px-4 font-medium">5</td>
+                            <td className="py-3 px-4">Leila H.</td>
+                            <td className="py-3 px-4">3</td>
+                            <td className="py-3 px-4">$5,830</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
       )}
@@ -560,193 +569,191 @@ export default function Affiliate() {
               </p>
             </div>
             
-            <ScrollArea className="h-[600px] pr-4">
-              <div className="space-y-16">
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-gradient-to-r from-white to-amber-50 border border-amber-100 p-8 rounded-xl shadow-md"
-                >
-                  <h3 className="text-2xl font-bold mb-6 flex items-center text-amber-800">
-                    <DollarSign className="mr-3 h-6 w-6 text-amber-600" />
-                    How It Works
-                  </h3>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {[
-                      {
-                        icon: <Share2 className="h-8 w-8 text-amber-600" />,
-                        title: "Share Your Link",
-                        description: "Get your unique referral link after applying and share it with potential businesses"
-                      },
-                      {
-                        icon: <Users className="h-8 w-8 text-amber-600" />,
-                        title: "Businesses Sign Up",
-                        description: "When businesses use your link to join Halvi, they're automatically tracked as your referrals"
-                      },
-                      {
-                        icon: <DollarSign className="h-8 w-8 text-amber-600" />,
-                        title: "Earn Commissions",
-                        description: "Earn 20% of Halvi's profit from each referred business, up to $40K in orders"
-                      }
-                    ].map((step, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="bg-white p-6 rounded-xl shadow-sm"
-                      >
-                        <div className="bg-amber-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                          {step.icon}
-                        </div>
-                        <h4 className="text-xl font-bold mb-2 text-center">{step.title}</h4>
-                        <p className="text-center text-gray-600">
-                          {step.description}
-                        </p>
-                      </motion.div>
-                    ))}
-                  </div>
-                  
-                  <div className="mt-8 flex justify-center">
-                    <Dialog>
-                      <DialogTrigger asChild>
-                        <Button className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700">
-                          Apply for Regular Affiliate Program
-                        </Button>
-                      </DialogTrigger>
-                      <DialogContent className="sm:max-w-lg">
-                        <DialogHeader>
-                          <DialogTitle>Apply as a Regular Affiliate</DialogTitle>
-                          <DialogDescription>
-                            Fill out this form to join our standard affiliate program with 20% commission.
-                          </DialogDescription>
-                        </DialogHeader>
-                        
-                        <form className="space-y-4 py-4" onSubmit={handleSubmit}>
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div>
-                              <label className="block text-sm font-medium mb-1" htmlFor="first-name">
-                                First Name
-                              </label>
-                              <Input 
-                                id="first-name"
-                                name="firstName"
-                                type="text" 
-                                required
-                              />
-                            </div>
-                            <div>
-                              <label className="block text-sm font-medium mb-1" htmlFor="last-name">
-                                Last Name
-                              </label>
-                              <Input 
-                                id="last-name"
-                                name="lastName"
-                                type="text" 
-                                required
-                              />
-                            </div>
-                          </div>
-                          
-                          <div>
-                            <label className="block text-sm font-medium mb-1" htmlFor="email">
-                              Email Address
-                            </label>
-                            <Input 
-                              id="email"
-                              name="email"
-                              type="email" 
-                              required
-                            />
-                          </div>
-                          
-                          <div>
-                            <label className="block text-sm font-medium mb-1" htmlFor="phone">
-                              Phone Number
-                            </label>
-                            <Input 
-                              id="phone"
-                              name="phone"
-                              type="tel" 
-                              required
-                            />
-                          </div>
-                          
-                          <div>
-                            <label className="block text-sm font-medium mb-1" htmlFor="website">
-                              Website/Social Media (optional)
-                            </label>
-                            <Input 
-                              id="website"
-                              name="website"
-                              type="url" 
-                            />
-                          </div>
-                          
-                          <div>
-                            <label className="block text-sm font-medium mb-1" htmlFor="referral-plan">
-                              How do you plan to refer businesses to Halvi?
-                            </label>
-                            <Textarea 
-                              id="referral-plan"
-                              name="referralPlan"
-                              rows={4}
-                              required
-                            />
-                          </div>
-                          
-                          <Button 
-                            type="submit"
-                            className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700" 
-                            size="lg"
-                            disabled={isSubmitting}
-                          >
-                            {isSubmitting ? "Submitting..." : "Submit Application"}
-                            {!isSubmitting && <ArrowRight className="ml-2 h-4 w-4" />}
-                          </Button>
-                        </form>
-                      </DialogContent>
-                    </Dialog>
-                  </div>
-                </motion.div>
+            <div className="space-y-16">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="bg-gradient-to-r from-white to-amber-50 border border-amber-100 p-8 rounded-xl shadow-md"
+              >
+                <h3 className="text-2xl font-bold mb-6 flex items-center text-amber-800">
+                  <DollarSign className="mr-3 h-6 w-6 text-amber-600" />
+                  How It Works
+                </h3>
                 
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-gradient-to-r from-white to-amber-50 border border-amber-100 p-8 rounded-xl shadow-md"
-                >
-                  <h3 className="text-2xl font-bold mb-6 flex items-center text-amber-800">
-                    <Award className="mr-3 h-6 w-6 text-amber-600" />
-                    Program Benefits
-                  </h3>
-                  
-                  <div className="space-y-6">
-                    {benefits.map((benefit, index) => (
-                      <motion.div 
-                        key={index}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="flex items-start bg-white p-4 rounded-lg shadow-sm"
-                      >
-                        <div className="flex-shrink-0 mr-4">
-                          <div className="p-3 bg-gradient-to-br from-amber-100 to-orange-200 rounded-lg text-amber-600">
-                            {benefit.icon}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {[
+                    {
+                      icon: <Share2 className="h-8 w-8 text-amber-600" />,
+                      title: "Share Your Link",
+                      description: "Get your unique referral link after applying and share it with potential businesses"
+                    },
+                    {
+                      icon: <Users className="h-8 w-8 text-amber-600" />,
+                      title: "Businesses Sign Up",
+                      description: "When businesses use your link to join Halvi, they're automatically tracked as your referrals"
+                    },
+                    {
+                      icon: <DollarSign className="h-8 w-8 text-amber-600" />,
+                      title: "Earn Commissions",
+                      description: "Earn 20% of Halvi's profit from each referred business, up to $40K in orders"
+                    }
+                  ].map((step, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="bg-white p-6 rounded-xl shadow-sm"
+                    >
+                      <div className="bg-amber-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        {step.icon}
+                      </div>
+                      <h4 className="text-xl font-bold mb-2 text-center">{step.title}</h4>
+                      <p className="text-center text-gray-600">
+                        {step.description}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+                
+                <div className="mt-8 flex justify-center">
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button className="bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700">
+                        Apply for Regular Affiliate Program
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-lg">
+                      <DialogHeader>
+                        <DialogTitle>Apply as a Regular Affiliate</DialogTitle>
+                        <DialogDescription>
+                          Fill out this form to join our standard affiliate program with 20% commission.
+                        </DialogDescription>
+                      </DialogHeader>
+                      
+                      <form className="space-y-4 py-4" onSubmit={handleSubmit}>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                          <div>
+                            <label className="block text-sm font-medium mb-1" htmlFor="first-name">
+                              First Name
+                            </label>
+                            <Input 
+                              id="first-name"
+                              name="firstName"
+                              type="text" 
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium mb-1" htmlFor="last-name">
+                              Last Name
+                            </label>
+                            <Input 
+                              id="last-name"
+                              name="lastName"
+                              type="text" 
+                              required
+                            />
                           </div>
                         </div>
+                        
                         <div>
-                          <h4 className="text-lg font-semibold mb-1">{benefit.title}</h4>
-                          <p className="text-gray-600">{benefit.description}</p>
+                          <label className="block text-sm font-medium mb-1" htmlFor="email">
+                            Email Address
+                          </label>
+                          <Input 
+                            id="email"
+                            name="email"
+                            type="email" 
+                            required
+                          />
                         </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-              </div>
-            </ScrollArea>
+                        
+                        <div>
+                          <label className="block text-sm font-medium mb-1" htmlFor="phone">
+                            Phone Number
+                          </label>
+                          <Input 
+                            id="phone"
+                            name="phone"
+                            type="tel" 
+                            required
+                          />
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium mb-1" htmlFor="website">
+                            Website/Social Media (optional)
+                          </label>
+                          <Input 
+                            id="website"
+                            name="website"
+                            type="url" 
+                          />
+                        </div>
+                        
+                        <div>
+                          <label className="block text-sm font-medium mb-1" htmlFor="referral-plan">
+                            How do you plan to refer businesses to Halvi?
+                          </label>
+                          <Textarea 
+                            id="referral-plan"
+                            name="referralPlan"
+                            rows={4}
+                            required
+                          />
+                        </div>
+                        
+                        <Button 
+                          type="submit"
+                          className="w-full bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700" 
+                          size="lg"
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? "Submitting..." : "Submit Application"}
+                          {!isSubmitting && <ArrowRight className="ml-2 h-4 w-4" />}
+                        </Button>
+                      </form>
+                    </DialogContent>
+                  </Dialog>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="bg-gradient-to-r from-white to-amber-50 border border-amber-100 p-8 rounded-xl shadow-md"
+              >
+                <h3 className="text-2xl font-bold mb-6 flex items-center text-amber-800">
+                  <Award className="mr-3 h-6 w-6 text-amber-600" />
+                  Program Benefits
+                </h3>
+                
+                <div className="space-y-6">
+                  {benefits.map((benefit, index) => (
+                    <motion.div 
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                      className="flex items-start bg-white p-4 rounded-lg shadow-sm"
+                    >
+                      <div className="flex-shrink-0 mr-4">
+                        <div className="p-3 bg-gradient-to-br from-amber-100 to-orange-200 rounded-lg text-amber-600">
+                          {benefit.icon}
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-semibold mb-1">{benefit.title}</h4>
+                        <p className="text-gray-600">{benefit.description}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            </div>
           </div>
         </motion.section>
       )}
@@ -828,7 +835,7 @@ export default function Affiliate() {
           </div>
           
           <div className="max-w-3xl mx-auto">
-            <ScrollArea className="h-[500px] pr-4">
+            <div className="space-y-6">
               {[
                 {
                   question: "How much can I earn as an affiliate?",
@@ -882,7 +889,7 @@ export default function Affiliate() {
                   </details>
                 </motion.div>
               ))}
-            </ScrollArea>
+            </div>
           </div>
         </div>
       </section>
